@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
-		手机号码将作为登录用户名使用
+		手机号码将作为登录用户名使用333
 	</view>
 </template>
 
