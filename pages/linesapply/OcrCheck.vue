@@ -46,7 +46,9 @@
 				</view>
 			</view>
 			<view style="margin-top:38upx;">
-				<button type="primary" @tap="uploadCards">上传</button>
+				<view class="padding flex flex-direction">
+					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="uploadCards">上传</button>
+				</view>
 			</view>
 		</view>
 		
