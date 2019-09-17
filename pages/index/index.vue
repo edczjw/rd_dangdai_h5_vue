@@ -1,6 +1,5 @@
 <template>
 	<view>
-		<!-- <image class="logo" src="/static/logo.png"></image> -->
 		<cu-custom bgColor="bg-gradual-blue">
 			<block slot="content">易贷</block>
 		</cu-custom>
@@ -73,7 +72,6 @@
 					<view class="action">
 						<!-- <button class="cu-btn line-green text-green" @tap="hideModal">取消</button> -->
 						<button class="cu-btn bg-green margin-left" @tap="hideModal" @click="makesure()">确定</button>
-		
 					</view>
 				</view>
 			</view>

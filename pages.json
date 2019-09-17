@@ -5,6 +5,18 @@
 			"style": {
 				"navigationBarTitleText": "易贷"
 			}
+		},
+		{
+			"path": "pages/linesapply/linesapplyindex",
+			"style": {
+				"navigationBarTitleText": "易贷"
+			}
+		},
+		{
+			"path": "pages/linesapply/OcrCheck",
+			"style": {
+				"navigationBarTitleText": "身份信息"
+			}
 		}
 	],
 	"globalStyle": {
