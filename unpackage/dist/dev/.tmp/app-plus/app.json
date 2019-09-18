@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/linesapply/linesapplyindex",
     "pages/linesapply/OcrCheck",
-    "pages/linesapply/AudioCheck"
+    "pages/linesapply/AudioCheck",
+    "pages/linesapply/AreaMsg"
   ],
   "window": {
     "navigationStyle": "custom",

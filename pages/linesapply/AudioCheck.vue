@@ -27,7 +27,7 @@
 		
 		<view style="margin-top:10upx;">
 			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-blue margin-tb-sm lg">开始认证</button>
+				<button class="cu-btn bg-blue margin-tb-sm lg" @click="start">开始认证</button>
 			</view>
 		</view>
 		
@@ -35,6 +35,30 @@
 </template>
 
 <script>
+	export default {
+		onShow: function() {
+			console.log('App1 Show')
+		},
+		onHide: function() {
+			console.log('App1 Hide')
+		},
+		data() {
+			return {
+				
+			}
+		},
+		onLoad() {
+			
+		},
+		methods:{
+			//开始认证
+			start(){
+				uni.redirectTo({
+				    url: 'AreaMsg'
+				});
+			},
+		}
+	}
 </script>
 
 <style>

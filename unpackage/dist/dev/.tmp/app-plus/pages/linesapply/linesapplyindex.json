@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "易贷",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }
