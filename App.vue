@@ -1,6 +1,9 @@
 <script>
 	import Vue from 'vue'
+	//引入页面动画切换插件
+	import pageAnimation from './components/page-animation'
 	export default {
+		mixins: [pageAnimation],
 		onLaunch: function() {
 			uni.getSystemInfo({
 				success: function(e) {

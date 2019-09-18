@@ -45,9 +45,10 @@
 				</view>
 			</view>
 			
-			<view class="cu-form-group">		
-				<view>
-					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)"/>我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》</label>
+			<view class="bg-white padding-xs solids-top">		
+				<view class="text-sm text-center">
+					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.7)"/>
+					我已阅读、知悉并同意《用户协议》</label>
 				</view>
 			</view>
 			
@@ -71,7 +72,7 @@
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
 						<!-- <button class="cu-btn line-green text-green" @tap="hideModal">取消</button> -->
-						<button class="cu-btn bg-green margin-left" @tap="hideModal" @click="makesure()">确定</button>
+						<button class="cu-btn bg-green margin-left" @tap="hideModal">确定</button>
 					</view>
 				</view>
 			</view>
@@ -109,9 +110,17 @@
 		},
 		
 		methods: {
-			//确定
-			makesure(){
+			//显示弹框
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			//隐藏弹框
+			hideModal(e) {
+				this.modalName = null
 				console.log(this.form)
+				uni.redirectTo({
+				    url: '../linesapply/linesapplyindex'
+				});
 			},
 				
 			//发送验证码
@@ -148,14 +157,6 @@
 			// 用户协议选择
 			changeradio(){
 				this.current = !this.current;
-			},
-			
-			showModal(e) {
-				this.modalName = e.currentTarget.dataset.target
-			},
-			
-			hideModal(e) {
-				this.modalName = null
 			},
 		}
 	}

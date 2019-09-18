@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/linesapply/linesapplyindex",
+    "pages/linesapply/OcrCheck",
+    "pages/linesapply/AudioCheck"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "nvueCompiler": "weex",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "MinYiDai-H5",
+  "compilerVersion": "2.2.2",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

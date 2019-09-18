@@ -20,9 +20,8 @@
 			</view>
 		</view>
 
+		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary" @click="_onClick">身份证 ( 正面照 )</view>
 		<view class="grace-idcard-main">
-			<view class='cu-tag bg-blue radius'>身份证 ( 正面照 )</view>
-			
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg1">
 					<view class="img">
@@ -34,9 +33,10 @@
 					<image :src="idCard1" @tap="previewImg1" mode="widthFix"></image>
 				</view>
 			</view>
+		</view>
 			
-			<view class='cu-tag bg-blue radius'>身份证 ( 背面照 )</view>
-			
+		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary" @click="_onClick">身份证 ( 正面照 )</view>
+		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg2">
 					<view class="img">
@@ -48,7 +48,12 @@
 					<image :src="idCard2" @tap="previewImg2" mode="widthFix" />
 				</view>
 			</view>
+		</view>
 
+
+		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary">身份证信息</view>
+		<view class="grace-idcard-main">
+			<view class="grace-idcard-items">
 			<view class="padding bg-white">
 				<view class="margin-xs bg-gray cu-form-group">
 					<view class="title">姓名</view>
@@ -75,6 +80,7 @@
 					<textarea maxlength="-1" :disabled="areaname!=null" @input="textareaBInput" placeholder="请输入居住地址"></textarea>
 				</view>
 			</view>
+		</view>
 
 			<view style="margin-top:10upx;">
 				<view class="padding flex flex-direction">
@@ -97,7 +103,7 @@
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
 						<button class="cu-btn line-green text-green" @tap="hideModal">返回检查</button>
-						<button class="cu-btn bg-green margin-left" @tap="hideModal" @click="makesure()">下一步</button>
+						<button class="cu-btn bg-green margin-left" @tap="next">下一步</button>
 					</view>
 				</view>
 			</view>
@@ -125,6 +131,12 @@
 			_self = this;
 		},
 		methods: {
+			next(){
+				this.modalName = null
+				uni.redirectTo({
+				    url: 'AudioCheck'
+				});
+			},
 			//显示弹框
 			showModal(e) {
 				this.modalName = e.currentTarget.dataset.target
@@ -221,7 +233,29 @@
 	view {
 		font-size: 28upx;
 	}
-
+	
+	.uni-tag {
+		box-sizing: border-box;
+		padding: 0 32upx;
+		height: 60upx;
+		line-height: calc(60upx - 2px);
+		font-size: 28upx;
+		display: inline-flex;
+		align-items: center;
+		color: #333;
+		border-radius: 6upx;
+		background-color: #f8f8f8;
+		border: 1px solid #f8f8f8
+	}
+	
+	.uni-tag--primary {
+		color: #fff;
+		background-color: #007aff;
+		border: 1px solid #007aff
+	}
+	.uni-tag--mark {
+		border-radius: 0 30upx 30upx 0
+	}
 	.grace-idcard-main {
 		margin: 20upx 30upx;
 	}

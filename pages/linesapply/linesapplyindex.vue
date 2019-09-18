@@ -12,13 +12,35 @@
 		
 		<view class="tabbar bg-white" style="position: fixed;bottom: 0;width: 100%; z-index: 500;">
 			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-blue margin-tb-sm lg">抢先申请</button>
+				<button class="cu-btn bg-blue margin-tb-sm lg" @click="apply">抢先申请</button>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	export default {onShow: function() {
+			console.log('App1 Show')
+		},
+		onHide: function() {
+			console.log('App1 Hide')
+		},
+		data() {
+			return {
+				
+			}
+		},
+		onLoad() {
+		},
+		
+		methods: {
+			apply(){
+				uni.redirectTo({
+				    url: 'OcrCheck'
+				});
+			}
+		}
+	}
 </script>
 
 <style>

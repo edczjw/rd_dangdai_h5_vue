@@ -1,0 +1,91 @@
+
+view {
+	font-size: 28rpx;
+}
+.uni-tag {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 0 32rpx;
+	height: 60rpx;
+	line-height: calc(60rpx - 2px);
+	font-size: 28rpx;
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	color: #333;
+	border-radius: 6rpx;
+	background-color: #f8f8f8;
+	border: 1px solid #f8f8f8
+}
+.uni-tag--primary {
+	color: #fff;
+	background-color: #007aff;
+	border: 1px solid #007aff
+}
+.uni-tag--mark {
+	border-radius: 0 30rpx 30rpx 0
+}
+.grace-idcard-main {
+	margin: 20rpx 30rpx;
+}
+.grace-idcard-desc {
+	line-height: 2em;
+	background: #FFFFFF;
+	padding: 20rpx;
+	border-radius: 10rpx;
+}
+.grace-idcard-text {
+	line-height: 2em;
+	margin-top: 30rpx;
+}
+.grace-idcard-items {
+	background: #FFFFFF;
+	padding: 30rpx 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin: 5rpx 0 30rpx;
+	border-radius: 10rpx;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+}
+.grace-idcard-uper-btn {
+	width: 276rpx;
+	margin: 0 60rpx;
+	background: #F1F1F1;
+	padding-bottom: 10rpx;
+	border-radius: 10rpx;
+	text-align: center;
+}
+.grace-idcard-uper-btn .img {
+	width: 80rpx;
+	height: 80rpx;
+	margin: 0 auto;
+	margin-top: 30rpx;
+}
+.grace-idcard-uper-btn .img image {
+	width: 100rpx;
+	height: 100rpx;
+}
+.grace-idcard-uper-btn .text {
+	width: 100%;
+	margin-top: 10rpx;
+	text-align: center;
+	line-height: 2em;
+}
+.grace-idcard-preview {
+	width: 50%;
+	margin: 0 30rpx;
+}
+.grace-idcard-preview image {
+	width: 100%;
+}
+
