@@ -81,13 +81,13 @@
 				</view>
 			</view>
 		</view>
+		</view>
 
 			<view style="margin-top:10upx;">
-				<view class="padding flex flex-direction">
+				<view class="padding flex flex-direction  bg-white">
 					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="showModal" data-target="DialogModal1">提交</button>
 				</view>
 			</view>
-		</view>
 		
 		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
 			<view class="cu-dialog">

@@ -29,6 +29,12 @@
 			"style": {
 				"navigationBarTitleText": "居住信息"
 			}
+		},
+		{
+			"path": "pages/linesapply/ContractMan",
+			"style": {
+				"navigationBarTitleText": "联系人信息"
+			}
 		}
 	],
 	"globalStyle": {

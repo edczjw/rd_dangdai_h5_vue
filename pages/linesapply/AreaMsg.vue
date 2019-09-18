@@ -32,6 +32,11 @@
 			<input class="text-right" placeholder="例:幸福大道232号财富花园2#1204号" name="input"></input>
 		</view>
 		
+		<view style="margin-top:10upx;">
+			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
+				<button class="cu-btn bg-blue margin-tb-sm lg" @click="next">下一步</button>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -41,16 +46,15 @@
 			return {
 				index: -1,
 				picker: ['请选择','已婚', '未婚', '离异','丧偶','其他'],
-				lotusAddressData:{
-						visible:false,
-						provinceName:'',
-						cityName:'',
-						townName:'',
-					},
-				region:'',
 			}
 		},
 		methods:{
+			//下一步
+			next(){
+				uni.redirectTo({
+				    url: 'ContractMan'
+				});
+			},
 			//婚姻修改值
 			PickerChange(e) {
 				this.index = e.detail.value
