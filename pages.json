@@ -17,6 +17,12 @@
 			"style": {
 				"navigationBarTitleText": "身份信息"
 			}
+		},
+		{
+			"path": "pages/linesapply/AudioCheck",
+			"style": {
+				"navigationBarTitleText": "身份信息"
+			}
 		}
 	],
 	"globalStyle": {

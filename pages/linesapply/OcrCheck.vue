@@ -21,9 +21,8 @@
 		</view>
 
 		<view class="grace-idcard-main">
-			<view class="grace-idcard-text">
-				身份证照片 ( 正面 )
-			</view>
+			<view class='cu-tag bg-blue radius'>身份证 ( 正面照 )</view>
+			
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg1">
 					<view class="img">
@@ -35,9 +34,9 @@
 					<image :src="idCard1" @tap="previewImg1" mode="widthFix"></image>
 				</view>
 			</view>
-			<view class="grace-idcard-text">
-				身份证照片 ( 背面 )
-			</view>
+			
+			<view class='cu-tag bg-blue radius'>身份证 ( 背面照 )</view>
+			
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg2">
 					<view class="img">
@@ -51,31 +50,58 @@
 			</view>
 
 			<view class="padding bg-white">
-				<view class="flex">
-					<view class="padding-sm margin-xs radius">
-						<view class="title">姓名</view>
-						<input class="uni-input" name="input" placeholder="请输入姓名" />
-					</view>
+				<view class="margin-xs bg-gray cu-form-group">
+					<view class="title">姓名</view>
+					<input class="uni-input" name="input" placeholder="请输入姓名" />
 				</view>
-				<view class="flex">
-					<view class="flex-sub padding-sm margin-xs radius">民族</view>
-					<view class="flex-sub padding-sm margin-xs radius">出生日期</view>
+					
+				<view class=" margin-xs bg-gray cu-form-group">
+					<view class="title">民族</view>
+					<input class="uni-input" name="input" placeholder="请输入民族" />
 				</view>
-				<view class="flex">
-					<view class="flex-sub padding-sm margin-xs radius">身份证号码</view>
+				
+				<view class=" margin-xs bg-gray cu-form-group">
+					<view class="title">出生日期</view>
+					<input class="uni-input" name="input" placeholder="请输入出生日期" />
 				</view>
-				<view class="flex">
-					<view class="flex-sub padding-sm margin-xs radius">居住地址</view>
+				
+				<view class=" margin-xs bg-gray cu-form-group align-start">
+					<view class="title">身份证号码</view>
+					<textarea maxlength="-1" :disabled="idcardnum!=null" @input="textidInput" placeholder="请输入居住地址"></textarea>
+				</view>
+				
+				<view class=" margin-xs bg-gray cu-form-group align-start">
+					<view class="title">居住地址</view>
+					<textarea maxlength="-1" :disabled="areaname!=null" @input="textareaBInput" placeholder="请输入居住地址"></textarea>
 				</view>
 			</view>
 
-			<view style="margin-top:38upx;">
+			<view style="margin-top:10upx;">
 				<view class="padding flex flex-direction">
-					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="uploadCards">上传</button>
+					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="showModal" data-target="DialogModal1">提交</button>
 				</view>
 			</view>
 		</view>
-
+		
+		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
+			<view class="cu-dialog">
+				<view class="cu-bar bg-white justify-end">
+					<view class="content">请确认</view>
+					<view class="action" @tap="hideModal">
+						<text class="cuIcon-close text-red"></text>
+					</view>
+				</view>
+				<view class="padding-xl">
+					您提供的身份信息是本人信息且系统识别正确，以确保业务正常办理。
+				</view>
+				<view class="cu-bar bg-white justify-end">
+					<view class="action">
+						<button class="cu-btn line-green text-green" @tap="hideModal">返回检查</button>
+						<button class="cu-btn bg-green margin-left" @tap="hideModal" @click="makesure()">下一步</button>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -85,13 +111,40 @@
 		data() {
 			return {
 				idCard1: '../../static/imgs/idcard1.png',
-				idCard2: '../../static/imgs/idcard2.png'
+				idCard2: '../../static/imgs/idcard2.png',
+				
+				areaname: null,
+				idcardnum:null,
+				
+				modalName:null,
+				textidcardValue: '',
+				textareaBValue: '',
 			};
 		},
 		onLoad: function() {
 			_self = this;
 		},
 		methods: {
+			//显示弹框
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			//隐藏弹框
+			hideModal(e) {
+				this.modalName = null
+			},
+			
+			//身份证号码输入
+			textidInput(e){
+				this.textidcardValue = e.detail.value
+			},
+			
+			//居住地址输入
+			textareaBInput(e) {
+				this.textareaBValue = e.detail.value
+			},
+			
+			//选择正面
 			selectImg1: function() {
 				uni.chooseImage({
 					count: 1,
@@ -100,6 +153,7 @@
 					}
 				})
 			},
+			//选择反面
 			selectImg2: function() {
 				uni.chooseImage({
 					count: 1,
@@ -118,42 +172,46 @@
 					urls: [_self.idCard2]
 				});
 			},
-			uploadCards: function() {
-				if (this.idCard1 == '../../static/imgs/idcard1.png' || this.idCard2 == '../../static/imgs/idcard2.png') {
-					uni.showToast({
-						title: "请选择身份证照片",
-						icon: "none"
-					});
-					return;
-				}
-				// 因底层限制一次上传一个
-				uni.showLoading({
-					title: "上传中"
-				});
-				// 上传正面
-				var uploadTask1 = uni.uploadFile({
-					url: 'https://unidemo.dcloud.net.cn/upload',
-					filePath: _self.idCard1,
-					fileType: 'image',
-					name: 'data',
-					success: function(uploadFileRes) {
-						// 上传成功后返回服务器端保存的路径
-						console.log(uploadFileRes.data);
-						// 上传背面
-						var uploadTask2 = uni.uploadFile({
-							url: 'https://unidemo.dcloud.net.cn/upload',
-							filePath: _self.idCard2,
-							fileType: 'image',
-							name: 'data',
-							success: function(uploadFileRes) {
-								// 上传成功后返回服务器端保存的路径
-								console.log(uploadFileRes.data);
-								// 至此2张照片上传完毕
-								uni.hideLoading();
-							}
-						});
-					}
-				});
+			
+			//提交
+			submit: function() {
+				
+				
+				// if (this.idCard1 == '../../static/imgs/idcard1.png' || this.idCard2 == '../../static/imgs/idcard2.png') {
+				// 	uni.showToast({
+				// 		title: "请选择身份证照片",
+				// 		icon: "none"
+				// 	});
+				// 	return;
+				// }
+				// // 因底层限制一次上传一个
+				// uni.showLoading({
+				// 	title: "上传中"
+				// });
+				// // 上传正面
+				// var uploadTask1 = uni.uploadFile({
+				// 	url: 'https://unidemo.dcloud.net.cn/upload',
+				// 	filePath: _self.idCard1,
+				// 	fileType: 'image',
+				// 	name: 'data',
+				// 	success: function(uploadFileRes) {
+				// 		// 上传成功后返回服务器端保存的路径
+				// 		console.log(uploadFileRes.data);
+				// 		// 上传背面
+				// 		var uploadTask2 = uni.uploadFile({
+				// 			url: 'https://unidemo.dcloud.net.cn/upload',
+				// 			filePath: _self.idCard2,
+				// 			fileType: 'image',
+				// 			name: 'data',
+				// 			success: function(uploadFileRes) {
+				// 				// 上传成功后返回服务器端保存的路径
+				// 				console.log(uploadFileRes.data);
+				// 				// 至此2张照片上传完毕
+				// 				uni.hideLoading();
+				// 			}
+				// 		});
+				// 	}
+				// });
 			}
 		},
 	}
@@ -184,7 +242,7 @@
 		background: #FFFFFF;
 		padding: 30upx 0;
 		display: flex;
-		margin: 30upx 0;
+		margin: 5upx 0 30upx;
 		border-radius: 10upx;
 		align-items: flex-start;
 	}
@@ -199,8 +257,8 @@
 	}
 
 	.grace-idcard-uper-btn .img {
-		width: 100upx;
-		height: 100upx;
+		width: 80upx;
+		height: 80upx;
 		margin: 0 auto;
 		margin-top: 30upx;
 	}
