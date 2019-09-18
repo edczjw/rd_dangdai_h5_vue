@@ -15,7 +15,7 @@
 		<form>
 			<view class="cu-form-group">
 				<view class="title">手机号码</view>
-				<input placeholder="请输入手机号" v-model="form.mobile" name="input"></input>
+				<input placeholder="请输入手机号"  class="text-right" v-model="form.mobile" name="input"></input>
 				<view class="cu-capsule radius">
 					<view class='cu-tag bg-blue '>
 						+86
@@ -28,27 +28,29 @@
 			
 			<view class="cu-form-group">
 				<view class="title">验证码</view>
-				<input placeholder="请输入验证码" v-model="form.timcou" name="input"></input>
+				<input placeholder="请输入验证码"  class="text-right" v-model="form.timcou" name="input"></input>
 				<button @click="sendck()" class='cu-btn bg-green shadow'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
 			</view>
 			
-			<view class="cu-form-group">
+			<!-- <view class="cu-form-group">
 				<view class="title">随机数</view>
-				<input placeholder="请输入随机数" v-model="form.randcou" name="input"></input>
+				<input placeholder="请输入随机数"  class="text-right" v-model="form.randcou" name="input"></input>
 				<view class="basis-xs bg-grey padding code-box">
 					<span class="code-style" @click="createCode">
 					{{verificationCode}}
 					</span>
 				</view>
-			</view>
+			</view> -->
 			
 			<view class="bg-white padding-xs solids-top">		
-				<view class="text-sm text-center">
+				<view class="text-sm text-left">
 					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.7)"/>
-					我已阅读、知悉并同意《用户协议》</label>
+					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、
+					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
+					《<a href="#" class="Index-a">用户注册协议</a>》</label>
 				</view>
 			</view>
 			
@@ -106,7 +108,7 @@
 			}
 		},
 		onLoad() {
-			this.createCode()
+			// this.createCode();//生成随机数验证码
 		},
 		
 		methods: {
@@ -142,17 +144,17 @@
 			},
 						
 			//通过随机数生成验证码
-			createCode:function () {    
-			            this.verificationCode = '';
-			            var code = '';
-			            var codeLength = 4;     //验证码长度
-			            var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');
-			            for(var i = 0;i<codeLength;i++){
-			                var index = Math.floor(Math.random()*36);
-			                code += random[index];
-			            }
-			            this.verificationCode = code
-			        },
+			// createCode:function () {    
+			// 	this.verificationCode = '';
+			// 	var code = '';
+			// 	var codeLength = 4;     //验证码长度
+			// 	var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');
+			// 	for(var i = 0;i<codeLength;i++){
+			// 		var index = Math.floor(Math.random()*36);
+			// 		code += random[index];
+			// 	}
+			// 	this.verificationCode = code
+			// },
 					
 			// 用户协议选择
 			changeradio(){

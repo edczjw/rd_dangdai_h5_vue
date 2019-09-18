@@ -27,7 +27,7 @@
 		{
 			"path": "pages/linesapply/AreaMsg",
 			"style": {
-				"navigationBarTitleText": "个人信息"
+				"navigationBarTitleText": "居住信息"
 			}
 		}
 	],
