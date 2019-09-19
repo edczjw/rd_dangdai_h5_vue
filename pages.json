@@ -35,7 +35,32 @@
 			"style": {
 				"navigationBarTitleText": "联系人信息"
 			}
+		},
+		{
+			"path": "pages/loanapplysuccess/loanapplysuccess",
+			"style": {
+				"navigationBarTitleText": "借款成功"
+			}
+		},
+		{
+			"path": "pages/loanapplysuccess/haveloansuccess",
+			"style": {
+				"navigationBarTitleText": "借款成功"
+			}
+		},
+		{
+			"path": "pages/lineschecking/lineschecking",
+			"style": {
+				"navigationBarTitleText": "额度审批中"
+			}
+		},
+		{
+			"path": "pages/repayplandetail/repayplandetail",
+			"style": {
+				"navigationBarTitleText": "还款计划详情"
+			}
 		}
+		
 	],
 	"globalStyle": {
 		//隐藏原有标题导航条

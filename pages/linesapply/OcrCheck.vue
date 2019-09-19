@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue">
+		<cu-custom bgColor="bg-black">
 			<block slot="content">身份信息</block>
 		</cu-custom>
 
@@ -85,7 +85,7 @@
 
 			<view style="margin-top:10upx;">
 				<view class="padding flex flex-direction  bg-white">
-					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="showModal" data-target="DialogModal1">提交</button>
+					<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" data-target="DialogModal1">提交</button>
 				</view>
 			</view>
 		
@@ -102,8 +102,8 @@
 				</view>
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
-						<button class="cu-btn line-green text-green" @tap="hideModal">返回检查</button>
-						<button class="cu-btn bg-green margin-left" @tap="next">下一步</button>
+						<button class="cu-btn bg-black text-green" @tap="hideModal">返回检查</button>
+						<button class="cu-btn bg-black margin-left" @tap="next">下一步</button>
 					</view>
 				</view>
 			</view>

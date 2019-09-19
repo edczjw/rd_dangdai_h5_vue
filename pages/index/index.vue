@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue">
+		<cu-custom bgColor="bg-black">
 			<block slot="content">易贷</block>
 		</cu-custom>
 		
@@ -17,19 +17,19 @@
 				<view class="title">手机号码</view>
 				<input placeholder="请输入手机号"  class="text-right" v-model="form.mobile" name="input"></input>
 				<view class="cu-capsule radius">
-					<view class='cu-tag bg-blue '>
+					<view class='cu-btn line-blue'>
 						+86
 					</view>
-					<view class="cu-tag line-blue">
+					<!-- <view class="cu-tag line-blue">
 						中国大陆
-					</view>
+					</view> -->
 				</view>
 			</view>
 			
 			<view class="cu-form-group">
 				<view class="title">验证码</view>
 				<input placeholder="请输入验证码"  class="text-right" v-model="form.timcou" name="input"></input>
-				<button @click="sendck()" class='cu-btn bg-green shadow'>
+				<button @click="sendck()" class='cu-btn  bg-gray shadow'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
@@ -45,17 +45,17 @@
 				</view>
 			</view> -->
 			
-			<view class="bg-white padding solids-top">		
-				<view class="text-sm text-left">
+			<view class="bg-white padding-xs solids-top">		
+				<view class="text-sm text-center">
 					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)"/>
-					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、
+					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
 					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
 					《<a href="#" class="Index-a">用户注册协议</a>》</label>
 				</view>
 			</view>
 			
 			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-blue margin-tb-sm lg" @tap="showModal" data-target="DialogModal1">登录</button>
+				<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" data-target="DialogModal1">登录</button>
 			</view>
 			
 		</form>
@@ -74,7 +74,7 @@
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
 						<!-- <button class="cu-btn line-green text-green" @tap="hideModal">取消</button> -->
-						<button class="cu-btn bg-green margin-left" @tap="hideModal">确定</button>
+						<button class="cu-btn bg-black round margin-left" @tap="hideModal">确定</button>
 					</view>
 				</view>
 			</view>

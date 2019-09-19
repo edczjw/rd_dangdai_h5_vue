@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue">
+		<cu-custom bgColor="bg-black">
 			<block slot="content">居住信息</block>
 		</cu-custom>
 		
@@ -34,7 +34,7 @@
 		
 		<view style="margin-top:10upx;">
 			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-blue margin-tb-sm lg" @click="next">下一步</button>
+				<button class="cu-btn bg-black round margin-tb-sm lg" @click="next">下一步</button>
 			</view>
 		</view>
 	</view>

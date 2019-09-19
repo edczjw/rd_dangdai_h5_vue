@@ -4,7 +4,8 @@
     "pages/linesapply/linesapplyindex",
     "pages/linesapply/OcrCheck",
     "pages/linesapply/AudioCheck",
-    "pages/linesapply/AreaMsg"
+    "pages/linesapply/AreaMsg",
+    "pages/linesapply/ContractMan"
   ],
   "window": {
     "navigationStyle": "custom",
