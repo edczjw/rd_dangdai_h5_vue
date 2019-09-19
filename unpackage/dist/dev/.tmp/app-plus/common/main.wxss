@@ -4805,7 +4805,7 @@ scroll-view.cu-steps .cu-item {
 .cuIcon-btn:before {
 	content: "\E601";
 }
-.Index-a{
+.Index-a {
 	text-decoration: none;
 }
 

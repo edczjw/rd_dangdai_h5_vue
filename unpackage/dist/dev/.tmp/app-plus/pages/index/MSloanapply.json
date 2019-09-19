@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "民易贷_贷款申请",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "countup": "/components/countUp",
+    "wuc-tab": "/components/wuc-tab/wuc-tab"
+  }
+}

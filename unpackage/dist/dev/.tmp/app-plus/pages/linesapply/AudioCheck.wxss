@@ -1,0 +1,23 @@
+
+.modal-layer-popup-number {
+  font-size: 0;
+  text-align: center;
+}
+.modal-layer-popup-number ._span {
+  font-size: 54rpx;
+  color: #333;
+  display: inline-block;
+  width: 2.55rem;
+  height: 3.0rem;
+  line-height: 3.0rem;
+  margin-right: .43rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.modal-layer-popup-number ._span:last-child {
+  margin-right: 0;
+}
+

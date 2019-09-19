@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "还款计划详情",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "wuc-tab": "/components/wuc-tab/wuc-tab"
+  }
+}
