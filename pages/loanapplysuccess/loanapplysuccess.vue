@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue">
+		<cu-custom bgColor="bg-black">
 			<block slot="content">借款成功</block>
 		</cu-custom>
 		

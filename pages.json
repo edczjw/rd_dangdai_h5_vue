@@ -1,6 +1,12 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/MSloanapply",
+			"style": {
+				"navigationBarTitleText": "民易贷_贷款申请"
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "易贷"
@@ -58,6 +64,12 @@
 			"path": "pages/repayplandetail/repayplandetail",
 			"style": {
 				"navigationBarTitleText": "还款计划详情"
+			}
+		},
+		{
+			"path": "pages/loanapplyconfirm/confirmqpply",
+			"style": {
+				"navigationBarTitleText": "借款确认"
 			}
 		}
 		

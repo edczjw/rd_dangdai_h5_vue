@@ -29,7 +29,7 @@
 		
 		<view class="cu-form-group"  >
 			<view class="title">详细地址</view>
-			<input class="text-right" placeholder="例:幸福大道232号财富花园2#1204号" name="input"></input>
+			<input class="text-right" placeholder="幸福大道232号财富花园2#1204号" name="input"></input>
 		</view>
 		
 		<view style="margin-top:10upx;">

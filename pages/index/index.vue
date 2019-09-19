@@ -14,22 +14,14 @@
 		
 		<form>
 			<view class="cu-form-group">
-				<view class="title">手机号码</view>
-				<input placeholder="请输入手机号"  class="text-right" v-model="form.mobile" name="input"></input>
-				<view class="cu-capsule radius">
-					<view class='cu-btn line-blue'>
-						+86
-					</view>
-					<!-- <view class="cu-tag line-blue">
-						中国大陆
-					</view> -->
-				</view>
+				<text class='cuIcon-mobile text-orange margin-xs'></text>
+				<input placeholder="请输入手机号"  class="text-left" v-model="form.mobile" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group">
-				<view class="title">验证码</view>
-				<input placeholder="请输入验证码"  class="text-right" v-model="form.timcou" name="input"></input>
-				<button @click="sendck()" class='cu-btn  bg-gray shadow'>
+				<text class='cuIcon-lock text-orange margin-xs'></text>
+				<input placeholder="请输入验证码"  class="text-left" v-model="form.timcou" name="input"></input>
+				<button @click="sendck()" class='cu-btn  bg-cyan shadow'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
