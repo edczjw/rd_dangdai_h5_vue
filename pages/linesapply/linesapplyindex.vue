@@ -1,4 +1,5 @@
 <template>
+	<!-- 介绍页 -->
 	<view>
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
 		<cu-custom bgColor="bg-black">
@@ -36,7 +37,7 @@
 		methods: {
 			apply(){
 				uni.redirectTo({
-				    url: 'OcrCheck'
+				    url: '../index/index'
 				});
 			}
 		}

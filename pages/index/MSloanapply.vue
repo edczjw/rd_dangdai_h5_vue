@@ -6,13 +6,13 @@
 		
 		<view class="bg-white padding-xl">
 			<!-- 金额 -->
-			<countup :num="num" color="#ff9e50" width='30' height='58' fontSize='32'></countup>
+			<countup :num="num" color="#ff9e50" width='28' height='58' fontSize='38'></countup>
 			
 			<!-- 滑动变值 -->
 			<view>
 				<view class="flex">
 					<text class="flex-sub margin-xs radius text-left text-sm" @tap="reduce ">小富即安</text> 
-					<text class="flex-sub margin-xs radius text-right text-lg text-bold" @tap="add">一夜暴富</text>
+					<text class="flex-sub margin-xs radius text-right text-xl text-bold text-orange" @tap="add">一夜暴富</text>
 				</view>
 				<slider :value="num" @change="sliderChange" :min="minMoney" :max="maxMoney" show-value />
 			</view>
@@ -52,7 +52,6 @@
 				</swiper-item>
 			</swiper>
 		</view>
-		地理位置:{{w}}{{l}}
 		
 		<view class="padding flex flex-direction bg-white solid-top" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
 			<button class="cu-btn bg-black margin-tb-sm round lg" @click="wantloan">我要借钱</button>
@@ -105,10 +104,23 @@ import tTd from '@/components/t-table/t-td.vue';
 							name: '09-29',
 							age: '190000',
 							hobby: '189999'
+						},{
+							id: 2019,
+							name: '09-29',
+							age: '190000',
+							hobby: '189999'
+						},{
+							id: 2019,
+							name: '09-29',
+							age: '190000',
+							hobby: '189999'
+						},{
+							id: 2019,
+							name: '09-29',
+							age: '190000',
+							hobby: '189999'
 						},
 					],
-				w:'',
-				l:''
 			}
 		},
 		components: { 
@@ -119,21 +131,11 @@ import tTd from '@/components/t-table/t-td.vue';
 			WucTab 
 		},
 		methods:{
+			//我要借钱
 			wantloan(){
-				console.log('s')
-				uni.getLocation({
-				    type: 'wgs84',
-				    success: function (res) {
-				        console.log('当前位置的经度：' + res.longitude);
-				        console.log('当前位置的纬度：' + res.latitude);
-						this.w = res.longitude;
-						this.l = res.latitude;
-				    }
+				uni.redirectTo({
+				    url: '/pages/index/index'
 				});
-				
-				// uni.redirectTo({
-				//     url: '/pages/index/index'
-				// });
 			},
 			//标签切换
 			swiperChange5(e) {
@@ -178,7 +180,7 @@ div {
   background-color: #f1f1f1;
 }
 .swiper {
-	min-height: 1100upx;
+	min-height: 800upx;
 }
 
 .cu-bar {

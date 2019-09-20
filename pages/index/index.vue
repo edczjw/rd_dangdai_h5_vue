@@ -1,6 +1,8 @@
 <template>
+	<!-- 登录页 -->
 	<view>
-		<cu-custom bgColor="bg-black">
+		<cu-custom bgColor="bg-black" :isBack="true">
+			<block slot="backText">返回</block>
 			<block slot="content">易贷</block>
 		</cu-custom>
 		
@@ -113,7 +115,7 @@
 				this.modalName = null
 				console.log(this.form)
 				uni.redirectTo({
-				    url: '../linesapply/linesapplyindex'
+				    url: '../linesapply/OcrCheck'
 				});
 			},
 				
