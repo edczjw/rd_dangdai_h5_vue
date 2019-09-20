@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "身份信息",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }

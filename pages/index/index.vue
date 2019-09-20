@@ -119,20 +119,20 @@
 				
 			//发送验证码
 			sendck() {
-					const TIME_COUNT = 60; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
-					}
+				const TIME_COUNT = 60; //更改倒计时时间
+				if (!this.timer) {
+					this.count = TIME_COUNT;
+					this.showCount = false;
+					this.timer = setInterval(() => {
+						if (this.count > 0 && this.count <= TIME_COUNT) {
+							this.count--;
+						} else {
+							this.showCount = true;
+							clearInterval(this.timer); // 清除定时器
+							this.timer = null;
+						}
+					}, 1000)
+				}
 			},
 						
 			//通过随机数生成验证码

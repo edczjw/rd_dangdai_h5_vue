@@ -27,7 +27,7 @@
     "autoclose": false
   },
   "appname": "MinYiDai-H5",
-  "compilerVersion": "2.2.2",
+  "compilerVersion": "2.3.0",
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "countup": "/components/countUp"

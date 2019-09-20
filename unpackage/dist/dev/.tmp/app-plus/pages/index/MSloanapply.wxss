@@ -43,7 +43,7 @@ swiper {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 	max-width: 100%;
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 .cu-bar .action:first-child {
 	margin-left: 30rpx;

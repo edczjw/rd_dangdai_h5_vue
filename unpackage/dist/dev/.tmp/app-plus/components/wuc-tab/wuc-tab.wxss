@@ -12,8 +12,8 @@ swiper {
     height: 90rpx;
     display: inline-block;
     line-height: 90rpx;
-    margin: 0 10rpx;
-    padding: 0 20rpx;
+    margin: 0 40rpx;
+    padding: 0 40rpx;
 }
 .wuc-tab-item.cur {
     border-bottom: 4rpx solid;

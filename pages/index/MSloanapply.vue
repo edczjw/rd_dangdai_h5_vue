@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-black">
-			<block slot="content">民易贷_贷款申请</block>
+			<block slot="content">贷款申请</block>
 		</cu-custom>
 		
 		<view class="bg-white padding-xl">
@@ -14,7 +14,7 @@
 					<text class="flex-sub margin-xs radius text-left text-sm" @tap="reduce ">小富即安</text> 
 					<text class="flex-sub margin-xs radius text-right text-lg text-bold" @tap="add">一夜暴富</text>
 				</view>
-				<slider :value="num" @change="sliderChange" min="50" max="122200" show-value />
+				<slider :value="num" @change="sliderChange" :min="minMoney" :max="maxMoney" show-value />
 			</view>
 		</view>
 		<!-- 期数 -->
@@ -22,15 +22,16 @@
 			<wuc-tab :tab-list="tabList5" :tabCur.sync="TabCur5" tab-class="text-center text-black bg-white" select-class="text-blue" />
 			<swiper :current="TabCur5" class="swiper" duration="300" :circular="true" indicator-color="rgba(255,255,255,0)" 
 			indicator-active-color="rgba(255,255,255,0)" @change="swiperChange5">
-						<swiper-item v-for="(item,index) in tabList5" :key="index">
-							
-						  <!-- 切换值 -->
-						  <view class="bg-white padding margin text-center text-black">
-							{{item.name}}
-						  </view>
-						</swiper-item>
+				<swiper-item v-for="(item,index) in tabList5" :key="index">
+					
+				  <!-- 切换值 -->
+				  <view class="bg-white padding margin text-center text-black">
+					{{item.name}}
+				  </view>
+				</swiper-item>
 			</swiper>
 		</view>
+		地理位置:{{w}}{{l}}
 		
 		<view class="padding flex flex-direction bg-white solid-top" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
 			<button class="cu-btn bg-black margin-tb-sm round lg" @click="wantloan">我要借钱</button>
@@ -43,7 +44,9 @@ import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 	export default {
 		data(){
 			return{
-				num:250,
+				num:1000,//初始值
+				minMoney:1000,//最小值
+				maxMoney:122200,//最大值
 				//组别
 				tabList5: [
 						{ name: '6期', icon: '' },
@@ -51,14 +54,27 @@ import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 						{ name: '12期', icon: '' }
 					],
 				TabCur5: 0,//默认值
+				w:'',
+				l:''
 			}
 		},
 		components: { WucTab },
 		methods:{
 			wantloan(){
-				uni.redirectTo({
-				    url: '/pages/index/index'
+				console.log('s')
+				uni.getLocation({
+				    type: 'wgs84',
+				    success: function (res) {
+				        console.log('当前位置的经度：' + res.longitude);
+				        console.log('当前位置的纬度：' + res.latitude);
+						this.w = res.longitude;
+						this.l = res.latitude;
+				    }
 				});
+				
+				// uni.redirectTo({
+				//     url: '/pages/index/index'
+				// });
 			},
 			//标签切换
 			swiperChange5(e) {
@@ -84,7 +100,7 @@ import WucTab from '@/components/wuc-tab/wuc-tab.vue';
 				if(this.num>=100){
 					this.num=this.num-100;
 				}else{
-					this.num = 50;
+					this.num = 1000;
 				}
 			}
 		}
@@ -120,7 +136,7 @@ div {
 	height: 100%;
 	justify-content: center;
 	max-width: 100%;
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .cu-bar .action:first-child {

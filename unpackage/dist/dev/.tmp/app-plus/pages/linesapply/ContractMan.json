@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "联系人信息",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }

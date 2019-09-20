@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/MSloanapply",
 			"style": {
-				"navigationBarTitleText": "民易贷_贷款申请"
+				"navigationBarTitleText": "贷款申请"
 			}
 		},
 		{
@@ -70,6 +70,12 @@
 			"path": "pages/loanapplyconfirm/confirmqpply",
 			"style": {
 				"navigationBarTitleText": "借款确认"
+			}
+		},
+		{
+			"path": "pages/bankCheckfour/bankcheckfour",
+			"style": {
+				"navigationBarTitleText": "验证"
 			}
 		}
 		

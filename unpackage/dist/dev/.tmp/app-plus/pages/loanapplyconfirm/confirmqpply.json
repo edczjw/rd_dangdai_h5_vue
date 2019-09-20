@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "借款确认",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }

@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "借款成功",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }

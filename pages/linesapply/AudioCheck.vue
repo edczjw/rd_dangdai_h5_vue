@@ -15,8 +15,8 @@
 		<view class="solids-bottom padding-xs flex align-center bg-white">
 			<view class="flex-sub text-center ">
 				<view class="text-sm">
-					<view class="text-center"><text class="text-center">为保证系统识别的效率和效果</text></view>
-					<view class="text-center padding"><text class="text-center text-green text-lg">请正对手机，确保所处环境光线充足</text></view>
+					<view class="text-center padding-sm"><text class="text-center">为保证系统识别的效率和效果</text></view>
+					<view class="text-center padding-sm"><text class="text-center text-blue text-lg">请正对手机，确保所处环境光线充足</text></view>
 				</view>
 			</view>
 		</view>
@@ -28,9 +28,13 @@
 		
 		<!-- 随机数 -->
 		<view class=" padding-xs text-center ">
-			<text class="text-greytext-sm text-left">请记住以下数字，并在即将开始的认证过程中，清晰地读出</text>
+			<text class="text-greytext-sm text-center">
+				请记住以下数字，并在即将开始的认证过程中，清晰地读出
+			</text>
 		</view>
-	    <view class=" padding modal-layer-popup-number"><span>4</span><span>6</span><span>9</span><span>9</span></view>
+	    <view class="padding modal-layer-popup-number">
+			<span>4</span><span>6</span><span>9</span><span>9</span>
+		</view>
 		
 		<view class="bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;" >
 			<view class="padding flex flex-direction">

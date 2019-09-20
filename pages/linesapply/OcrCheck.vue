@@ -5,29 +5,36 @@
 		</cu-custom>
 
 		<view class="padding-xs flex align-center">
-			<view class="flex-sub text-center">
+			<view class="flex-sub">
 				<view class="text-sm">
-					<view class="text-left"><text class="text-grey text-left">仅用于全国公民身份查询中心核实身份</text></view>
+					<view class="text-left">
+						<text class="text-sm text-grey">仅用于全国公民身份查询中心核实身份</text>
+					</view>
 				</view>
 			</view>
 		</view>
 
 		<view class="solids-bottom padding-xs flex align-center">
-			<view class="flex-sub text-center">
-				<view class="text-sm">
-					<view class="text-left"><text class="text-left">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text></view>
+			<view class="flex-sub">
+				<view class="text-left">
+					<text class="text-sm text-gray">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
 				</view>
 			</view>
 		</view>
 
-		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary" @click="_onClick">身份证 ( 正面照 )</view>
+		<view class="cu-bar bg-white solid-bottom">
+			<view class="action">
+				<text class='cuIcon-title text-black'></text>身份证 ( 正面照 )
+			</view>
+		</view>
+		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg1">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
-					<view class="text">拍摄或选择照片</view>
+					<view class="text text-sm">拍摄或选择照片</view>
 				</view>
 				<view class="grace-idcard-preview">
 					<image :src="idCard1" @tap="previewImg1" mode="widthFix"></image>
@@ -35,14 +42,19 @@
 			</view>
 		</view>
 			
-		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary" @click="_onClick">身份证 ( 正面照 )</view>
+		<view class="cu-bar bg-white solid-bottom">
+			<view class="action">
+				<text class='cuIcon-title text-black'></text>身份证 ( 反面照 )
+			</view>
+		</view>
+		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
 				<view class="grace-idcard-uper-btn" @tap="selectImg2">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
-					<view class="text">拍摄或选择照片</view>
+					<view class="text text-sm">拍摄或选择照片</view>
 				</view>
 				<view class="grace-idcard-preview">
 					<image :src="idCard2" @tap="previewImg2" mode="widthFix" />
@@ -50,34 +62,38 @@
 			</view>
 		</view>
 
-
-		<view class="uni-tag--mark uni-tag-normal uni-tag uni-tag--primary">身份证信息</view>
+		<view class="cu-bar bg-white solid-bottom">
+			<view class="action">
+				<text class='cuIcon-title text-black'></text>身份信息
+			</view>
+		</view>
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
-			<view class="padding bg-white">
-				<view class="margin-xs bg-gray cu-form-group">
-					<view class="title">姓名</view>
+			<view class="bg-white">
+				<view class="margin-xs  cu-form-group">
+					<view class="title">姓名:</view>
 					<input class="uni-input" name="input" placeholder="请输入姓名" />
 				</view>
 					
-				<view class=" margin-xs bg-gray cu-form-group">
-					<view class="title">民族</view>
+				<view class=" margin-xs   cu-form-group">
+					<view class="title">民族:</view>
 					<input class="uni-input" name="input" placeholder="请输入民族" />
 				</view>
 				
-				<view class=" margin-xs bg-gray cu-form-group">
-					<view class="title">出生日期</view>
+				<view class=" margin-xs   cu-form-group">
+					<view class="title">出生日期:</view>
 					<input class="uni-input" name="input" placeholder="请输入出生日期" />
 				</view>
 				
-				<view class=" margin-xs bg-gray cu-form-group align-start">
-					<view class="title">身份证号码</view>
-					<textarea maxlength="-1" :disabled="idcardnum!=null" @input="textidInput" placeholder="请输入居住地址"></textarea>
+				<view class=" margin-xs   cu-form-group">
+					<view class="title">身份证号码:</view>
+					<input class="uni-input" name="input" placeholder="请输入身份证号码" />
 				</view>
 				
-				<view class=" margin-xs bg-gray cu-form-group align-start">
-					<view class="title">居住地址</view>
-					<textarea maxlength="-1" :disabled="areaname!=null" @input="textareaBInput" placeholder="请输入居住地址"></textarea>
+				<view class=" margin-xs  cu-form-group align-start">
+					<view class="title">居住地址:</view>
+					<textarea maxlength="-1" :disabled="areaname!=null" 
+					@input="textareaBInput" placeholder="请输入居住地址"></textarea>
 				</view>
 			</view>
 		</view>
@@ -85,7 +101,8 @@
 
 			<view style="margin-top:10upx;">
 				<view class="padding flex flex-direction  bg-white">
-					<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" data-target="DialogModal1">提交</button>
+					<button class="cu-btn bg-black margin-tb-sm round lg" 
+					@tap="showModal" data-target="DialogModal1">提交</button>
 				</view>
 			</view>
 		
@@ -102,8 +119,8 @@
 				</view>
 				<view class="cu-bar bg-white justify-end">
 					<view class="action">
-						<button class="cu-btn bg-black text-green" @tap="hideModal">返回检查</button>
-						<button class="cu-btn bg-black margin-left" @tap="next">下一步</button>
+						<button class="cu-btn text-green" @tap="hideModal">返回检查</button>
+						<button class="cu-btn margin-left" @tap="next">下一步</button>
 					</view>
 				</view>
 			</view>
@@ -256,10 +273,6 @@
 	.uni-tag--mark {
 		border-radius: 0 30upx 30upx 0
 	}
-	.grace-idcard-main {
-		margin: 20upx 30upx;
-	}
-
 	.grace-idcard-desc {
 		line-height: 2em;
 		background: #FFFFFF;
@@ -316,5 +329,6 @@
 
 	.grace-idcard-preview image {
 		width: 100%;
+		height: 210upx !important;
 	}
 </style>

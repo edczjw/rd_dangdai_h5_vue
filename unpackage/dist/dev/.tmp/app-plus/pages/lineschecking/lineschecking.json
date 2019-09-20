@@ -1,6 +1,4 @@
 {
   "navigationBarTitleText": "额度审批中",
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  }
+  "usingComponents": {}
 }
