@@ -36,11 +36,19 @@
 			<span>4</span><span>6</span><span>9</span><span>9</span>
 		</view>
 		
-		<view class="bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;" >
+		<view style="margin-top:10upx;">
+			<view class="padding flex flex-direction  bg-white">
+				<button class="cu-btn bg-black margin-tb-sm round lg" 
+				 @click="start">开始认证</button>
+			</view>
+		</view>
+		
+		
+		<!-- <view class="bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;" >
 			<view class="padding flex flex-direction">
 				<button class="cu-btn bg-black round margin-tb-sm lg" @click="start">开始认证</button>
 			</view>
-		</view>
+		</view> -->
 		
 	</view>
 </template>

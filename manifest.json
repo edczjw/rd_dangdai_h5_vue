@@ -72,14 +72,18 @@
     },
     "h5" : {
         "title" : "民易贷",
-        "domain" : "https://test.coo.msxiaodai.com/minyidai",
+        "domain" : "https://dev.myds.msxiaodai.com",
         "router" : {
-            "base" : "/minyidai/",
-            "mode" : "history"
+            "base" : "",
+            "mode" : "hash"
         },
         "devServer" : {
             "port" : "",
-            "disableHostCheck" : true
+            "disableHostCheck" : true,
+            "https" : true
+        },
+        "sdkConfigs" : {
+            "maps" : {}
         }
     }
 }
