@@ -75,7 +75,7 @@
         "domain" : "https://dev.myds.msxiaodai.com",
         "router" : {
             "base" : "",
-            "mode" : "hash"
+            "mode" : "history"
         },
         "devServer" : {
             "port" : "",

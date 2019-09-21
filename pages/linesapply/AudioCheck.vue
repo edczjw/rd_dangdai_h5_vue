@@ -39,7 +39,7 @@
 		<view style="margin-top:10upx;">
 			<view class="padding flex flex-direction  bg-white">
 				<button class="cu-btn bg-black margin-tb-sm round lg" 
-				 @click="start">开始认证</button>
+				 @click="start">始认证</button>
 			</view>
 		</view>
 		
