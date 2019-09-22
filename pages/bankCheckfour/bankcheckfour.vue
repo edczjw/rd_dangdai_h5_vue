@@ -37,25 +37,66 @@
 			return{
 				showCount:true,
 				count:'',
+				times:1,	//点击验证码次数
 			}
 		},
 		methods:{
 			//发送验证码
 			sendck() {
-				const TIME_COUNT = 60; //更改倒计时时间
-				if (!this.timer) {
-					this.count = TIME_COUNT;
-					this.showCount = false;
-					this.timer = setInterval(() => {
-						if (this.count > 0 && this.count <= TIME_COUNT) {
-							this.count--;
-						} else {
-							this.showCount = true;
-							clearInterval(this.timer); // 清除定时器
-							this.timer = null;
-						}
-					}, 1000)
+				//60s
+				if(this.times == 1){
+					const TIME_COUNT = 60; //更改倒计时时间
+					if (!this.timer) {
+						this.count = TIME_COUNT;
+						this.showCount = false;
+						this.times = 2;
+						this.timer = setInterval(() => {
+							if (this.count > 0 && this.count <= TIME_COUNT) {
+								this.count--;
+							} else {
+								this.showCount = true;
+								clearInterval(this.timer); // 清除定时器
+								this.timer = null;
+							}
+						}, 1000)
+					}
 				}
+				//120s
+				else if(this.times == 2){
+					const TIME_COUNT = 120; //更改倒计时时间
+					if (!this.timer) {
+						this.count = TIME_COUNT;
+						this.showCount = false;
+						this.times = 3;
+						this.timer = setInterval(() => {
+							if (this.count > 0 && this.count <= TIME_COUNT) {
+								this.count--;
+							} else {
+								this.showCount = true;
+								clearInterval(this.timer); // 清除定时器
+								this.timer = null;
+							}
+						}, 1000)
+					}
+				} 
+				//200s
+				else{
+					const TIME_COUNT = 200; //更改倒计时时间
+					if (!this.timer) {
+						this.count = TIME_COUNT;
+						this.showCount = false;
+						this.timer = setInterval(() => {
+							if (this.count > 0 && this.count <= TIME_COUNT) {
+								this.count--;
+							} else {
+								this.showCount = true;
+								clearInterval(this.timer); // 清除定时器
+								this.timer = null;
+							}
+						}, 1000)
+					}
+				}
+				
 			},
 		}
 	}
