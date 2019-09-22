@@ -77,11 +77,12 @@
             "base" : "",
             "mode" : "history"
         },
-        "devServer" : {
-            "port" : "",
-            "disableHostCheck" : true,
-            "https" : true
-        },
+		// 解决热更新
+        // "devServer" : {
+        //     "port" : "",
+        //     "disableHostCheck" : true,
+        //     "https" : true
+        // },
         "sdkConfigs" : {
             "maps" : {}
         }
