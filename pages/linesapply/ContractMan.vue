@@ -14,11 +14,12 @@
 		
 		<view class="cu-form-group">
 			<view class="title">关系</view>
-			<picker @change="PickerChange" :value="index" :range="picker">
-				<view class="picker">
-					{{index>-1?picker[index]:'请选择'}}
-				</view>
-			</picker>
+			
+			<view class="uni-list-cell-db">
+				<picker @change="PickerChange" :value="index" :range="picker" range-key="value">
+					<view class="uni-input">{{picker[index].value}}</view>
+				</picker>
+			</view>
 		</view>
 		
 		<view class="cu-form-group">
@@ -72,12 +73,36 @@
 		data(){
 			return {
 				//直系亲属
-				index: -1,
-				picker: ['父母', '配偶','子女' ],
+				index: 0,
+				picker: [{
+					code:'R1',
+					value:'父母'
+				}, {
+					code:'R2',
+					value:'配偶'
+				},{
+					code:'R3',
+					value:'子女'
+				}],
 				
 				//其他联系人
 				index1: -1,
-				picker1: ['父母', '兄弟姐妹','夫妻','同事','其他' ],
+				picker1: [{
+					code:'O1',
+					value:'父母'
+				}, {
+					code:'O2',
+					value:'兄弟姐妹'
+				},{
+					code:'O3',
+					value:'夫妻'
+				},{
+					code:'O4',
+					value:'同事'
+				},{
+					code:'O5',
+					value:'其他'
+				}],
 			}
 		},
 		methods:{

@@ -64,4 +64,13 @@
 		text-align: center;
 		line-height: 18px;
 	}
+	
+	.txt-sty2{
+		font-family: PingFangSC-Regular;
+		font-size: 14px;
+		color: #78829B;
+		letter-spacing: -0.23px;
+		text-align: center;
+		line-height: 14px;
+	}
 </style>
