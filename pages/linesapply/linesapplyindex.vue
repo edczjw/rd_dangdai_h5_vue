@@ -2,7 +2,7 @@
 	<!-- 介绍页 -->
 	<view>
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
-		<cu-custom bgColor="bg-black">
+		<cu-custom bgColor="bg-white" class="navtit">
 			<block slot="content">易贷</block>
 		</cu-custom>
 		

@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/linesapply/linesapplyindex",
     "pages/index/MSloanapply",
     "pages/index/index",
-    "pages/linesapply/linesapplyindex",
     "pages/linesapply/OcrCheck",
     "pages/linesapply/AudioCheck",
     "pages/linesapply/AreaMsg",
@@ -11,7 +11,8 @@
     "pages/loanapplysuccess/haveloansuccess",
     "pages/lineschecking/lineschecking",
     "pages/repayplandetail/repayplandetail",
-    "pages/loanapplyconfirm/confirmqpply"
+    "pages/loanapplyconfirm/confirmqpply",
+    "pages/bankCheckfour/bankcheckfour"
   ],
   "window": {
     "navigationStyle": "custom",
@@ -27,7 +28,7 @@
     "autoclose": false
   },
   "appname": "MinYiDai-H5",
-  "compilerVersion": "2.3.0",
+  "compilerVersion": "2.3.3",
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "countup": "/components/countUp"

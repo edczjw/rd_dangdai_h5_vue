@@ -10,7 +10,7 @@ swiper {
   background-color: #f1f1f1;
 }
 .swiper {
-	height: 140rpx;
+	min-height: 800rpx;
 }
 .cu-bar {
 	display: -webkit-box;

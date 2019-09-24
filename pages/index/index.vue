@@ -1,14 +1,14 @@
 <template>
 	<!-- 登录页 -->
 	<view>
-		<cu-custom bgColor="bg-black" :isBack="true">
+		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
 			<block slot="backText"></block>
 			<block slot="content">易贷登录</block>
 		</cu-custom>
 		
 		<view class="solids-bottom padding-xs flex align-center">
 			<view class="flex-sub text-center">
-				<view class="solid-bottom text-sm">
+				<view class="text-sm">
 					<view class="text-left"><text class="text-grey text-left">手机号码将作为登录用户名使用</text></view>
 				</view>
 			</view>
@@ -18,16 +18,17 @@
 			<view class="cu-form-group">
 				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
 				<input placeholder="请输入手机号" maxlength='11' 
-				@input="mobileinput()"
+				type="number"
 				class="text-left" v-model="form.mobile" 
 				name="input"></input>
 			</view>
 			
 			<view class="cu-form-group">
 				<text class='cuIcon-lock text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" 
+				<input placeholder="请输入验证码" maxlength='6' class="text-left" 
+				v-model="form.timcou" type="number"
 				name="input"></input>
-				<button @click="sendck()" :disabled="loginyzm" class='cu-btn'>
+				<button @click="sendck()" class='cu-btn'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
@@ -35,7 +36,8 @@
 			
 			<view class="bg-white padding-xs solids-top">		
 				<view class="text-sm text-center">
-					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)"/>
+					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
+					style="transform:scale(0.6)"/>
 					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
 					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
 					《<a href="#" class="Index-a">用户注册协议</a>》</label>
@@ -43,8 +45,7 @@
 			</view>
 			
 			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-black margin-tb-sm round lg"  :disabled="loginyzm"
-				 @tap="showModal" data-target="DialogModal1">登录</button>
+				<button class="cu-btn bg-black margin-tb-sm round lg" @click="login()">登录</button>
 			</view>
 			
 		</form>
@@ -81,18 +82,19 @@
 		},
 		data() {
 			return {
-				loginyzm:true,		//验证码是否允许点击
-				title: 'yidai',
 				current:false,
-				show:false,
-				modalName:null,
-				showCount:true,
+				showCount:true,	//验证码计数
 				count:'',
 				times:1,	//点击验证码次数
+				
+				//正则表达式
+				reg:{
+					//手机
+					mobile:/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,
+				},
 				form:{
-					mobile:'',
-					timcou:'',
-					randcou:'',
+					mobile:'',	//手机号
+					timcou:'',	//验证码
 				}
 			}
 		},
@@ -101,83 +103,92 @@
 		},
 		
 		methods: {
-			//手机号校验
-			mobileinput(){
-				//手机输入框长度校验
-				if(this.form.mobile.length == 10){
-					this.loginyzm = false;
-				}else{
-					this.loginyzm = true;
-				}
-			},
 			
-			//显示弹框
-			showModal(e) {
-				this.modalName = e.currentTarget.dataset.target
-			},
-			
-			//隐藏弹框
-			hideModal(e) {
-				this.modalName = null
-				console.log(this.form)
-				uni.redirectTo({
-				    url: '../linesapply/OcrCheck'
-				});
+			//登录
+			login() {
+					if(!this.reg.mobile.test(this.form.mobile)){
+						uni.showToast({
+							icon:'none',
+							title:'请输入正确的手机号码'
+						})
+					}else if(this.form.timcou == '' || this.form.timcou.length != 6){
+						uni.showToast({
+							icon:'none',
+							title:'请输入正确的验证码'
+						})
+					}else if(this.current == false){
+						uni.showToast({
+							icon:'none',
+							title:'请阅读并同意相关协议'
+						})
+					}else{
+						uni.redirectTo({
+							url: '../linesapply/OcrCheck'
+						});
+					}
 			},
 				
 			//发送验证码
 			sendck() {
-				//60s
-				if(this.times == 1){
-					const TIME_COUNT = 60; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.times = 2;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
+				//校验手机格式
+				if(!this.reg.mobile.test(this.form.mobile)){
+					uni.showToast({
+						icon:'none',
+						title:'请输入正确的手机号码'
+					})
+				}else{
+					//60s
+					if(this.times == 1){
+						const TIME_COUNT = 60; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.times = 2;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
 					}
-				}
-				//120s
-				else if(this.times == 2){
-					const TIME_COUNT = 120; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.times = 3;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
-					}
-				} 
-				//200s
-				else{
-					const TIME_COUNT = 200; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
+					//120s
+					else if(this.times == 2){
+						const TIME_COUNT = 120; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.times = 3;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
+					} 
+					//200s
+					else{
+						const TIME_COUNT = 200; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
 					}
 				}
 					

@@ -43,8 +43,25 @@
 	/* 引入colorui样式 */
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
-
+	
+	/* 标题字颜色 */
+	.navtit{
+		font-family: PingFangSC-Medium;
+		font-size: 18px;
+		color: #252E47;
+		letter-spacing: -0.29px;
+		text-align: center;
+		line-height: 18px;
+	}
 	.Index-a {
 		text-decoration: none;
+	}
+	.txt-sty{
+		font-family: PingFangSC-Semibold;
+		font-size: 18px;
+		color: #252E47;
+		letter-spacing: -0.32px;
+		text-align: center;
+		line-height: 18px;
 	}
 </style>

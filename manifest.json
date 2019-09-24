@@ -75,9 +75,9 @@
         "domain" : "https://dev.myds.msxiaodai.com",
         "router" : {
             "base" : "",
-            "mode" : "history"
+            "mode" : "hash"
         },
-		// 解决热更新
+        // 解决热更新
         // "devServer" : {
         //     "port" : "",
         //     "disableHostCheck" : true,
