@@ -25,7 +25,6 @@
 			<image style="width:50%; height: 560upx;" src="../../static/imgs/realface.png" mode=""></image>
 		</view>
 		
-		
 		<!-- 随机数 -->
 		<view class=" padding-xs text-center ">
 			<text class="text-greytext-sm text-center">
@@ -39,10 +38,9 @@
 		<view style="margin-top:10upx;">
 			<view class="padding flex flex-direction  bg-white">
 				<button class="cu-btn bg-black margin-tb-sm round lg" 
-				 @click="start">始认证</button>
+				 @click="start">开始认证</button>
 			</view>
 		</view>
-		
 		
 		<!-- <view class="bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;" >
 			<view class="padding flex flex-direction">

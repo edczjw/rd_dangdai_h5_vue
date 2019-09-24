@@ -2,8 +2,8 @@
 	<!-- 登录页 -->
 	<view>
 		<cu-custom bgColor="bg-black" :isBack="true">
-			<block slot="backText">返回</block>
-			<block slot="content">易贷</block>
+			<block slot="backText"></block>
+			<block slot="content">易贷登录</block>
 		</cu-custom>
 		
 		<view class="solids-bottom padding-xs flex align-center">
@@ -16,14 +16,14 @@
 		
 		<form>
 			<view class="cu-form-group">
-				<text class='cuIcon-mobile text-orange margin-xs'></text>
+				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
 				<input placeholder="请输入手机号"  class="text-left" v-model="form.mobile" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group">
-				<text class='cuIcon-lock text-orange margin-xs'></text>
+				<text class='cuIcon-lock text-orange margin-xs margin-right'></text>
 				<input placeholder="请输入验证码"  class="text-left" v-model="form.timcou" name="input"></input>
-				<button @click="sendck()" class='cu-btn  bg-cyan shadow'>
+				<button @click="sendck()" class='cu-btn'>n
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
@@ -33,7 +33,7 @@
 				<view class="title">随机数</view>
 				<input placeholder="请输入随机数"  class="text-right" v-model="form.randcou" name="input"></input>
 				<view class="basis-xs bg-grey padding code-box">
-					<span class="code-style" @click="createCode">
+					<span class="code-style" @click="createCode">	
 					{{verificationCode}}
 					</span>
 				</view>
@@ -49,7 +49,8 @@
 			</view>
 			
 			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" data-target="DialogModal1">登录</button>
+				<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" 
+				data-target="DialogModal1">登录</button>
 			</view>
 			
 		</form>

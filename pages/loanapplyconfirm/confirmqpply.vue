@@ -43,7 +43,7 @@
 			<view class="title">验证码</view>
 			<input placeholder="请输入验证码"  class="text-left" name="input"></input>
 			<button @click="sendck()" class='cu-btn bg-gray'>
-				<span v-show="showCount">获取验证码</span>
+				<span v-show="showCount">验证码</span>
 				<span v-show="!showCount" class="count">{{count}} s</span>
 			</button>
 		</view>
