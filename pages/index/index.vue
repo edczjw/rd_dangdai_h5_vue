@@ -17,27 +17,21 @@
 		<form>
 			<view class="cu-form-group">
 				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入手机号" maxlength='11' class="text-left" v-model="form.mobile" name="input"></input>
+				<input placeholder="请输入手机号" maxlength='11' 
+				@input="mobileinput()"
+				class="text-left" v-model="form.mobile" 
+				name="input"></input>
 			</view>
 			
 			<view class="cu-form-group">
 				<text class='cuIcon-lock text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" name="input"></input>
+				<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" 
+				name="input"></input>
 				<button @click="sendck()" :disabled="loginyzm" class='cu-btn'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
 			</view>
-			
-			<!-- <view class="cu-form-group">
-				<view class="title">随机数</view>
-				<input placeholder="请输入随机数"  class="text-right" v-model="form.randcou" name="input"></input>
-				<view class="basis-xs bg-grey padding code-box">
-					<span class="code-style" @click="createCode">	
-					{{verificationCode}}
-					</span>
-				</view>
-			</view> -->
 			
 			<view class="bg-white padding-xs solids-top">		
 				<view class="text-sm text-center">
@@ -49,8 +43,8 @@
 			</view>
 			
 			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" 
-				data-target="DialogModal1">登录</button>
+				<button class="cu-btn bg-black margin-tb-sm round lg"  :disabled="loginyzm"
+				 @tap="showModal" data-target="DialogModal1">登录</button>
 			</view>
 			
 		</form>
@@ -87,14 +81,13 @@
 		},
 		data() {
 			return {
-				loginyzm:true,		//验证码点击
+				loginyzm:true,		//验证码是否允许点击
 				title: 'yidai',
 				current:false,
 				show:false,
 				modalName:null,
 				showCount:true,
 				count:'',
-				verificationCode:'',   //生成的验证码
 				times:1,	//点击验证码次数
 				form:{
 					mobile:'',
@@ -108,15 +101,21 @@
 		},
 		
 		methods: {
-			//校验
-			CheckLogin(){
-				
+			//手机号校验
+			mobileinput(){
+				//手机输入框长度校验
+				if(this.form.mobile.length == 10){
+					this.loginyzm = false;
+				}else{
+					this.loginyzm = true;
+				}
 			},
 			
 			//显示弹框
 			showModal(e) {
 				this.modalName = e.currentTarget.dataset.target
 			},
+			
 			//隐藏弹框
 			hideModal(e) {
 				this.modalName = null
@@ -183,19 +182,6 @@
 				}
 					
 			},
-						
-			//通过随机数生成验证码
-			// createCode:function () {    
-			// 	this.verificationCode = '';
-			// 	var code = '';
-			// 	var codeLength = 4;     //验证码长度
-			// 	var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z');
-			// 	for(var i = 0;i<codeLength;i++){
-			// 		var index = Math.floor(Math.random()*36);
-			// 		code += random[index];
-			// 	}
-			// 	this.verificationCode = code
-			// },
 					
 			// 用户协议选择
 			changeradio(){
