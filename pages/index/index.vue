@@ -17,13 +17,13 @@
 		<form>
 			<view class="cu-form-group">
 				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入手机号"  class="text-left" v-model="form.mobile" name="input"></input>
+				<input placeholder="请输入手机号" maxlength='11' class="text-left" v-model="form.mobile" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group">
 				<text class='cuIcon-lock text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入验证码"  class="text-left" v-model="form.timcou" name="input"></input>
-				<button @click="sendck()" class='cu-btn'>n
+				<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" name="input"></input>
+				<button @click="sendck()" :disabled="loginyzm" class='cu-btn'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
@@ -87,6 +87,7 @@
 		},
 		data() {
 			return {
+				loginyzm:true,		//验证码点击
 				title: 'yidai',
 				current:false,
 				show:false,
@@ -107,6 +108,11 @@
 		},
 		
 		methods: {
+			//校验
+			CheckLogin(){
+				
+			},
+			
 			//显示弹框
 			showModal(e) {
 				this.modalName = e.currentTarget.dataset.target
@@ -175,7 +181,7 @@
 						}, 1000)
 					}
 				}
-				
+					
 			},
 						
 			//通过随机数生成验证码
