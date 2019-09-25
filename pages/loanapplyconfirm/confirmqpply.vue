@@ -41,7 +41,7 @@
 		
 		<view class="cu-form-group">
 			<view class="title">验证码</view>
-			<input placeholder="请输入验证码"  class="text-left" name="input"></input>
+			<input placeholder="请输入验证码" type="number" maxlength="6" v-model="form.timcou" class="text-left" name="input"></input>
 			<button @click="sendck()" class='cu-btn bg-gray'>
 				<span v-show="showCount">验证码</span>
 				<span v-show="!showCount" class="count">{{count}} s</span>
@@ -57,7 +57,7 @@
 		</view>
 		
 		<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg">确定</button>
+			<button class="cu-btn bg-black margin-tb-sm round lg" @click="makesure">确定</button>
 		</view>
 	</view>
 </template>
@@ -71,65 +71,95 @@
 				count:'',
 				times:1,	//点击验证码次数
 				verificationCode:'',   //生成的验证码
+				
+				form:{
+					timcou:'',		//验证码
+				}
 			}
 		},
 		methods:{
+			//确定
+			makesure(){
+				if(this.form.timcou == '' || this.form.timcou.length != 6){
+					uni.showToast({
+						icon:'none',
+						title:'请输入正确的验证码'
+					})
+				}else if(this.current == false){
+					uni.showToast({
+						icon:'none',
+						title:'请阅读并同意业务协议'
+					})
+				}else{
+					//跳转
+					uni.redirectTo({
+						url: '../index/index'
+					});
+				}
+			},
+			
 			//发送验证码
 			sendck() {
-				//60s
-				if(this.times == 1){
-					const TIME_COUNT = 60; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.times = 2;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
+				if(this.form.timcou == '' || this.form.timcou.length != 6){
+					uni.showToast({
+						icon:'none',
+						title:'请输入正确的验证码'
+					})
+				}else{
+					//60s
+					if(this.times == 1){
+						const TIME_COUNT = 60; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.times = 2;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
 					}
+					//120s
+					else if(this.times == 2){
+						const TIME_COUNT = 120; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.times = 3;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
+					} 
+					//200s
+					else{
+						const TIME_COUNT = 200; //更改倒计时时间
+						if (!this.timer) {
+							this.count = TIME_COUNT;
+							this.showCount = false;
+							this.timer = setInterval(() => {
+								if (this.count > 0 && this.count <= TIME_COUNT) {
+									this.count--;
+								} else {
+									this.showCount = true;
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							}, 1000)
+						}
+					}	
 				}
-				//120s
-				else if(this.times == 2){
-					const TIME_COUNT = 120; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.times = 3;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
-					}
-				} 
-				//200s
-				else{
-					const TIME_COUNT = 200; //更改倒计时时间
-					if (!this.timer) {
-						this.count = TIME_COUNT;
-						this.showCount = false;
-						this.timer = setInterval(() => {
-							if (this.count > 0 && this.count <= TIME_COUNT) {
-								this.count--;
-							} else {
-								this.showCount = true;
-								clearInterval(this.timer); // 清除定时器
-								this.timer = null;
-							}
-						}, 1000)
-					}
-				}
-				
 			},
 			
 			// 用户协议选择
