@@ -91,9 +91,9 @@
 						title:'请阅读并同意业务协议'
 					})
 				}else{
-					//跳转
+					//跳转至放款成功
 					uni.redirectTo({
-						url: '../index/index'
+						url: '../loanapplysuccess/loanapplysuccess'
 					});
 				}
 			},
