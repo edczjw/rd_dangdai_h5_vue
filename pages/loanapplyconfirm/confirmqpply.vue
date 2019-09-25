@@ -1,41 +1,41 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-black">
+		<cu-custom bgColor="bg-white" class="navtit">
 			<block slot="content">借款确认</block>
 		</cu-custom>
 		
-		<view class="solid-bottom padding text-sm">
+		<view class="padding-sm text-sm">
 			<view class="text-left"><text class="text-grey text-left">借款信息</text></view>
 		</view>
 		
-		<view class="padding bg-white solid-bottom">
+		<view class="padding-sm bg-white">
 			<view class="flex">
-				<view class="flex-sub padding-sm margin-xs radius">借款金额</view>
-				<view class="flex-sub padding-sm margin-xs radius text-right">1500</view>
+				<view class="flex-sub margin-xs radius">借款金额</view>
+				<view class="flex-sub margin-xs radius text-right">1500</view>
 			</view>
 			
 			<view class="flex">
-				<view class="flex-sub padding-sm margin-xs radius">收款银行卡</view>
-				<view class="flex padding-sm margin-xs radius text-right">尾号8888（中国银行）</view>
+				<view class="flex-sub margin-xs radius">收款银行卡</view>
+				<view class="flex margin-xs radius text-right">尾号8888（中国银行）</view>
 			</view>
 			
 			<view class="flex">
-				<view class="flex-sub padding-sm margin-xs radius">借款期限</view>
-				<view class="flex-sub padding-sm margin-xs radius text-right">6期</view>
+				<view class="flex-sub margin-xs radius">借款期限</view>
+				<view class="flex-sub margin-xs radius text-right">6期</view>
 			</view>
 			
 			<view class="flex">
-				<view class="flex-sub padding-sm margin-xs radius">首次还款日</view>
-				<view class="flex-sub padding-sm margin-xs radius text-right">2019-09-22</view>
+				<view class="flex-sub margin-xs radius">首次还款日</view>
+				<view class="flex-sub margin-xs radius text-right">2019-09-22</view>
 			</view>
 			
 			<view class="flex">
-				<view class="flex-sub padding-sm margin-xs radius">还款方式</view>
-				<view class="flex-sub padding-sm margin-xs radius text-right">等额本息</view>
+				<view class="flex-sub margin-xs radius">还款方式</view>
+				<view class="flex-sub margin-xs radius text-right">等额本息</view>
 			</view>
 		</view>
 		
-		<view class="solid-bottom padding text-sm">
+		<view class="padding-sm text-sm">
 			<view class="text-left"><text class="text-grey text-left">请输入手机尾号8888（银行卡银行预留手机号码）收到的短信验证码，完成确认</text></view>
 		</view>
 		

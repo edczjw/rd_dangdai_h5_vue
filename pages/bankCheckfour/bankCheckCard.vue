@@ -56,7 +56,7 @@
 				
 				reg:{
 					//手机
-					mobile:/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,
+					mobile:/^[1][3,4,5,7,8][0-9]{9}$/,
 				},
 				
 				//银行列表
@@ -74,7 +74,7 @@
 			//下一步
 			next(){
 				//校验
-				if(this.form.banknum == ''){
+				if(this.form.banknum == '' || this.form.banknum.length < 19){
 					uni.showToast({
 						icon:'none',
 						title:'请输入正确的银行卡号'
@@ -151,7 +151,7 @@
 		right: 0;
 		top: 0;
 		color: transparent;
-		padding-bottom: 30upx;
+		padding-bottom: 50%;
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
