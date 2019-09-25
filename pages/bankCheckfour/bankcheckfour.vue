@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-black">
+		<cu-custom bgColor="bg-white" class="navtit">
 			<block slot="content">验证</block>
 		</cu-custom>
 		

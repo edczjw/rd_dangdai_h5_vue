@@ -68,35 +68,33 @@
 			</view>
 		</view>
 		<view class="grace-idcard-main">
-			<view class="grace-idcard-items">
 			<view class="bg-white">
 				<view class="margin-xs  cu-form-group">
-					<view class="title">姓名:</view>
-					<input class="uni-input" name="input" placeholder="请输入姓名" />
+					<view class="title">姓名</view>
+					<input class="uni-input text-right" name="input" placeholder="请输入姓名" />
 				</view>
 					
 				<view class=" margin-xs   cu-form-group">
-					<view class="title">民族:</view>
-					<input class="uni-input" name="input" placeholder="请输入民族" />
+					<view class="title">民族</view>
+					<input class="uni-input text-right" name="input" placeholder="请输入民族" />
 				</view>
 				
 				<view class=" margin-xs   cu-form-group">
-					<view class="title">出生日期:</view>
-					<input class="uni-input" name="input" placeholder="请输入出生日期" />
+					<view class="title">出生日期</view>
+					<input class=" text-right" name="input" placeholder="请输入出生日期" />
 				</view>
 				
 				<view class=" margin-xs   cu-form-group">
-					<view class="title">身份证号码:</view>
-					<input class="uni-input" name="input" placeholder="请输入身份证号码" />
+					<view class="title">身份证号码</view>
+					<input class="uni-input text-right" name="input" placeholder="请输入身份证号码" />
 				</view>
 				
 				<view class=" margin-xs  cu-form-group align-start">
-					<view class="title">居住地址:</view>
-					<textarea maxlength="-1" :disabled="areaname!=null" 
-					@input="textareaBInput" placeholder="请输入居住地址"></textarea>
+					<view class="title">居住地址</view>
+					<textarea maxlength="-1" class="text-right" :disabled="areaname!=null" 
+					@input="textareaBInput" placeholder="请输入居住地址 "></textarea>
 				</view>
 			</view>
-		</view>
 		</view>
 
 		<view style="margin-top:10upx;">

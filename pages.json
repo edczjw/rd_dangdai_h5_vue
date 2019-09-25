@@ -78,6 +78,18 @@
 			"style": {
 				"navigationBarTitleText": "验证"
 			}
+		},
+		{
+			"path": "pages/bankCheckfour/bankCheckCard",
+			"style": {
+				"navigationBarTitleText": "填写银行卡"
+			}
+		},
+		{
+			"path": "pages/bankCheckfour/bankCardCheckNum",
+			"style": {
+				"navigationBarTitleText": "确认银行卡"
+			}
 		}
 		
 	],

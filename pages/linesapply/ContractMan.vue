@@ -24,12 +24,12 @@
 		
 		<view class="cu-form-group">
 			<view class="title">姓名</view>
-			<input class="text-right" placeholder="请输入" name="input"></input>
+			<input class="text-right" type="text" placeholder="请输入中文姓名" v-model="form.zxname" name="input"></input>
 		</view>
 		
 		<view class="cu-form-group"  >
 			<view class="title">电话号码</view>
-			<input class="text-right" placeholder="请输入" name="input"></input>
+			<input class="text-right" placeholder="请输入手机号码" v-model="form.zxphone" name="input"></input>
 		</view>
 		
 		
@@ -45,19 +45,19 @@
 			<view class="title">关系</view>
 			<view class="uni-list-cell-db">
 				<picker @change="PickerChange1" :value="index1" :range="picker1" range-key="value">
-					<view class="uni-input picker">{{picker1[index].value}}</view>
+					<view class="uni-input picker">{{picker1[index1].value}}</view>
 				</picker>
 			</view>
 		</view>
 		
 		<view class="cu-form-group">
 			<view class="title">姓名</view>
-			<input class="text-right" placeholder="请输入" name="input"></input>
+			<input class="text-right" type="text" placeholder="请输入中文姓名" v-model="form.othername" name="input"></input>
 		</view>
 		
 		<view class="cu-form-group"  >
 			<view class="title">电话号码</view>
-			<input class="text-right" placeholder="请输入" name="input"></input>
+			<input class="text-right" placeholder="请输入手机号码" v-model="form.otherphone" name="input"></input>
 		</view>
 		
 		<view style="margin-top:10upx;">
@@ -95,19 +95,16 @@
 					value:'请选择'
 				},{
 					code:'O1',
-					value:'父母'
+					value:'亲属'
 				}, {
 					code:'O2',
-					value:'兄弟姐妹'
+					value:'朋友'
 				},{
 					code:'O3',
-					value:'夫妻'
-				},{
-					code:'O4',
 					value:'同事'
 				},{
-					code:'O5',
-					value:'其他'
+					code:'O4',
+					value:'同学'
 				}],
 				
 				//正则校验
@@ -131,10 +128,27 @@
 			//下一步
 			next(){
 				// 校验
-				
-				uni.redirectTo({
-				    url: '../index/index'
-				});
+				if(this.form.zxcode == 0 || this.form.othercode == 0){
+					uni.showToast({
+						icon:'none',
+						title:'请选择联系人关系'
+					})
+				}else if(!this.reg.name.test(this.form.zxname) || !this.reg.name.test(this.form.othername) ){
+					uni.showToast({
+						icon:'none',
+						title:'请输入中文联系人姓名'
+					})
+				}else if(!this.reg.phone.test(this.form.zxphone) || !this.reg.phone.test(this.form.otherphone) ){
+					uni.showToast({
+						icon:'none',
+						title:'请输入正确的手机号码'
+					})
+				}else{
+					//跳转
+					uni.redirectTo({
+						url: '../index/index'
+					});
+				}
 			},
 			
 			//直系亲属修改值
