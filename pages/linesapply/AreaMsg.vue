@@ -6,10 +6,8 @@
 		
 		<view class="cu-form-group margin-top">
 			<view class="title">婚姻状态</view>
-			<picker @change="PickerChange" :value="index" :range="picker">
-				<view class="picker">
-					{{index>-1?picker[index]:'请选择'}}
-				</view>
+			<picker @change="PickerChange" :value="index" :range="picker" range-key="value">
+				<view class="uni-input picker">{{picker[index].value}}</view>
 			</picker>
 		</view>
 		
@@ -23,13 +21,14 @@
 		
 		<view class="cu-form-group"  >
 			<view class="title">现居地址</view>
-			<input class="text-right" placeholder="请输入" name="input"></input>
+			<input class="text-right" placeholder="请输入" v-model="form.areanow" name="input"></input>
 			<text class='cuIcon-locationfill text-orange'></text>
 		</view>
 		
-		<view class="cu-form-group"  >
+		<view class="cu-form-group align-start">
 			<view class="title">详细地址</view>
-			<input class="text-right" placeholder="幸福大道232号财富花园2#1204号" name="input"></input>
+			<textarea class="text-right"  maxlength="-1" v-model="form.areadetail" :disabled="areaname!=null"
+			@input="textareaBInput" placeholder="幸福大道232号财富花园2#1204号"></textarea>
 		</view>
 		
 		<view style="margin-top:10upx;">
@@ -44,21 +43,64 @@
 	export default {
 		data(){
 			return {
-				index: -1,
-				picker: ['请选择','已婚', '未婚', '离异','丧偶','其他'],
+				areaname: null,
+				index: 0,
+				picker: [{
+					code:'0',
+					value:'请选择'
+				},{
+					code:'M1',
+					value:'已婚'
+				}, {
+					code:'M2',
+					value:'未婚'
+				},{
+					code:'M3',
+					value:'离异'
+				},{
+					code:'M4',
+					value:'丧偶'
+				},{
+					code:'M5',
+					value:'其他'
+				}],
+				
+				form:{
+					marrymsg:"",	//婚姻状态
+					areanow:"",		//现居地址
+					areadetail:"",	//详细地址
+				}
 			}
 		},
 		methods:{
 			//下一步
 			next(){
-				uni.redirectTo({
-				    url: 'ContractMan'
-				});
+				//校验信息
+				if(this.form.marrymsg == 0){
+					uni.showToast({
+						icon:'none',
+						title:'请选择婚姻状态'
+					})
+				}else if(this.form.areanow == '' || this.form.areadetail == ''){
+					uni.showToast({
+						icon:'none',
+						title:'请选择或输入居住地址信息'
+					})
+				}else{
+					//校验通过跳转
+					uni.redirectTo({
+						url: 'ContractMan'
+					});
+				}
+			},
+			//居住地址输入
+			textareaBInput(e) {
+				this.textareaBValue = e.detail.value
 			},
 			//婚姻修改值
 			PickerChange(e) {
 				this.index = e.detail.value
-				console.log(this.index)
+				this.form.marrymsg = this.picker[this.index].code;
 			},
 		}
 	}
