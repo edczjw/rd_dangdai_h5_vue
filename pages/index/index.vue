@@ -44,10 +44,11 @@
 				</view>
 			</view>
 			
-			<view class="padding-xl flex flex-direction">
+			<view class="padding-xl flex flex-direction ">
 				<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" @click="login()">登录</button>
 			</view>
 			
+                <div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div>
 		</form>
 		
 	</view>
@@ -67,6 +68,7 @@
 				showCount:true,	//验证码计数
 				count:'',
 				times:1,	//点击验证码次数
+				gpsdetail: "", //详细地理位置
 				
 				//正则表达式
 				reg:{
@@ -80,10 +82,20 @@
 			}
 		},
 		onLoad() {
-			// this.createCode();//生成随机数验证码
+			this.getarea()
 		},
 		
 		methods: {
+			getarea(){
+				uni.getLocation({
+				    type: 'wgs84',
+				    success: function (res) {
+				        console.log('当前位置的经度：' + res.longitude);
+				        console.log('当前位置的纬度：' + res.latitude);
+						this.gpsdetail = res.longitude + res.latitude
+				    }
+				});
+			},
 			//返回
 			back(){
 				console.log('ss')
