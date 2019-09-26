@@ -68,7 +68,7 @@
 				showCount:true,	//验证码计数
 				count:'',
 				times:1,	//点击验证码次数
-				gpsdetail: "", //详细地理位置
+				gpsdetail: "ww", //详细地理位置
 				
 				//正则表达式
 				reg:{
@@ -87,12 +87,13 @@
 		
 		methods: {
 			getarea(){
+				var _that = this;
 				uni.getLocation({
 				    type: 'wgs84',
 				    success: function (res) {
 				        console.log('当前位置的经度：' + res.longitude);
 				        console.log('当前位置的纬度：' + res.latitude);
-						this.gpsdetail = res.longitude + res.latitude
+						_that.gpsdetail = "经度：" + res.longitude+ ",纬度：" + res.latitude
 				    }
 				});
 			},
