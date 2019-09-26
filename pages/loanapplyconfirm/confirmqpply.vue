@@ -100,12 +100,6 @@
 			
 			//发送验证码
 			sendck() {
-				if(this.form.timcou == '' || this.form.timcou.length != 6){
-					uni.showToast({
-						icon:'none',
-						title:'请输入正确的验证码'
-					})
-				}else{
 					//60s
 					if(this.times == 1){
 						const TIME_COUNT = 60; //更改倒计时时间
@@ -159,7 +153,6 @@
 							}, 1000)
 						}
 					}	
-				}
 			},
 			
 			// 用户协议选择

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-black">
+		<cu-custom bgColor="bg-white" class="navtit" >
 			<block slot="content">贷款申请</block>
 		</cu-custom>
 		
@@ -27,26 +27,10 @@
 				  <!-- 切换值 -->
 				  <view class="bg-white padding margin text-center text-black">
 					<!-- {{item.name}} -->
-					
-					<!-- 列表 -->
-					<t-table @change="change">
-						<t-tr>
-							<t-th>年份</t-th>
-							<t-th>还款日</t-th>
-							<t-th>应还</t-th>
-							<t-th>本金</t-th>
-							<t-th>利息</t-th>
-							<t-th>担保费</t-th>
-						</t-tr>
-						<t-tr v-for="item in tableList" :key="item.id">
-							<t-td>{{ item.id + 1 }}</t-td>
-							<t-td>{{ item.name }}</t-td>
-							<t-td>{{ item.age }}</t-td>
-							<t-td>{{ item.hobby }}</t-td>
-							<t-td>{{ item.hobby }}</t-td>
-							<t-td>{{ item.hobby }}</t-td>
-						</t-tr>
-					</t-table>
+					<view class="text-left" v-for="(item,index) of listview.result" :key='index'>
+						{{item.year}}
+						{{item.list.rpmonth}}
+					</view>
 					
 				  </view>
 				</swiper-item>
@@ -61,10 +45,6 @@
 
 <script>
 import WucTab from '@/components/wuc-tab/wuc-tab.vue';
-import tTable from '@/components/t-table/t-table.vue';
-import tTh from '@/components/t-table/t-th.vue';
-import tTr from '@/components/t-table/t-tr.vue';
-import tTd from '@/components/t-table/t-td.vue';
 
 	export default {
 		data(){
@@ -80,54 +60,31 @@ import tTd from '@/components/t-table/t-td.vue';
 					],
 				TabCur5: 0,//默认值
 				
-				//表格数据
-				tableList: [{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},
-						{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},
-						{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},
-						{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},{
-							id: 2019,
-							name: '09-29',
-							age: '190000',
-							hobby: '189999'
-						},
-					],
-			}
+				listview:{
+							result:[{
+									year:'2019',
+									list:[{
+										rpmonth:'10月5日',
+										yinghuan:'19999.99',
+										benjin:'18098.89',
+										lixi:'107.22',
+										danabofei:'144'
+									}],
+								},
+								{
+									year:'2020',
+									list:[{
+										rpmonth:'10月5日',
+										yinghuan:'19999.99',
+										benjin:'18098.89',
+										lixi:'107.22',
+										danabofei:'144',
+									}],
+								}]
+						}
+				}
 		},
 		components: { 
-			tTable,
-			tTh,
-			tTr,
-			tTd,
 			WucTab 
 		},
 		methods:{

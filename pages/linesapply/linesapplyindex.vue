@@ -36,7 +36,7 @@
 		
 		methods: {
 			apply(){
-				uni.redirectTo({
+				uni.navigateTo({
 				    url: '../index/index'
 				});
 			}

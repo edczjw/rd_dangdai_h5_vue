@@ -16,7 +16,7 @@
 		
 		<form>
 			<view class="cu-form-group">
-				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
+				<text class='cuIcon-mobile shadow margin-xs margin-right'></text>
 				<input placeholder="请输入手机号" maxlength='11' 
 				type="number"
 				class="text-left" v-model="form.mobile" 
@@ -24,51 +24,32 @@
 			</view>
 			
 			<view class="cu-form-group">
-				<text class='cuIcon-lock text-orange margin-xs margin-right'></text>
-				<input placeholder="请输入验证码" maxlength='6' class="text-left" 
+				<text class='cuIcon-lock shadow margin-xs margin-right'></text>
+				<input placeholder="请输入验证码"  maxlength='6' class="text-left"        
 				v-model="form.timcou" type="number"
 				name="input"></input>
-				<button @click="sendck()" class='cu-btn'>
+				<button @click="sendck()" class='cu-btn bg-gradual-orange'>
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
 			</view>
 			
-			<view class="bg-white padding-xs solids-top">		
+			<view class="padding-xs">		
 				<view class="text-sm text-center">
 					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
 					style="transform:scale(0.6)"/>
-					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
+					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》
 					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
 					《<a href="#" class="Index-a">用户注册协议</a>》</label>
 				</view>
 			</view>
 			
-			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-black margin-tb-sm round lg" @click="login()">登录</button>
+			<view class="padding-xl flex flex-direction">
+				<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" @click="login()">登录</button>
 			</view>
 			
 		</form>
 		
-		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
-			<view class="cu-dialog">
-				<view class="cu-bar bg-white justify-end">
-					<view class="content">登录结果</view>
-					<view class="action" @tap="hideModal">
-						<text class="cuIcon-close text-red"></text>
-					</view>
-				</view>
-				<view class="padding-xl">
-					欢迎登陆。
-				</view>
-				<view class="cu-bar bg-white justify-end">
-					<view class="action">
-						<!-- <button class="cu-btn line-green text-green" @tap="hideModal">取消</button> -->
-						<button class="cu-btn bg-black round margin-left" @tap="hideModal">确定</button>
-					</view>
-				</view>
-			</view>
-		</view>
 	</view>
 </template>
 
@@ -103,7 +84,13 @@
 		},
 		
 		methods: {
-			
+			//返回
+			back(){
+				console.log('ss')
+				uni.redirectTo({
+					url: 'MSloanapply'
+				});
+			},
 			//登录
 			login() {
 					if(!this.reg.mobile.test(this.form.mobile)){

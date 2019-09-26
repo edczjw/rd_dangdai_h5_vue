@@ -22,9 +22,9 @@
 			</view>
 		</view>
 
-		<view class="cu-bar bg-white solid-bottom">
-			<view class="action">
-				<text class='cuIcon-title text-black'></text>身份证 ( 正面照 )
+		<view class="cu-bar bg-white">
+			<view class="action text-orange">
+				<text class='cuIcon-album text-orange'></text>身份证 ( 正面照 )
 			</view>
 		</view>
 		
@@ -42,9 +42,9 @@
 			</view>
 		</view>
 			
-		<view class="cu-bar bg-white solid-bottom">
-			<view class="action">
-				<text class='cuIcon-title text-black'></text>身份证 ( 反面照 )
+		<view class="cu-bar bg-white">
+			<view class="action text-orange">
+				<text class='cuIcon-album text-orange'></text>身份证 ( 反面照 )
 			</view>
 		</view>
 		
@@ -97,11 +97,9 @@
 			</view>
 		</view>
 
-		<view style="margin-top:10upx;">
-			<view class="padding flex flex-direction  bg-white">
-				<button class="cu-btn bg-black margin-tb-sm round lg" 
-				@tap="showModal" data-target="DialogModal1">提交</button>
-			</view>
+		<view class="padding-xl flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" 
+			@tap="showModal" data-target="DialogModal1">提交</button>
 		</view>
 		
 		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
