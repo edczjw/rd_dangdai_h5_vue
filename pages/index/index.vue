@@ -18,7 +18,7 @@
 			<view class="cu-form-group">
 				<text class='cuIcon-mobile shadow margin-xs margin-right'></text>
 				<input placeholder="请输入手机号" maxlength='11' 
-				type="number"
+				type="number"  @input="yzinput"
 				class="text-left" v-model="form.mobile" 
 				name="input"></input>
 			</view>
@@ -28,7 +28,11 @@
 				<input placeholder="请输入验证码"  maxlength='6' class="text-left"        
 				v-model="form.timcou" type="number"
 				name="input"></input>
-				<button @click="sendck()" class='cu-btn bg-gradual-orange'>
+				<button 
+				type="warn"
+				@click="sendck" 
+				class='cu-btn round ' 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
 					<span v-show="showCount">验证码</span>
 					<span v-show="!showCount" class="count">{{count}} s</span>
 				</button>
@@ -38,17 +42,19 @@
 				<view class="text-sm text-center">
 					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
 					style="transform:scale(0.6)"/>
-					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》
+					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》<br>
 					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
 					《<a href="#" class="Index-a">用户注册协议</a>》</label>
 				</view>
 			</view>
 			
 			<view class="padding-xl flex flex-direction ">
-				<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" @click="login()">登录</button>
+				<button class="cu-btn bg-gradual-orange margin-tb-sm round lg"
+				 :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'"
+				 @click="login()">登录</button>
 			</view>
 			
-                <div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div>
+			<div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div>
 		</form>
 		
 	</view>
@@ -66,9 +72,10 @@
 			return {
 				current:false,
 				showCount:true,	//验证码计数
+				yzbtn:true,	//验证码按钮状态
 				count:'',
 				times:1,	//点击验证码次数
-				gpsdetail: "ww", //详细地理位置
+				gpsdetail: "", //详细地理位置
 				
 				//正则表达式
 				reg:{
@@ -86,20 +93,28 @@
 		},
 		
 		methods: {
+			
+			//手机号码输入框实时输入
+			yzinput(e){
+				if(e.detail.value!=''){
+					this.yzbtn = false;
+				}else{
+					this.yzbtn = true;
+				}
+			},
 			getarea(){
 				var _that = this;
 				uni.getLocation({
 				    type: 'wgs84',
 				    success: function (res) {
-				        console.log('当前位置的经度：' + res.longitude);
-				        console.log('当前位置的纬度：' + res.latitude);
-						_that.gpsdetail = "经度：" + res.longitude+ ",纬度：" + res.latitude
+						_that.gpsdetail = "经度：" + res.longitude + ",纬度：" + res.latitude + ",邮编：";
 				    }
 				});
+				
 			},
+			
 			//返回
 			back(){
-				console.log('ss')
 				uni.redirectTo({
 					url: 'MSloanapply'
 				});
@@ -203,6 +218,15 @@
 </script>
 
 <style>
+	/* 验证码按钮默认 */
+	.yanzhengbtn{
+		background: #FDE8D4;
+	}
+	/* 验证码按钮激活 */
+	.yanzhengbtns{
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255,180,92,0.70);
+	}
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);
 	}

@@ -90,6 +90,12 @@
 			"style": {
 				"navigationBarTitleText": "确认银行卡"
 			}
+		},
+		{
+			"path": "pages/setloantime/setloantime",
+			"style": {
+				"navigationBarTitleText": "设定额度期限"
+			}
 		}
 		
 	],
