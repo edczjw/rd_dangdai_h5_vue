@@ -15,8 +15,12 @@
 		<view class="solids-bottom padding-xs flex align-center bg-white">
 			<view class="flex-sub text-center ">
 				<view class="text-sm">
-					<view class="text-center padding-sm"><text class="text-center">为保证系统识别的效率和效果</text></view>
-					<view class="text-center padding-sm"><text class="text-center text-blue text-lg">请正对手机，确保所处环境光线充足</text></view>
+					<view class="text-center padding-sm">
+						<text class="text-center">为保证系统识别的效率和效果</text>
+					</view>
+					<view class="text-center padding-sm">
+						<text class="text-center text-blue text-lg">请正对手机，确保所处环境光线充足</text>
+					</view>
 				</view>
 			</view>
 		</view>
