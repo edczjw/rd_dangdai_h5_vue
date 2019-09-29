@@ -46,7 +46,7 @@
 			</view>
 		</view>
 
-		<!-- <div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div> -->
+		<div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div>
 	</view>
 </template>
 
@@ -116,6 +116,25 @@
 					type: 'wgs84',
 					success: function(res) {
 						_that.gpsdetail = "经度：" + res.longitude + ",纬度：" + res.latitude + ",邮编：";
+						var point = new plus.maps.Point(res.longitude, res.latitude);
+						      plus.maps.Map.reverseGeocode(
+						      point,
+						      {},
+						     function(event) {
+									 var address = event.address; // 转换后的地理位置
+									 var point = event.coord; // 转换后的坐标信息
+									 var coordType = event.coordType; // 转换后的坐标系类型
+									 console.log(address, 'address');
+									 var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+									 
+									 console.log(address.match(reg));
+									 _that.addressList=address.match(reg).toString().split(",");
+									  _that.address= _that.addressList[1];
+									 console.log(_that.addressList[0]);
+									 console.log(_that.addressList[1]);
+									 console.log(_that.addressList[2]);
+									 
+								 });
 					}
 				});
 
