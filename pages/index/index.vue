@@ -1,12 +1,17 @@
 <template>
 	<!-- 登录页 -->
 	<view class="bg-white">
+		<!-- 获取地理位置，腾讯地图 -->
+		<iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
+			src="https://apis.map.qq.com/tools/geolocation?key=QC3BZ-UMCCG-YQIQ3-ISQAN-JITQ7-E2FI2&referer=myapp">
+		</iframe>
+		
 		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
 			<block slot="backText"></block>
 			<block slot="content">易贷登录</block>
 		</cu-custom>
 
-		<view class="solids-bottom padding-xs flex align-center">
+		<view class="solids-bottom bg-gray padding-xs flex align-center">
 			<view class="flex-sub text-center">
 				<view class="text-sm">
 					<view class="text-left">
@@ -45,11 +50,10 @@
 					《<a href="#" class="Index-a">用户注册协议</a>》</label>
 			</view>
 		</view>
-
-		<div style="height: 2rem;line-height: 2rem; width:100%;text-align: center;">地理位置：{{ gpsdetail }}</div>
+		
+		
 	</view>
 </template>
-
 <script>
 	export default {
 		onShow: function() {
@@ -65,7 +69,7 @@
 				yzbtn: true, //验证码按钮状态
 				count: '',
 				times: 1, //点击验证码次数
-				gpsdetail: "", //详细地理位置
+				gpsdetail: null, //详细地理位置
 
 				//正则表达式
 				reg: {
@@ -79,11 +83,43 @@
 			}
 		},
 		onLoad() {
-			this.getarea();
+			this.getgps();
 			this.keyupEnter()
 		},
-
 		methods: {
+			getgps(){
+				//获取地理位置
+				var loc;
+				var _that = this;
+				window.addEventListener('message', function(event) {
+					// 接收位置信息
+					loc = event.data;
+					console.log(loc)
+						if(loc  && loc.module == 'geolocation') {
+							//定位成功,防止其他应用也会向该页面post信息，需判断module是否为'geolocation'
+							alert('成功'+loc.district)
+						}else { 
+							//定位组件在定位失败后，也会触发message, event.data为null
+							console.log('定位失败');
+						}
+					
+					// "nation": "中国",
+					// "province": "广东省",
+					// "city":"深圳市",
+					// "district":"南山区",
+					// "addr":"深圳大学杜鹃山(白石路北250米)",
+				}, false);
+				
+				//设置6s超时，防止定位组件长时间获取位置信息未响应
+				setTimeout(function() {
+					if(!loc) {
+						//主动与前端定位组件通信（可选），获取粗糙的IP定位结果
+						alert('请求超时')
+					}
+				}, 6000); //6s为推荐值，业务调用方可根据自己的需求设置改时间，不建议太短
+				
+			},
+			
 			//监听键盘
 			keyupEnter() {
 				var lett = this;
@@ -109,35 +145,6 @@
 				} else {
 					this.yzbtn = false;
 				}
-			},
-			getarea() {
-				var _that = this;
-				uni.getLocation({
-					type: 'wgs84',
-					success: function(res) {
-						_that.gpsdetail = "经度：" + res.longitude + ",纬度：" + res.latitude + ",邮编：";
-						var point = new plus.maps.Point(res.longitude, res.latitude);
-						      plus.maps.Map.reverseGeocode(
-						      point,
-						      {},
-						     function(event) {
-									 var address = event.address; // 转换后的地理位置
-									 var point = event.coord; // 转换后的坐标信息
-									 var coordType = event.coordType; // 转换后的坐标系类型
-									 console.log(address, 'address');
-									 var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-									 
-									 console.log(address.match(reg));
-									 _that.addressList=address.match(reg).toString().split(",");
-									  _that.address= _that.addressList[1];
-									 console.log(_that.addressList[0]);
-									 console.log(_that.addressList[1]);
-									 console.log(_that.addressList[2]);
-									 
-								 });
-					}
-				});
-
 			},
 
 			//返回

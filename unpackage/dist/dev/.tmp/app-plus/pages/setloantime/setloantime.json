@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "设定额度期限",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

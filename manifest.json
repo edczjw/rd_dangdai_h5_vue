@@ -71,6 +71,13 @@
         "usingComponents" : true
     },
     "h5" : {
+        // ...
+        "permissions" : {
+            // ...
+            "Geolocation" : {
+                "description" : "位置信息"
+            }
+        },
         "title" : "民易贷",
         "domain" : "https://dev.myds.msxiaodai.com",
         "router" : {
@@ -84,7 +91,12 @@
         //     "https" : true
         // },
         "sdkConfigs" : {
-            "maps" : {}
-        }
+            "maps" : {
+                "qqmap" : {
+                    "key" : "QC3BZ-UMCCG-YQIQ3-ISQAN-JITQ7-E2FI2"
+                }
+            }
+        },
+        "template" : ""
     }
 }

@@ -12,14 +12,17 @@
     "pages/lineschecking/lineschecking",
     "pages/repayplandetail/repayplandetail",
     "pages/loanapplyconfirm/confirmqpply",
-    "pages/bankCheckfour/bankcheckfour"
+    "pages/bankCheckfour/bankcheckfour",
+    "pages/bankCheckfour/bankCheckCard",
+    "pages/bankCheckfour/bankCardCheckNum",
+    "pages/setloantime/setloantime"
   ],
   "window": {
-    "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
   },
   "nvueCompiler": "weex",
   "renderer": "auto",
