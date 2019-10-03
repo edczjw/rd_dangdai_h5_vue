@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		
-		<view class="bg-white">
+		<view class="bg-white padding">
 			<view class="cu-form-group">
 				<text class='cuIcon-copy margin-xs margin-right'></text>
 				<input placeholder="请输入验证码" maxlength='6' class="text-left" 
@@ -32,14 +32,12 @@
 			</view>
 			
 			
-			<view class="padding-xs">
-				<view class="text-sm text-center">
-					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
-					style="transform:scale(0.6)"/>
-					我已阅读、知悉并同意《<a href="#" class="Index-a">还款协议</a>》</label>
-				</view>
+			<view class="padding-xs text-sm text-center margin-bottom-xl">
+				<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
+				style="transform:scale(0.6)"/>
+				我已阅读、知悉并同意《<a href="#" class="Index-a">还款协议</a>》</label>
 			</view>
-		</view>
+	</view>
 	</view>
 </template>
 

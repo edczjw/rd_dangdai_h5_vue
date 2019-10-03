@@ -1,6 +1,6 @@
 <template>
+	<view>
 	<!-- 登录页 -->
-	<view class="bg-white page">
 		<!-- 获取地理位置，腾讯地图 -->
 		<iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
 			src="https://apis.map.qq.com/tools/geolocation?key=QC3BZ-UMCCG-YQIQ3-ISQAN-JITQ7-E2FI2&referer=myapp">
@@ -21,14 +21,15 @@
 			</view>
 		</view>
 
+	<view class="bg-white page padding">
 		<view class="cu-form-group">
-			<text class='cuIcon-mobile shadow margin-xs margin-right'></text>
+			<text class='cuIcon-mobile  margin-xs margin-right'></text>
 			<input placeholder="请输入手机号" maxlength='11' type="number" @input="yzinput" class="text-left" v-model="form.mobile"
 			 name="input"></input>
 		</view>
 
 		<view class="cu-form-group">
-			<text class='cuIcon-lock shadow margin-xs margin-right'></text>
+			<text class='cuIcon-lock  margin-xs margin-right'></text>
 			<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" type="number" name="input"></input>
 			<button type="warn" @click="sendck" class='cu-btn round ' 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
@@ -42,17 +43,14 @@
 			 @keyup.enter="login">登录</button>
 		</view>
 
-		<view class="padding-sm">
-			<view class="text-sm text-center">
-				<label class="radio">
-					<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
-					我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》<br>
-					《<a href="#" class="Index-a">个人信息采集授权书</a>》、
-					《<a href="#" class="Index-a">用户注册协议</a>》</label>
-			</view>
+		<view class="text-sm padding-sm text-center">
+			<label class="radio">
+				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
+				我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
+				《<a href="#" class="Index-a">个人信息采集授权书</a>》、
+				《<a href="#" class="Index-a">用户注册协议</a>》</label>
 		</view>
-		
-		
+		</view>
 	</view>
 </template>
 <script>

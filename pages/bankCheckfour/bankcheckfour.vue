@@ -1,33 +1,40 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-white" class="navtit">
-			<block slot="content">验证</block>
+			<block slot="content">银行卡验证</block>
 		</cu-custom>
 		
-		<view class="flex bg-white solid-bottom">
-			<view class="flex-sub padding-sm margin-xs text-grey">
+		<view class="flex bg-gray padding-xs">
+			<view class="flex-sub text-grey">
 				<text class='cuIcon-ticket margin-xs'></text>关联银行卡
 			</view>
-			<view class="flex-sub padding-sm margin-xs text-right text-grey">尾号8888（中国银行）</view>
+			<view class="flex-sub text-right text-grey">尾号：
+			<text class="text-yellow">8888（中国银行）</text></view>
 		</view>
 		
-		<view class="cu-form-group">
-			<text class='cuIcon-mobile margin-xs'></text>
-			<input placeholder="请输入银行预留手机号"  class="text-left" name="input"></input>
+		<view class="bg-white padding">
+			<view class="cu-form-group">
+				<text class='cuIcon-mobile margin-xs'></text>
+				<input placeholder="请输入银行预留手机号"  class="text-left" name="input"></input>
+			</view>
+			
+			<view class="cu-form-group">
+				<text class='cuIcon-lock margin-xs'></text>
+				<input placeholder="请输入验证码"  class="text-left" name="input"></input>
+				<button type="warn" @click="sendck()"  class='cu-btn round' 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
+					<span v-show="showCount">验证码</span>
+					<span v-show="!showCount" class="count">{{count}} s</span>
+				</button>
+			</view>
+			
+			<view class="padding-xl solid-top flex flex-direction ">
+				<button class="cu-btn bg-gradual-orange round lg" 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
+				 @keyup.enter="next">确定</button>
+			</view>
 		</view>
 		
-		<view class="cu-form-group">
-			<text class='cuIcon-lock margin-xs'></text>
-			<input placeholder="请输入验证码"  class="text-left" name="input"></input>
-			<button @click="sendck()" class='cu-btn bg-black shadow'>
-				<span v-show="showCount">验证码</span>
-				<span v-show="!showCount" class="count">{{count}} s</span>
-			</button>
-		</view>
-		
-		<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg" @tap="showModal" data-target="DialogModal1">确定</button>
-		</view>
 	</view>
 </template>
 
@@ -37,6 +44,7 @@
 			return{
 				showCount:true,
 				count:'',
+				yzbtn: true, //验证码按钮状态
 				times:1,	//点击验证码次数
 			}
 		},
@@ -103,4 +111,15 @@
 </script>
 
 <style>
+	
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+	}
 </style>

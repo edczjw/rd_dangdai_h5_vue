@@ -16,7 +16,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="bg-white">
+		<view class="bg-white padding">
 			<view class="cu-form-group"  >
 			<text class='cuIcon-card margin-xs text-orange margin-right'></text>
 				<input class="text-left" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
