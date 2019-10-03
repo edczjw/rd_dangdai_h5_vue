@@ -11,17 +11,13 @@
 			<block slot="content">易贷登录</block>
 		</cu-custom>
 
-		<view class="solids-bottom bg-gray padding-xs flex align-center">
-			<view class="flex-sub text-center">
-				<view class="text-sm">
-					<view class="text-left">
-						<text class="text-grey text-left">手机号码将作为登录用户名使用</text>
-					</view>
-				</view>
+
+	<view class="padding">
+		<view class="padding-xs ">
+			<view class=" text-sm text-left">
+					<text class="text-grey">手机号码将作为登录用户名使用</text>
 			</view>
 		</view>
-
-	<view class="bg-white page padding">
 		<view class="cu-form-group">
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>
 			<input placeholder="请输入手机号" maxlength='11' type="number" @input="yzinput" class="text-left" v-model="form.mobile"
@@ -37,20 +33,20 @@
 				<span v-show="!showCount" class="count">{{count}} s</span>
 			</button>
 		</view>
-
-		<view class="padding-xl solid-top flex flex-direction ">
-			<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="login"
-			 @keyup.enter="login">登录</button>
-		</view>
-
-		<view class="text-sm padding-sm text-center">
-			<label class="radio">
+		<view class="text-sm padding-sm solid-top text-center">
+			<label class="radio align-center">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
 				我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
 				《<a href="#" class="Index-a">个人信息采集授权书</a>》、
 				《<a href="#" class="Index-a">用户注册协议</a>》</label>
 		</view>
 		</view>
+
+		<view class="padding-xl  flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="login"
+			 @keyup.enter="login">登录</button>
+		</view>
+
 	</view>
 </template>
 <script>

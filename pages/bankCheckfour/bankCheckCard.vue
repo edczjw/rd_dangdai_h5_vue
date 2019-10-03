@@ -4,20 +4,19 @@
 			<block slot="content">填写银行卡</block>
 		</cu-custom>
 		
-		<scroll-view scroll-y class="DrawerPage" :class="modalName=='viewModal'?'show':''">
+		<scroll-view scroll-y class="DrawerPage padding" :class="modalName=='viewModal'?'show':''">
 		<view class="padding-xs flex align-center">
 			<view class="flex-sub">
 				<view>
 					<text class="text-sm text-left text-grey">请注意：该银行卡将作为贷款发放和还款扣收使用，为保证放款成功请添加列表中的银行卡。     </text>
-					<text class='text-sm text-right text-blue margin-left' 
+					[	 <text class='text-sm text-blue' 
 					@tap="showModal" data-target="viewModal">
-					  [	    查看银行列表		]
-					</text>
+					     查看银行列表	
+					</text>	]
 				</view>
 			</view>
 		</view>
-		<view class="bg-white padding">
-			<view class="cu-form-group"  >
+			<view class="cu-form-group" >
 			<text class='cuIcon-card margin-xs text-orange margin-right'></text>
 				<input class="text-left" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
 			</view>
@@ -32,8 +31,6 @@
 				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
 				 @keyup.enter="next">下一步</button>
 			</view>
-		</view>
-		
 		</scroll-view>
 		
 		<view class="DrawerClose" :class="modalName=='viewModal'?'show':''" @tap="hideModal">
