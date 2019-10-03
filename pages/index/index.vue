@@ -1,6 +1,6 @@
 <template>
 	<!-- 登录页 -->
-	<view class="bg-white">
+	<view class="bg-white page">
 		<!-- 获取地理位置，腾讯地图 -->
 		<iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
 			src="https://apis.map.qq.com/tools/geolocation?key=QC3BZ-UMCCG-YQIQ3-ISQAN-JITQ7-E2FI2&referer=myapp">
@@ -30,7 +30,8 @@
 		<view class="cu-form-group">
 			<text class='cuIcon-lock shadow margin-xs margin-right'></text>
 			<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" type="number" name="input"></input>
-			<button type="warn" @click="sendck" class='cu-btn round ' :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
+			<button type="warn" @click="sendck" class='cu-btn round ' 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
 				<span v-show="showCount">验证码</span>
 				<span v-show="!showCount" class="count">{{count}} s</span>
 			</button>
@@ -79,6 +80,7 @@
 				form: {
 					mobile: '', //手机号
 					timcou: '', //验证码
+					gps:"",		//地理位置
 				}
 			}
 		},
@@ -94,15 +96,21 @@
 				window.addEventListener('message', function(event) {
 					// 接收位置信息
 					loc = event.data;
-					console.log(loc)
 						if(loc  && loc.module == 'geolocation') {
 							//定位成功,防止其他应用也会向该页面post信息，需判断module是否为'geolocation'
-							alert('成功'+loc.district)
+							//将地理位置赋给表单
+							if(loc.district){
+								_that.form.gps = loc.district
+							}else{
+								_that.form.gps = loc.province
+							}
 						}else { 
 							//定位组件在定位失败后，也会触发message, event.data为null
-							console.log('定位失败');
+							// console.log('定位失败');
+							_that.form.gps = null;
 						}
 					
+					console.log(_that.form.gps)
 					// "nation": "中国",
 					// "province": "广东省",
 					// "city":"深圳市",
@@ -252,16 +260,6 @@
 </script>
 
 <style>
-	/* 验证码按钮默认 */
-	.yanzhengbtn {
-		background: #FDE8D4;
-	}
-
-	/* 验证码按钮激活 */
-	.yanzhengbtns {
-		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
-		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
-	}
 
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);
@@ -275,5 +273,16 @@
 
 	.code-box {
 		text-align: center;
+	}
+	
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
 	}
 </style>

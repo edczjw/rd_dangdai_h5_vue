@@ -73,4 +73,16 @@
 		text-align: center;
 		line-height: 14px;
 	}
+	
+	.page{
+		background: #FFFFFF;
+		position: relative;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-repeat: no-repeat;
+		background: cover;
+	}
+	
 </style>

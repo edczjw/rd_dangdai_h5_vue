@@ -1,5 +1,5 @@
 <template>
-	<view class="bg-white">
+	<view class="bg-white page">
 		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
 			<block slot="backText"></block>
 			<block slot="content">设定金额期限</block>

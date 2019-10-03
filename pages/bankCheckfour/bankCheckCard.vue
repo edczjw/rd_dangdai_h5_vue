@@ -5,25 +5,33 @@
 		</cu-custom>
 		
 		<scroll-view scroll-y class="DrawerPage" :class="modalName=='viewModal'?'show':''">
-		<view class="padding-sm flex align-center">
+		<view class="padding-xs flex align-center">
 			<view class="flex-sub">
-				<view class="text-left">
-					<text class="text-sm text-grey">请注意：该银行卡将作为贷款发放和还款扣收使用，为保证放款成功请添加列表中的银行卡     </text>
-					<text class='text-sm text-right text-blue' @tap="showModal" data-target="viewModal">
+				<view>
+					<text class="text-sm text-left text-grey">请注意：该银行卡将作为贷款发放和还款扣收使用，为保证放款成功请添加列表中的银行卡。     </text>
+					<text class='text-sm text-right text-blue margin-left' 
+					@tap="showModal" data-target="viewModal">
 					  [	    查看银行列表		]
 					</text>
 				</view>
 			</view>
 		</view>
-		
-		<view class="cu-form-group"  >
-			<view class="title">卡号</view>
-			<input class="text-right" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
-		</view>
-		
-		<view class="cu-form-group"  >
-			<view class="title">手机号</view>
-			<input class="text-right" type="number" maxlength="11" placeholder="请输入银行预留手机号" v-model="form.mobile" name="input"></input>
+		<view class="bg-white">
+			<view class="cu-form-group"  >
+			<text class='cuIcon-card margin-xs text-orange margin-right'></text>
+				<input class="text-left" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
+			</view>
+			
+			<view class="cu-form-group"  >
+				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
+				<input class="text-left" type="number" maxlength="11" placeholder="请输入银行预留手机号" v-model="form.mobile" name="input"></input>
+			</view>
+			
+			<view class="padding-xl solid-top flex flex-direction ">
+				<button class="cu-btn bg-gradual-orange round lg" 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
+				 @keyup.enter="next">下一步</button>
+			</view>
 		</view>
 		
 		</scroll-view>
@@ -42,9 +50,6 @@
 			</view>
 		</scroll-view>
 		
-		<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg" @click="next">下一步</button>
-		</view>
 	</view>
 </template>
 
@@ -53,6 +58,7 @@
 		data(){
 			return{
 				modalName:null,
+				yzbtn: true, //验证码按钮状态
 				
 				reg:{
 					//手机
@@ -206,5 +212,16 @@
 	
 	.DrawerPage .cu-bar.tabbar .action {
 		flex: initial;
+	}
+	
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
 	}
 </style>

@@ -1,10 +1,10 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-white" class="navtit">
-			<block slot="content">确认银行卡</block>
+			<block slot="content">银行卡确认</block>
 		</cu-custom>
 		
-		<view class="padding-sm flex align-center">
+		<view class="padding-xs flex align-center">
 			<view class="flex-sub">
 				<view class="text-left">
 					<text class="text-sm text-grey">请输入银行发送的短信验证码，完成银行卡确认</text>
@@ -12,29 +12,34 @@
 			</view>
 		</view>
 		
-		<view class="cu-form-group">
-			<text class='cuIcon-copy text-orange margin-xs margin-right'></text>
-			<input placeholder="请输入验证码" maxlength='6' class="text-left" 
-			v-model="form.yznum" type="number"
-			name="input"></input>
-			<button @click="sendck()" class='cu-btn'>
-				<span v-show="showCount">验证码</span>
-				<span v-show="!showCount" class="count">{{count}} s</span>
-			</button>
-		</view>
-		
-		<view class="bg-white padding-xs solids-top">
-			<view class="text-sm text-center">
-				<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
-				style="transform:scale(0.6)"/>
-				我已阅读、知悉并同意《<a href="#" class="Index-a">还款协议</a>》</label>
+		<view class="bg-white">
+			<view class="cu-form-group">
+				<text class='cuIcon-copy margin-xs margin-right'></text>
+				<input placeholder="请输入验证码" maxlength='6' class="text-left" 
+				v-model="form.yznum" type="number"
+				name="input"></input>
+				<button  type="warn" @click="sendck()" class='cu-btn round ' 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
+					<span v-show="showCount">验证码</span>
+					<span v-show="!showCount" class="count">{{count}} s</span>
+				</button>
+			</view>
+			
+			<view class="padding-xl solid-top flex flex-direction ">
+				<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 
+				'yanzhengbtn':'yanzhengbtns'" @click="apply"
+				 @keyup.enter="apply">确定申请</button>
+			</view>
+			
+			
+			<view class="padding-xs">
+				<view class="text-sm text-center">
+					<label class="radio"><radio @click="changeradio" value="r2" :checked="current" 
+					style="transform:scale(0.6)"/>
+					我已阅读、知悉并同意《<a href="#" class="Index-a">还款协议</a>》</label>
+				</view>
 			</view>
 		</view>
-		
-		<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg" @click="apply">确定申请</button>
-		</view>
-		
 	</view>
 </template>
 
@@ -44,6 +49,7 @@
 			return{
 				current:false,
 				showCount:true,	//验证码计数
+				yzbtn: true, //验证码按钮状态
 				count:'',
 				times:1,	//点击验证码次数
 				
@@ -144,4 +150,14 @@
 </script>
 
 <style>
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+	}
 </style>

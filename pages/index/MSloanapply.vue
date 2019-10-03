@@ -4,7 +4,7 @@
 			<block slot="content">贷款申请</block>
 		</cu-custom>
 		
-		<view class="bg-white padding-xl">
+		<view class="padding-xl solid round margin sm-border">
 			<!-- 金额 -->
 			<countup :num="num" color="#ff9e50" width='28' height='58' fontSize='38'></countup>
 			
@@ -18,7 +18,7 @@
 			</view>
 		</view>
 		<!-- 期数 -->
-		<view style="overflow-y: scroll;margin-bottom: 200px;">
+		<view>
 			<wuc-tab :tab-list="tabList5" :tabCur.sync="TabCur5" tab-class="text-center text-black bg-white" select-class="text-blue" />
 			<swiper :current="TabCur5" class="swiper" duration="300" :circular="true" indicator-color="rgba(255,255,255,0)" 
 			indicator-active-color="rgba(255,255,255,0)" @change="swiperChange5">
@@ -37,9 +37,12 @@
 			</swiper>
 		</view>
 		
-		<view class="padding flex flex-direction bg-white solid-top" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg" @click="wantloan">我要借钱</button>
+		<view class="padding-xl solid-top flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" 
+			 @click="wantloan"
+			 @keyup.enter="wantloan">我要借钱</button>
 		</view>
+		
 	</view>
 </template>
 
@@ -137,7 +140,7 @@ div {
   background-color: #f1f1f1;
 }
 .swiper {
-	min-height: 800upx;
+	min-height: 100%;
 }
 
 .cu-bar {
