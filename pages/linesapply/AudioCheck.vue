@@ -4,44 +4,45 @@
 			<block slot="content">身份信息</block>
 		</cu-custom>
 		
-		<view class="padding-xs flex align-center">
-			<view class="flex-sub text-center">
-				<view class="text-sm">
-					<view class="text-left"><text class="text-grey text-left">仅用于核实身份</text></view>
+		<view class="padding">
+			<view class="padding-xs align-center">
+				<view class="text-sm text-left text-grey">
+					<text>仅用于核实身份</text>
 				</view>
 			</view>
-		</view>
-		
-		<view class="solids-bottom padding-xs flex align-center bg-white">
-			<view class="flex-sub text-center ">
-				<view class="text-sm">
-					<view class="text-center padding-sm">
-						<text class="text-center">为保证系统识别的效率和效果</text>
+			
+			<view class="img text-center bg-cyan solid border round-dot">
+				<image style="width:45%; height: 480upx;" src="../../static/imgs/realface.png"></image>
+			</view>
+			
+			
+			<view class="padding-xs solid border align-center bg-white">
+				<view class="text-center ">
+					<view class="text-sm padding-xs">
+						<text >为保证系统识别的效率和效果</text>
 					</view>
-					<view class="text-center padding-sm">
-						<text class="text-center text-blue text-lg">请正对手机，确保所处环境光线充足</text>
+					<view class="padding-xs">
+						<text class="text-blue text-lg">
+							请正对手机，确保所处环境光线充足
+						</text>
 					</view>
 				</view>
 			</view>
-		</view>
-		
-		<view class="img text-center padding-xs">
-			<image style="width:50%; height: 560upx;" src="../../static/imgs/realface.png" mode=""></image>
-		</view>
-		
-		<!-- 随机数 -->
-		<view class=" padding-xs text-center ">
-			<text class="text-greytext-sm text-center">
-				请记住以下数字，并在即将开始的认证过程中，清晰地读出
-			</text>
-		</view>
-	    <view class="padding modal-layer-popup-number">
-			<span>4</span><span>6</span><span>9</span><span>9</span>
-		</view>
-		
-		<view class="padding-xl flex flex-direction">
-			<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" 
-			 @click="start">开始认证</button>
+			
+			<!-- 随机数 -->
+			<view class=" padding-xs text-center ">
+				<text class="text-greytext-sm text-center">
+					请记住以下数字，并在即将开始的认证过程中，清晰地读出
+				</text>
+			</view>
+			<view class="padding modal-layer-popup-number">
+				<span>4</span><span>6</span><span>9</span><span>9</span>
+			</view>
+			
+			<view class="padding-xl flex flex-direction">
+				<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" 
+				 @click="start">开始认证</button>
+			</view>
 		</view>
 		
 	</view>
