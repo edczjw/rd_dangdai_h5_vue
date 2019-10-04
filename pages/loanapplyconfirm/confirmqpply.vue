@@ -4,7 +4,8 @@
 			<block slot="content">借款确认</block>
 		</cu-custom>
 		
-		<view class="padding-sm text-sm">
+		<view class="padding">
+		<view class="padding-xs text-sm">
 			<view class="text-left"><text class="text-grey text-left">借款信息</text></view>
 		</view>
 		
@@ -16,7 +17,7 @@
 			
 			<view class="flex">
 				<view class="flex-sub margin-xs radius">收款银行卡</view>
-				<view class="flex margin-xs radius text-right">尾号8888（中国银行）</view>
+				<view class="flex margin-xs radius text-right">尾号8888(中国银行)</view>
 			</view>
 			
 			<view class="flex">
@@ -35,14 +36,17 @@
 			</view>
 		</view>
 		
-		<view class="padding-sm text-sm">
-			<view class="text-left"><text class="text-grey text-left">请输入手机尾号8888（银行卡银行预留手机号码）收到的短信验证码，完成确认</text></view>
+		<view class="text-sm">
+			<view class="padding-xs text-left"><text class="text-grey">
+			请输入手机尾号8888（银行卡银行预留手机号码）收到的短信验证码，完成确认
+			</text></view>
 		</view>
 		
 		<view class="cu-form-group">
 			<view class="title">验证码</view>
 			<input placeholder="请输入验证码" type="number" maxlength="6" v-model="form.timcou" class="text-left" name="input"></input>
-			<button @click="sendck()" class='cu-btn bg-gray'>
+			<button @click="sendck()" class='cu-btn bg-gradual-orange' 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
 				<span v-show="showCount">验证码</span>
 				<span v-show="!showCount" class="count">{{count}} s</span>
 			</button>
@@ -56,8 +60,12 @@
 			</view>
 		</view>
 		
-		<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<button class="cu-btn bg-black margin-tb-sm round lg" @click="makesure">确定</button>
+		<view class="padding-xl solid-top flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="makesure"
+			 @keyup.enter="makesure">确定</button>
+		</view>
+			
 		</view>
 	</view>
 </template>
@@ -68,6 +76,7 @@
 			return{
 				current:false,
 				showCount:true,
+				yzbtn: true, //验证码按钮状态
 				count:'',
 				times:1,	//点击验证码次数
 				verificationCode:'',   //生成的验证码
@@ -164,4 +173,14 @@
 </script>
 
 <style>
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+	}
 </style>

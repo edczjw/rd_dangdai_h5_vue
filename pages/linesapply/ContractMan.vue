@@ -4,6 +4,7 @@
 			<block slot="content">联系人信息</block>
 		</cu-custom>
 		
+		<view class="padding">
 		<view class="padding-xs flex align-center">
 			<view class="flex-sub text-center">
 				<view class="text-sm">
@@ -60,10 +61,12 @@
 			<input class="text-right" placeholder="请输入手机号码" v-model="form.otherphone" name="input"></input>
 		</view>
 		
-		<view style="margin-top:10upx;">
-			<view class="padding flex flex-direction bg-white" style="margin-top:10upx;position: fixed;bottom: 0;width: 100%; z-index: 500;">
-				<button class="cu-btn bg-black round margin-tb-sm lg" @click="next">下一步</button>
-			</view>
+		<view class="padding-xl solid-top flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
+			 @keyup.enter="next">下一步</button>
+		</view>
+			
 		</view>
 	</view>
 </template>
@@ -74,6 +77,7 @@
 			return {
 				//直系亲属
 				index: 0,
+				yzbtn: true, //验证码按钮状态
 				picker: [{
 					code:'0',
 					value:'请选择'
@@ -167,4 +171,14 @@
 </script>
 
 <style>
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+	}
 </style>

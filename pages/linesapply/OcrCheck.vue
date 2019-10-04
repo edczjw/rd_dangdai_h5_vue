@@ -4,33 +4,24 @@
 			<block slot="content">身份信息</block>
 		</cu-custom>
 
-		<view class="padding-xs flex align-center">
-			<view class="flex-sub">
-				<view class="text-sm">
-					<view class="text-left">
-						<text class="text-sm text-grey">仅用于全国公民身份查询中心核实身份</text>
-					</view>
-				</view>
-			</view>
+		<view class="padding-xs align-center text-left">
+			<text class="text-sm text-grey">仅用于全国公民身份查询中心核实身份</text>
 		</view>
 
-		<view class="solids-bottom padding-xs flex align-center">
-			<view class="flex-sub">
-				<view class="text-left">
-					<text class="text-sm text-gray">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
-				</view>
-			</view>
+		<view class="solids-bottom text-left padding-xs align-center">
+			<text class="text-sm text-gray">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
 		</view>
 
-		<view class="cu-bar bg-white">
-			<view class="action text-orange">
-				<text class='cuIcon-album text-orange'></text>身份证 ( 正面照 )
+	<view class="padding">
+		<view class="padding-sm bg-white">
+			<view class="action">
+				<text class='cuIcon-album margin-right-xs'></text>身份证 ( 正面照 )
 			</view>
 		</view>
 		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
-				<view class="grace-idcard-uper-btn" @tap="selectImg1">
+				<view class="grace-idcard-uper-btn round bg-gray" @tap="selectImg1">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
@@ -42,15 +33,15 @@
 			</view>
 		</view>
 			
-		<view class="cu-bar bg-white">
-			<view class="action text-orange">
-				<text class='cuIcon-album text-orange'></text>身份证 ( 反面照 )
+		<view class="padding-sm bg-white">
+			<view class="action">
+				<text class='cuIcon-album margin-right-xs'></text>身份证 ( 反面照 )
 			</view>
 		</view>
 		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
-				<view class="grace-idcard-uper-btn" @tap="selectImg2">
+				<view class="grace-idcard-uper-btn round bg-gray" @tap="selectImg2">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
@@ -98,9 +89,12 @@
 		</view>
 
 		<view class="padding-xl flex flex-direction ">
-			<button class="cu-btn bg-gradual-orange margin-tb-sm round lg" 
-			@tap="showModal" data-target="DialogModal1">提交</button>
+			<button class="cu-btn bg-gradual-orange round lg" 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @tap="showModal"
+			 @keyup.enter="showModal" data-target="DialogModal1">提交</button>
 		</view>
+		
+	</view>
 		
 		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
 			<view class="cu-dialog">
@@ -132,6 +126,7 @@
 				idCard1: '../../static/imgs/idcard1.png',
 				idCard2: '../../static/imgs/idcard2.png',
 				
+				yzbtn: true, //验证码按钮状态
 				areaname: null,
 				idcardnum:null,
 				
@@ -247,6 +242,16 @@
 		font-size: 28upx;
 	}
 	
+		/* 验证码按钮默认 */
+		.yanzhengbtn {
+			background: #FDE8D4;
+		}
+		
+		/* 验证码按钮激活 */
+		.yanzhengbtns {
+			background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+			box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+		}
 	.uni-tag {
 		box-sizing: border-box;
 		padding: 0 32upx;
@@ -291,9 +296,8 @@
 	}
 
 	.grace-idcard-uper-btn {
-		width: 276upx;
-		margin: 0 60upx;
-		background: #F1F1F1;
+		width: 266upx;
+		margin: 0 50upx;
 		padding-bottom: 10upx;
 		border-radius: 10upx;
 		text-align: center;
@@ -325,6 +329,6 @@
 
 	.grace-idcard-preview image {
 		width: 100%;
-		height: 210upx !important;
+		height: 180upx !important;
 	}
 </style>
