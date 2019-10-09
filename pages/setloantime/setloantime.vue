@@ -15,17 +15,16 @@
 		
 		<view class="margin-bottom bg-white padding-bottom-sm">
 			<view class="text-center padding-sm text-bold text-xl" style="color: #FBBD08;">
-				可借金额
+				可借金额（元）
 			</view>
 			<view class="text-center shadow-lg animation-scale-up"
 			style="width: 280upx;
 			height: 280upx;
-			line-height: 280upx;
+			line-height: 270upx;
 			border-radius: 100%;
 			border: 13upx solid #FBBD08;
 			margin: 0 auto;">
-			<text class="text-xxl text-bold">{{edu}}</text> 元
-			  
+			<text class="text-xxl text-bold">{{edu}}</text>
 			</view>
 		</view>
 		
@@ -33,7 +32,7 @@
 			<view class="cu-form-group solid-bottom">
 				<view style="color:#FBBD08" class="cuIcon-roundcheck text-bold margin-right-xs"></view>
 				<view class="title">
-					借款金额(￥)
+					借款金额(元)
 				</view>
 				<input 
 				:placeholder="maxedu" 
@@ -41,7 +40,7 @@
 				type="number" 
 				@blur="loaninput" 
 				class="text-right text-sm"  
-				name="input"></input>元
+				name="input"></input>
 			</view>
 			<view class="text-sm padding-sm text-right">❈  按日计息，日利率0.067%</view>
 		</view>
