@@ -13,47 +13,50 @@
 			</view>
 		</view>
 		
-		<view class="margin">
-			<view class="text-left text-xl text-bold padding-sm">您当前可借额度</view>
-			<view class=" text-xl text-bold bg-yellow text-center shadow animation-scale-up"
-			style="width: 160upx;
-			height: 160upx;
-			line-height:160upx;
+		<view class="margin-bottom bg-white padding-bottom-sm">
+			<view class="text-center padding-sm text-bold text-xl" style="color: #FBBD08;">
+				可借金额
+			</view>
+			<view class="text-center shadow-lg animation-scale-up"
+			style="width: 280upx;
+			height: 280upx;
+			line-height: 280upx;
 			border-radius: 100%;
+			border: 13upx solid #FBBD08;
 			margin: 0 auto;">
-				￥{{edu}}
+			<text class="text-xxl text-bold">{{edu}}</text> 元
+			  
 			</view>
 		</view>
 		
-		<view class="margin" style="border-top:1upx solid #FBBD08;">
-			<view class="text-left text-xl text-bold padding-sm">借款金额</view>
-			<view class="cu-form-group text-xxl text-bold solid-bottom">
-				￥<input 
+		<view class="margin bg-white" style="border-top:1upx solid #FBBD08;">
+			<view class="cu-form-group solid-bottom">
+				<view style="color:#FBBD08" class="cuIcon-roundcheck text-bold margin-right-xs"></view>
+				<view class="title">
+					借款金额(￥)
+				</view>
+				<input 
 				:placeholder="maxedu" 
 				:maxlength="edu.length"
 				type="number" 
 				@blur="loaninput" 
-				class="text-center"  
+				class="text-right text-sm"  
 				name="input"></input>元
 			</view>
+			<view class="text-sm padding-sm text-right">❈  按日计息，日利率0.067%</view>
 		</view>
 		
-		<view class="margin">
-			<view class="padding-sm">
-				<view class="text-bold text-sm">❈  按日计息，日利率0.067%</view>
-			</view>
-		</view>
 		
-		<view class="padding-sm" v-if="showplan">
+		<view class="padding" v-if="showplan">
 			<view class="cu-form-group">
-				<view class="text-bold text-sm">还款期数</view>
+				<view class="text-sm">还款期数</view>
 				<picker @change="PickerChange" :value="index" :range="picker" range-key="value">
-					<view class="uni-input text-center text-bold text-sm picker">
+					<view class="uni-input text-center text-sm picker">
 					{{picker[index].value}}</view>
 				</picker>
 			</view>
 			
-			<view class="solids text-bold shadow-lg"
+			<view class="solids shadow-lg bg-white"
 			style="border-top:1upx solid #FBBD08;" >
 				<view class="flex padding-sm">
 					<view class="flex-sub text-center">应还</view>
@@ -72,7 +75,7 @@
 			</view>
 		</view>
 		
-		<view class="padding-xl solid-top flex flex-direction ">
+		<view class="padding-xl flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg" 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
 			 @keyup.enter="next">下一步>></button>
@@ -82,7 +85,7 @@
 		<view>
 		    <uni-popup ref="popup" class="text-red" type="center">{{tips}}</uni-popup>
 			<uni-popup ref="popupdetail" class="text-red padding" type="center">
-				 <view class="text-bold solid"
+				 <view class="solid"
 				 style="width: 200px;" v-for="(item,index) of list"
 				 :key="index">
 				 	<view class="flex padding-sm">
@@ -103,9 +106,9 @@
 			return{
 				
 				animation:'',
-				edu:'32000',	//可用额度
+				edu:'32000.00',	//可用额度
 				showplan:false,		//展示还款详情
-				maxedu:'最低借款金额1000元',	//最高额度
+				maxedu:'借款金额不得低于1000',	//最高额度
 				yzbtn: true, //验证码按钮状态
 				tips:'',//提示
 				index: 0,
