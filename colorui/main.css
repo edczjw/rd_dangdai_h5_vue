@@ -1933,7 +1933,7 @@ button.cuIcon.lg {
 	flex: 1;
 	margin: auto !important;
 	text-align: center;
-	font-size: 34upx;
+	font-size: 12upx;
 }
 
 /* ==================
@@ -1986,7 +1986,7 @@ button.cuIcon.lg {
 }
 
 .cu-timeline>.cu-item:not([class*="text-"]) {
-	color: #ccc;
+	color: #252E47;
 }
 
 .cu-timeline>.cu-item::after {
@@ -2073,7 +2073,7 @@ button.cuIcon.lg {
 	align-items: center;
 }
 
-.cu-chat .cu-item>image {
+.cu-chat .cu-item > image {
 	height: 320upx;
 }
 

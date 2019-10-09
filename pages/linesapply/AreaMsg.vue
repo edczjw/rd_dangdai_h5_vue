@@ -4,7 +4,7 @@
 			<block slot="content">居住信息</block>
 		</cu-custom>
 		
-		<view class="padding">
+		<view class="bg-white margin-top-xs">
 			<view class="cu-form-group">
 				<view class="title">婚姻状态</view>
 				<picker @change="PickerChange" :value="index" :range="picker" range-key="value">
@@ -12,7 +12,7 @@
 				</picker>
 			</view>
 			
-			<view class="padding-xs">
+			<view class="padding-xs bg-gray">
 				<view class="text-sm text-left">
 					<text class="text-grey">请详细填写至小区、楼栋、单元及室等</text>
 				</view>
@@ -29,14 +29,13 @@
 				<textarea class="text-right"  maxlength="-1" v-model="form.areadetail" :disabled="areaname!=null"
 				@input="textareaBInput" placeholder="幸福大道232号财富花园2#1204号"></textarea>
 			</view>
+		</view>
 			
-			<view class="padding-xl solid-top flex flex-direction ">
+			<view class="padding-xl flex flex-direction ">
 				<button class="cu-btn bg-gradual-orange round lg" 
 				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
 				 @keyup.enter="next">登录</button>
 			</view>
-			
-		</view>
 	</view>
 </template>
 

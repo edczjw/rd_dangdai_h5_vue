@@ -4,7 +4,6 @@
 			<block slot="content">联系人信息</block>
 		</cu-custom>
 		
-		<view class="padding">
 		<view class="padding-xs flex align-center">
 			<view class="flex-sub text-center">
 				<view class="text-sm">
@@ -13,6 +12,7 @@
 			</view>
 		</view>
 		
+		<view class="bg-white">
 		<view class="cu-form-group">
 			<view class="title">关系</view>
 			
@@ -34,7 +34,7 @@
 		</view>
 		
 		
-		<view class="padding-xs flex align-center  margin-top">
+		<view class="padding-xs flex align-center bg-gray  margin-top">
 			<view class="flex-sub text-center">
 				<view class="text-sm">
 					<view class="text-left"><text class="text-grey text-left">其他联系人</text></view>
@@ -60,13 +60,12 @@
 			<view class="title">电话号码</view>
 			<input class="text-right" placeholder="请输入手机号码" v-model="form.otherphone" name="input"></input>
 		</view>
+		</view>
 		
 		<view class="padding-xl solid-top flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg" 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
 			 @keyup.enter="next">下一步</button>
-		</view>
-			
 		</view>
 	</view>
 </template>

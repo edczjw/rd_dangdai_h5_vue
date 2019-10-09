@@ -12,8 +12,8 @@
 			<text class="text-sm text-gray">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
 		</view>
 
-	<view class="padding">
-		<view class="padding-sm bg-white">
+	<view class="bg-white">
+		<view class="padding-sm solid-bottom">
 			<view class="action">
 				<text class='cuIcon-album margin-right-xs'></text>身份证 ( 正面照 )
 			</view>
@@ -33,7 +33,7 @@
 			</view>
 		</view>
 			
-		<view class="padding-sm bg-white">
+		<view class="padding-sm solid-bottom solid-top">
 			<view class="action">
 				<text class='cuIcon-album margin-right-xs'></text>身份证 ( 反面照 )
 			</view>
@@ -53,24 +53,24 @@
 			</view>
 		</view>
 
-		<view class="cu-bar bg-white solid-bottom">
+		<view class="cu-bar solid-bottom solid-top">
 			<view class="action">
-				<text class='cuIcon-title text-black'></text>身份信息
+				<text class='cuIcon-attention text-black'></text>身份信息
 			</view>
 		</view>
 		<view class="grace-idcard-main">
 			<view class="bg-white">
-				<view class="margin-xs  cu-form-group">
+				<view class="  cu-form-group">
 					<view class="title">姓名</view>
 					<input class="uni-input text-right" name="input" placeholder="请输入姓名" />
 				</view>
 					
-				<view class=" margin-xs   cu-form-group">
+				<view class=" cu-form-group">
 					<view class="title">民族</view>
 					<input class="uni-input text-right" name="input" placeholder="请输入民族" />
 				</view>
 				
-				<view class=" margin-xs   cu-form-group">
+				<view class=" cu-form-group">
 					<view class="title">出生日期</view>
 					<input class=" text-right" name="input" placeholder="请输入出生日期" />
 				</view>
@@ -87,14 +87,13 @@
 				</view>
 			</view>
 		</view>
+	</view>
 
 		<view class="padding-xl flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg" 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @tap="showModal"
 			 @keyup.enter="showModal" data-target="DialogModal1">提交</button>
 		</view>
-		
-	</view>
 		
 		<view class="cu-modal" :class="modalName=='DialogModal1'?'show':''">
 			<view class="cu-dialog">

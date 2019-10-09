@@ -43,11 +43,15 @@
 	/* 引入colorui样式 */
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
-	
+	.body{
+	    /*距离顶部范围应该在88-95范围内*/
+	    padding-top: 90upx;
+	    top: var(--status-bar-height);
+	}
 	/* 标题字颜色 */
 	.navtit{
 		font-family: PingFangSC-Medium;
-		font-size: 18px;
+		font-size: 12px;
 		color: #252E47;
 		letter-spacing: -0.29px;
 		text-align: center;

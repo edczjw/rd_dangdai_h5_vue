@@ -41,6 +41,7 @@
 					请记住如上数字<br>并在认证过程中，清晰地读出
 				</view>
 			</view>
+		</view>
 			
 			<view class="padding-xl flex flex-direction ">
 				<button class="cu-btn yanzhengbtns bg-gradual-orange margin-tb-sm round lg" 
@@ -49,7 +50,6 @@
 				 开始认证
 				 </button>
 			</view>
-		</view>
 		
 	</view>
 </template>

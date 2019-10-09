@@ -1,5 +1,5 @@
 <template>
-	<view class="bg-white page">
+	<view>
 		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
 			<block slot="backText"></block>
 			<block slot="content">设定金额期限</block>
@@ -14,16 +14,19 @@
 		</view>
 		
 		<view class="margin">
-			<view class="text-left text-xl text-bold padding-sm">您当前可借额度：</view>
+			<view class="text-left text-xl text-bold padding-sm">您当前可借额度</view>
 			<view class=" text-xl text-bold bg-yellow text-center shadow animation-scale-up"
-			style="width: 160upx;height: 160upx;line-height:160upx;border-radius: 100%;
+			style="width: 160upx;
+			height: 160upx;
+			line-height:160upx;
+			border-radius: 100%;
 			margin: 0 auto;">
 				￥{{edu}}
 			</view>
 		</view>
 		
 		<view class="margin" style="border-top:1upx solid #FBBD08;">
-			<view class="text-left text-xl text-bold padding-sm">借款金额：</view>
+			<view class="text-left text-xl text-bold padding-sm">借款金额</view>
 			<view class="cu-form-group text-xxl text-bold solid-bottom">
 				￥<input 
 				:placeholder="maxedu" 
@@ -72,13 +75,12 @@
 		<view class="padding-xl solid-top flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg" 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
-			 @keyup.enter="next">下一步</button>
+			 @keyup.enter="next">下一步>></button>
 		</view>
 		
 		<!-- 提示框 -->
 		<view>
 		    <uni-popup ref="popup" class="text-red" type="center">{{tips}}</uni-popup>
-			
 			<uni-popup ref="popupdetail" class="text-red padding" type="center">
 				 <view class="text-bold solid"
 				 style="width: 200px;" v-for="(item,index) of list"

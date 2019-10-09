@@ -7,20 +7,22 @@
 		</iframe>
 		
 		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
-			<block slot="backText"></block>
+			<block slot="backText">返回</block>
 			<block slot="content">易贷登录</block>
 		</cu-custom>
 
 
-	<view class="padding">
 		<view class="padding-xs ">
 			<view class=" text-sm text-left">
 					<text class="text-grey">手机号码将作为登录用户名使用</text>
 			</view>
 		</view>
+	<view class="padding bg-white">
 		<view class="cu-form-group">
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>
-			<input placeholder="请输入手机号" maxlength='11' type="number" @input="yzinput" class="text-left" v-model="form.mobile"
+			<input placeholder="请输入手机号码" maxlength='11' 
+			type="number" @input="yzinput" class="text-left" 
+			v-model="form.mobile"
 			 name="input"></input>
 		</view>
 
