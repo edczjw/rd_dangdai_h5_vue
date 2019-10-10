@@ -59,6 +59,7 @@
 	}
 	.Index-a {
 		text-decoration: none;
+		color: #0081FF;
 	}
 	.txt-sty{
 		font-family: PingFangSC-Semibold;
