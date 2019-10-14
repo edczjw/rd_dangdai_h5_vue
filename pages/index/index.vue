@@ -12,11 +12,11 @@
 		</cu-custom>
 
 
-		<view class="padding-xs ">
-			<view class=" text-sm text-left">
-					<text class="text-grey">手机号码将作为登录用户名使用</text>
-			</view>
-		</view>
+	<view class=" text-sm text-left bg-yellow text-white padding-xs">
+			<text class="cuIcon-title margin-right-xs"></text>
+			<text>手机号码将作为登录用户名使用</text>
+	</view>
+			
 	<view class="padding bg-white">
 		<view class="cu-form-group">
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>

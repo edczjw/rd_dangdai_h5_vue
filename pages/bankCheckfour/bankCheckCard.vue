@@ -4,7 +4,7 @@
 			<block slot="content">填写银行卡</block>
 		</cu-custom>
 		
-		<scroll-view scroll-y class="DrawerPage padding" :class="modalName=='viewModal'?'show':''">
+		<scroll-view scroll-y class="DrawerPage" :class="modalName=='viewModal'?'show':''">
 		<view class="padding-xs flex align-center">
 			<view class="flex-sub">
 				<view>
@@ -40,8 +40,8 @@
 			<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
 				<view class="cu-item text-center" v-for="(item,index) in banklist" :key="index">
 					<view class="content">
-						<text class="cuIcon-moneybag text-orange"></text>
-						<text class="text-black">{{item}}</text>
+							<image :src="item.img" mode="aspectFit"></image>
+						<text class="text-black">{{item.bankname}}</text>
 					</view>
 				</view>
 			</view>
@@ -56,16 +56,82 @@
 			return{
 				modalName:null,
 				yzbtn: true, //验证码按钮状态
-				
+				img:'../../static/bankimg/gongshang.png',
 				reg:{
 					//手机
 					mobile:/^[1][3,4,5,7,8][0-9]{9}$/,
 				},
 				
 				//银行列表
-				banklist:['中国银行','中信银行','招商银行','邮储银行','兴业银行','上海银行',
-				'浦发银行','平安银行','农业银行','民生银行','交通银行','建设银行','华夏银行',
-				'广发银行','光大银行','工商银行','北京银行'],
+				banklist:[
+					{
+						img:'../../static/bankimg/zhongguo.png',
+						bankname:'中国银行'
+					},
+					{
+						img:'../../static/bankimg/zhongxin.png',
+						bankname:'中信银行'
+					},
+					{
+						img:'../../static/bankimg/zhaoshang.png',
+						bankname:'招商银行'
+					},
+					{
+						img:'../../static/bankimg/youzheng.png',
+						bankname:'邮储银行'
+					},
+					{
+						img:'../../static/bankimg/gongshang.png',
+						bankname:'兴业银行'
+					},
+					{
+						img:'../../static/bankimg/shanghai.png',
+						bankname:'上海银行'
+					},
+					{
+						img:'../../static/bankimg/gongshang.png',
+						bankname:'浦发银行'
+					},
+					{
+						img:'../../static/bankimg/pingan.png',
+						bankname:'平安银行'
+					},
+					{
+						img:'../../static/bankimg/nongye.png',
+						bankname:'农业银行'
+					},
+					{
+						img:'../../static/bankimg/minsheng.png',
+						bankname:'民生银行'
+					},
+					{
+						img:'../../static/bankimg/jiaotong.png',
+						bankname:'交通银行'
+					},
+					{
+						img:'../../static/bankimg/jianshe.png',
+						bankname:'建设银行'
+					},
+					{
+						img:'../../static/bankimg/huaxia.png',
+						bankname:'华夏银行'
+					},
+					{
+						img:'../../static/bankimg/guangfa.png',
+						bankname:'广发银行'
+					},
+					{
+						img:'../../static/bankimg/guangda.png',
+						bankname:'光大银行'
+					},
+					{
+						img:'../../static/bankimg/gongshang.png',
+						bankname:'工商银行'
+					},
+					{
+						img:'../../static/bankimg/beijing.png',
+						bankname:'北京银行'
+					}],
 				
 				form:{
 					banknum:'',		//卡号
@@ -111,7 +177,6 @@
 		width: 100vw;
 		overflow: hidden;
 	}
-	
 	.DrawerPage {
 		position: fixed;
 		width: 100vw;

@@ -4,12 +4,14 @@
 			<block slot="content">身份信息</block>
 		</cu-custom>
 
-		<view class="padding-xs align-center text-left">
-			<text class="text-sm text-grey">仅用于全国公民身份查询中心核实身份</text>
+		<view class="padding-xs bg-yellow text-white text-left text-sm">
+			<text class="cuIcon-title margin-right-xs"></text>
+			<text>仅用于全国公民身份查询中心核实身份</text>
 		</view>
 
-		<view class="solids-bottom text-left padding-xs align-center">
-			<text class="text-sm text-gray">拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
+		<view class="bg-yellow text-left padding-xs text-white text-sm">
+			<text class="cuIcon-title margin-right-xs"></text>
+			<text>拍摄时请确保身份证边框完整、字迹清晰、亮度均衡</text>
 		</view>
 
 	<view class="bg-white">
@@ -21,14 +23,15 @@
 		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
+				<view class="grace-idcard-preview">
+					<image :src="idCard1" @tap="previewImg1" mode="widthFix"></image>
+				</view>
+				
 				<view class="grace-idcard-uper-btn round bg-gray" @tap="selectImg1">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
 					<view class="text text-sm">拍摄或选择照片</view>
-				</view>
-				<view class="grace-idcard-preview">
-					<image :src="idCard1" @tap="previewImg1" mode="widthFix"></image>
 				</view>
 			</view>
 		</view>
@@ -41,14 +44,15 @@
 		
 		<view class="grace-idcard-main">
 			<view class="grace-idcard-items">
+				
+				<view class="grace-idcard-preview">
+					<image :src="idCard2" @tap="previewImg2" mode="widthFix" />
+				</view>
 				<view class="grace-idcard-uper-btn round bg-gray" @tap="selectImg2">
 					<view class="img">
 						<image src="../../static/imgs/camera.png" mode="widthFix" />
 					</view>
 					<view class="text text-sm">拍摄或选择照片</view>
-				</view>
-				<view class="grace-idcard-preview">
-					<image :src="idCard2" @tap="previewImg2" mode="widthFix" />
 				</view>
 			</view>
 		</view>
@@ -241,16 +245,16 @@
 		font-size: 28upx;
 	}
 	
-		/* 验证码按钮默认 */
-		.yanzhengbtn {
-			background: #FDE8D4;
-		}
-		
-		/* 验证码按钮激活 */
-		.yanzhengbtns {
-			background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
-			box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
-		}
+	/* 验证码按钮默认 */
+	.yanzhengbtn {
+		background: #FDE8D4;
+	}
+	
+	/* 验证码按钮激活 */
+	.yanzhengbtns {
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+	}
 	.uni-tag {
 		box-sizing: border-box;
 		padding: 0 32upx;
@@ -295,10 +299,10 @@
 	}
 
 	.grace-idcard-uper-btn {
-		width: 266upx;
+		width: 236upx;
 		margin: 0 50upx;
-		padding-bottom: 10upx;
 		border-radius: 10upx;
+		padding-bottom: 10upx;
 		text-align: center;
 	}
 
@@ -319,6 +323,7 @@
 		margin-top: 10upx;
 		text-align: center;
 		line-height: 2em;
+		font-family: ;
 	}
 
 	.grace-idcard-preview {
@@ -328,6 +333,6 @@
 
 	.grace-idcard-preview image {
 		width: 100%;
-		height: 180upx !important;
+		height: 190upx !important;
 	}
 </style>
