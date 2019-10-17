@@ -10,12 +10,10 @@
 			<block slot="backText">返回</block>
 			<block slot="content">易贷登录</block>
 		</cu-custom> -->
-
+	<view class="header-img">
+		<image src="../../static/header.png" mode=""></image>
+	</view>
 	<view class="padding bg-white boxlo">
-		<view class="padding-left text-sm text-left">
-				<text class="cuIcon-title margin-right-xs"></text>
-				<text>手机号码将作为登录用户名使用</text>
-		</view>
 		<view class="cu-form-group">
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>
 			<input placeholder="请输入手机号码" maxlength='11' 
@@ -39,12 +37,12 @@
 			 @keyup.enter="login">登录</button>
 		</view>
 		
-		<view class="text-sm padding-bottom text-black text-center">
+		<view class="rad padding-bottom text-black text-center">
 			<label class="radio align-center">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
-				我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
-				《<a href="#" class="Index-a">个人信息采集授权书</a>》、
-				《<a href="#" class="Index-a">用户注册协议</a>》</label>
+				我已阅读、知悉并同意<a href="#" class="Index-a">《用户协议》</a>、
+				<a href="#" class="Index-a">《个人信息采集授权书》</a>、
+				<a href="#" class="Index-a">《用户注册协议》</a></label>
 		</view>
 		</view>
 	</view>
@@ -255,9 +253,24 @@
 </script>
 
 <style>
+	.radP{
+		font-family: PingFangSC-Regular;
+		font-size: 12px;
+		letter-spacing: -0.2px;
+		line-height: 14px;
+	}
+	.header-img{
+		width: 100%;
+	}
+	.header-img image{
+		width: 100%;
+		height: 590upx;
+	}
 	.boxlo{
+		height: 664upx;
 		margin: 25upx;
-		border-radius: 15px;
+		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
+		border-radius: 8px;
 	}
 	.pop{
 		position: fixed;
@@ -266,12 +279,12 @@
 	    background-position: center;
 	    background-size: cover;
 	    background-attachment: fixed;
-	    background-image: url('../../static/cn_bg.png');
 	}
 	.cu-form-group{
-		border: 1upx solid #eee;
+		border: 1upx solid #EEF1F5;
+		width: 610upx;
 		margin: 20upx;
-		border-radius: 130upx;
+		border-radius: 48upx;
 	}
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);

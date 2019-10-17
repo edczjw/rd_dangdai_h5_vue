@@ -43,6 +43,8 @@
 	/* 引入colorui样式 */
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
+	/* 引入vant样式 */
+	@import 'vant/lib/index.css';
 	.body{
 	    /*距离顶部范围应该在88-95范围内*/
 	    padding-top: 90upx;
@@ -59,7 +61,7 @@
 	}
 	.Index-a {
 		text-decoration: none;
-		color: #0081FF;
+		color: #FF7D00;
 	}
 	.txt-sty{
 		font-family: PingFangSC-Semibold;

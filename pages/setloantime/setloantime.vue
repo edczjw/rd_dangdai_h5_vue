@@ -5,6 +5,12 @@
 			<block slot="content">设定金额期限</block>
 		</cu-custom>
 		
+		<van-collapse v-model="activeNames">
+		  <van-collapse-item title="标题1" name="1">内容</van-collapse-item>
+		  <van-collapse-item title="标题2" name="2">内容</van-collapse-item>
+		  <van-collapse-item title="标题3" name="3" disabled>内容</van-collapse-item>
+		</van-collapse>
+		
 		<view class="bg-gray  padding-xs flex align-center">
 			<view class="flex-sub text-center">
 				<view class="text-sm">
@@ -103,7 +109,7 @@
 	export default{
 		data(){
 			return{
-				
+				activeNames: ['1'],
 				animation:'',
 				edu:'32000.00',	//可用额度
 				showplan:false,		//展示还款详情
