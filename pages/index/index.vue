@@ -39,7 +39,7 @@
 		
 		<view class="rad padding-bottom text-black text-center">
 			<label class="radio align-center">
-				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
+				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
 				我已阅读、知悉并同意<a href="#" class="Index-a">《用户协议》</a>、
 				<a href="#" class="Index-a">《个人信息采集授权书》</a>、
 				<a href="#" class="Index-a">《用户注册协议》</a></label>
@@ -253,11 +253,11 @@
 </script>
 
 <style>
-	.radP{
+	.rad{
 		font-family: PingFangSC-Regular;
-		font-size: 12px;
+		font-size: 24upx;
 		letter-spacing: -0.2px;
-		line-height: 14px;
+		line-height: 28upx;
 	}
 	.header-img{
 		width: 100%;
@@ -267,13 +267,14 @@
 		height: 590upx;
 	}
 	.boxlo{
+		position: absolute;
+		top: 490upx;
 		height: 664upx;
 		margin: 25upx;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
 		border-radius: 8px;
 	}
 	.pop{
-		position: fixed;
 		height: 100%;
 	    background-repeat: no-repeat;
 	    background-position: center;
