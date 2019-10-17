@@ -1,23 +1,21 @@
 <template>
-	<view>
+	<view class="pop">
 	<!-- 登录页 -->
 		<!-- 获取地理位置，腾讯地图 -->
 		<iframe id="geoPage" width=0 height=0 frameborder=0  style="display:none;" scrolling="no"
 			src="https://apis.map.qq.com/tools/geolocation?key=QC3BZ-UMCCG-YQIQ3-ISQAN-JITQ7-E2FI2&referer=myapp">
 		</iframe>
-		
+		  
 		<cu-custom bgColor="bg-white" class="navtit" :isBack="true">
 			<block slot="backText">返回</block>
 			<block slot="content">易贷登录</block>
 		</cu-custom>
 
-
-	<view class=" text-sm text-left bg-yellow text-white padding-xs">
-			<text class="cuIcon-title margin-right-xs"></text>
-			<text>手机号码将作为登录用户名使用</text>
-	</view>
-			
-	<view class="padding bg-white">
+	<view class="padding bg-white boxlo">
+		<view class=" text-sm text-left padding-xs">
+				<text class="cuIcon-title margin-right-xs"></text>
+				<text>手机号码将作为登录用户名使用</text>
+		</view>
 		<view class="cu-form-group">
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>
 			<input placeholder="请输入手机号码" maxlength='11' 
@@ -31,11 +29,17 @@
 			<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" type="number" name="input"></input>
 			<button type="warn" @click="sendck" class='cu-btn round ' 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
-				<span v-show="showCount">验证码</span>
+				<span v-show="showCount">获取验证码</span>
 				<span v-show="!showCount" class="count">{{count}} s</span>
 			</button>
 		</view>
-		<view class="text-sm padding-sm solid-top text-center">
+		
+		<view class="padding-xl flex solid-top flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="login"
+			 @keyup.enter="login">登录</button>
+		</view>
+		
+		<view class="text-sm padding-sm text-center">
 			<label class="radio align-center">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.6)" />
 				我已阅读、知悉并同意《<a href="#" class="Index-a">用户协议</a>》、<br>
@@ -43,12 +47,6 @@
 				《<a href="#" class="Index-a">用户注册协议</a>》</label>
 		</view>
 		</view>
-
-		<view class="padding-xl  flex flex-direction ">
-			<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="login"
-			 @keyup.enter="login">登录</button>
-		</view>
-
 	</view>
 </template>
 <script>
@@ -60,7 +58,7 @@
 			console.log('App1 Hide')
 		},
 		data() {
-			return {
+			return {	  
 				current: false,
 				showCount: true, //验证码计数
 				yzbtn: true, //验证码按钮状态
@@ -256,7 +254,24 @@
 </script>
 
 <style>
-
+	.boxlo{
+		margin: 25upx;
+		border-radius: 15px;
+	}
+	.pop{
+		position: fixed;
+		height: 100%;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-size: cover;
+	    background-attachment: fixed;
+	    background-image: url('../../static/cn_bg.png');
+	}
+	.cu-form-group{
+		border: 1upx solid #eee;
+		margin: 20upx;
+		border-radius: 130upx;
+	}
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);
 	}
