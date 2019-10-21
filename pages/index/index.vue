@@ -32,17 +32,18 @@
 			</button>
 		</view>
 		
-		<view class="padding-xl flex solid-top flex-direction ">
+		<view class="rads margin-top-xl flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="login"
 			 @keyup.enter="login">登录</button>
 		</view>
 		
-		<view class="rad padding-bottom text-black text-center">
-			<label class="radio align-center">
+		<view class="rad margin-top-xl text-black">
+			<label class="radio">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
-				我已阅读、知悉并同意<a href="#" class="Index-a">《用户协议》</a>、
+				<text style="color: #707598;">我已阅读、知悉并同意</text><a href="#" class="Index-a">《用户协议》</a>、
 				<a href="#" class="Index-a">《个人信息采集授权书》</a>、
-				<a href="#" class="Index-a">《用户注册协议》</a></label>
+				<a href="#" class="Index-a">《用户注册协议》</a>
+			</label>
 		</view>
 		</view>
 	</view>
@@ -253,6 +254,9 @@
 </script>
 
 <style>
+	.rads{		
+		margin-top: 90upx;
+	}
 	.rad{
 		font-family: PingFangSC-Regular;
 		font-size: 24upx;
@@ -268,9 +272,11 @@
 	}
 	.boxlo{
 		position: absolute;
-		top: 490upx;
+		top: 510upx;
+		left: 30upx;
 		height: 664upx;
-		margin: 25upx;
+		width: 689upx;
+		margin: 0 auto;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
 		border-radius: 8px;
 	}
@@ -283,8 +289,7 @@
 	}
 	.cu-form-group{
 		border: 1upx solid #EEF1F5;
-		width: 610upx;
-		margin: 20upx;
+		margin: 20upx auto;
 		border-radius: 48upx;
 	}
 	.cu-form-group .title {
