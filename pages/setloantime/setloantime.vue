@@ -5,100 +5,57 @@
 			<block slot="content">设定金额期限</block>
 		</cu-custom>
 		
-		<van-collapse v-model="activeNames">
-		  <van-collapse-item title="标题1" name="1">内容</van-collapse-item>
-		  <van-collapse-item title="标题2" name="2">内容</van-collapse-item>
-		  <van-collapse-item title="标题3" name="3" disabled>内容</van-collapse-item>
-		</van-collapse>
-		
-		<view class="bg-gray  padding-xs flex align-center">
-			<view class="flex-sub text-center">
-				<view class="text-sm">
-					<text class="text-grey">额度于2019年10月18日后失效，请及时提款</text>
-				</view>
-			</view>
+		<view class="header-img">
+			<image src="../../static/bg4.png" mode=""></image>
 		</view>
 		
-		<view class="margin-bottom bg-white padding-bottom-sm">
-			<view class="text-center padding-sm text-bold text-xl" style="color: #FBBD08;">
-				可借金额（元）
-			</view>
-			<view class="text-center shadow-lg animation-scale-up"
-			style="width: 280upx;
-			height: 280upx;
-			line-height: 270upx;
-			border-radius: 100%;
-			border: 13upx solid #FBBD08;
-			margin: 0 auto;">
-			<text class="text-xxl text-bold">{{edu}}</text>
-			</view>
+		<view class="tedo">
+			<view class="tedo1">最高可借</view>
+			<view class="tedo2"><text class="slod">￥</text>15,000</view>
+			<view class="tedo3">额度于2019年10月18日后失效，请及时提款</view>
 		</view>
 		
-		<view class="margin bg-white" style="border-top:1upx solid #FBBD08;">
-			<view class="cu-form-group solid-bottom">
-				<view style="color:#FBBD08" class="cuIcon-roundcheck text-bold margin-right-xs"></view>
-				<view class="title">
-					借款金额(元)
-				</view>
-				<input 
-				:placeholder="maxedu" 
-				:maxlength="edu.length"
-				type="number" 
-				@blur="loaninput" 
-				class="text-right text-sm"  
-				name="input"></input>
-			</view>
-			<view class="text-sm padding-sm text-right">❈  按日计息，日利率0.067%</view>
-		</view>
-		
-		
-		<view class="padding" v-if="showplan">
-			<view class="cu-form-group">
-				<view class="text-sm">还款期数</view>
-				<picker @change="PickerChange" :value="index" :range="picker" range-key="value">
-					<view class="uni-input text-center text-sm picker">
-					{{picker[index].value}}</view>
-				</picker>
+		<view class="gomo">
+			<view class="loantext margin-left-xl margin-right-xl margin-bottom-xs margin-top-xl">
+				借款金额(元)
 			</view>
 			
-			<view class="solids shadow-lg bg-white"
-			style="border-top:1upx solid #FBBD08;" >
-				<view class="flex padding-sm">
-					<view class="flex-sub text-center">应还</view>
-					<view class="flex-sub text-center">￥62.52</view>
-				</view>
-				<view class="flex padding-sm">
-					<view class="flex-sub text-center">还款日</view>
-					<view class="flex-sub text-center">11月22日</view>
-				</view>
-				<view class="flex padding-sm">
-					<view class="flex-sub text-center">还款详情</view>
-					<view class="flex-sub text-center">
-						<a href="#" class="Index-a" @click="watchdetail">查看</a>
-					</view>
-				</view>
+			<view class="cu-form-group  fm margin-top">
+				<text class='margin-left-xs dolar'>￥</text>
+				<input 
+				:placeholder="maxedu" 
+				maxlength='11'
+				type="number" 
+				class="toinput padding-left-xs text-left" 
+				v-model="form.money"
+				name="input"></input>
+			</view>
+			
+			<view class="tipp margin-left-xl margin-top-xl">
+				当前最高可用额度15000元，日利率0.067%
+			</view>
+		
+			<view class="cengj" v-if="sho">
+			hello
+			</view>
+			
+			<view class="userloan" v-if="sho">
+			借款用途
 			</view>
 		</view>
 		
-		<view class="padding-xl flex flex-direction ">
-			<button class="cu-btn bg-gradual-orange round lg" 
-			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
-			 @keyup.enter="next">下一步>></button>
+		<view class="bottom-ss">
+		<view class="rad padding-left-xl padding-top padding-bottom text-black">
+			<label class="radio">
+				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
+				<text style="color: #707598;">我已阅读、知悉并同意</text><a href="#" class="Index-a">《借款协议》</a>
+			</label>
 		</view>
-		
-		<!-- 提示框 -->
-		<view>
-		    <uni-popup ref="popup" class="text-red" type="center">{{tips}}</uni-popup>
-			<uni-popup ref="popupdetail" class="text-red padding" type="center">
-				 <view class="solid"
-				 style="width: 200px;" v-for="(item,index) of list"
-				 :key="index">
-				 	<view class="flex padding-sm">
-				 		<view class="flex-sub text-center">{{item.index}}</view>
-				 		<view class="flex-sub text-center">{{item.value}}</view>
-				 	</view>
-				 </view>
-			</uni-popup>
+		<view class="padding-left-xl padding-right-xl padding-bottom-xl flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg"
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
+			 @keyup.enter="next">下一步</button>
+		</view>
 		</view>
 		
 	</view>
@@ -109,6 +66,8 @@
 	export default{
 		data(){
 			return{
+				sho:true,
+				current:false,
 				activeNames: ['1'],
 				animation:'',
 				edu:'32000.00',	//可用额度
@@ -117,64 +76,11 @@
 				yzbtn: true, //验证码按钮状态
 				tips:'',//提示
 				index: 0,
-				
-				list:[{
-					index:0,
-					value:'we'
-				},{
-					index:1,
-					value:'we'
-				},{
-					index:2,
-					value:'we'
-				},{
-					index:3,
-					value:'we'
-				},{
-					index:4,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				},{
-					index:5,
-					value:'we'
-				}],
-				
-				
-				picker: [{
-					code:'M1',
-					value:'6期'
-				}, {
-					code:'M2',
-					value:'9期'
-				},{
-					code:'M3',
-					value:'12期'
-				}],
-				
+			
 				form:{
 					qishu:''
 				}
 			}
-		},
-		components: {
-			uniPopup
 		},
 		onLoad() {
 			this.keyupEnter();
@@ -221,29 +127,6 @@
 					
 				}
 			},
-			// 打开提示框
-			openPopup(){
-				this.$refs.popup.open()
-			},
-			// 关闭提示框
-			closePopup(){
-				this.$refs.popup.close();
-			},
-			
-			// 打开提示框1
-			openPopup1(){
-				this.$refs.popupdetail.open()
-			},
-			// 关闭提示框1
-			closePopup1(){
-				this.$refs.popupdetail.close();
-			},
-					
-			//婚姻修改值
-			PickerChange(e) {
-				this.index = e.detail.value
-				this.form.qishu = this.picker[this.index].code;
-			},
 			
 			//监听键盘
 			keyupEnter() {
@@ -260,7 +143,121 @@
 </script>
 
 <style>
+	.userloan{
+		background: #FFFFFF;
+		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
+		border-radius: 8px;
+		border-radius: 8px;
+		height: 114upx;
+		margin-top: 25upx;
+	}
+	.cengj{
+		background: #FFFFFF;
+		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
+		border-radius: 8px 8px 0 0;
+		border-radius: 8px 8px 0px 0px;
+		width:690upx;
+		height: 244upx;
+		margin: 0 auto;
+		margin-top: 50upx;
+	}
+	.slod{
+		/* color: #FFEA42; */
+		background-image: -webkit-linear-gradient(135deg, #FFFFFF 15%, #FFECAE 85%);
+		-webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+		-webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
+		text-shadow: 0 4upx 2upx 0 rgba(255,62,0,0.50), inset 0 -2upx 0 0 #FFEA42;
+		font-size: 52upx;
+	}
+	.tedo{
+		width: 100%;
+		position: absolute;
+		top: 296upx;
+		text-align: center;
+	}
+	.tedo3{
+		font-family: PingFangSC-Regular;
+		font-size: 28upx;
+		color: #FFCDAE;
+		letter-spacing: 0;
+		text-align: center;
+	}
+	.tedo2{
+		font-family: PingFangSC-Semibold;
+		font-size: 112upx;
+		
+		background-image: -webkit-linear-gradient(135deg, #FFFFFF 15%, #FFECAE 85%);
+		-webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+		-webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
+		text-shadow: 0 4upx 2upx 0 rgba(255,62,0,0.50), inset 0 -2upx 0 0 #FFEA42;
+		color: #000000;
+		letter-spacing: -4upx;
+		text-align: center;
+		line-height: 156upx;
+	}
+	.tedo1{
+		font-family: PingFangSC-Medium;
+		font-size: 36upx;
+		color: #FFFFFF;
+		letter-spacing: 0;
+		text-align: center;
+		text-shadow: 0 0 6upx rgba(255,44,0,0.60);
+	}
+	.fm{
+		border-bottom: 1upx solid #E6E6E6;
+	}
 	
+	.toinput{
+		text-align: vertical-align;
+		font-weight:400;
+		/* letter-spacing: 0; */
+		font-family: PingFangSC-Regular;
+		font-size: 52upx;
+		color: #FF7D00;
+	}
+	.dolar{
+		font-family: PingFangSC-Semibold;
+		font-size: 44upx;
+		font-weight:400;
+		color: #FF7D00;
+		text-align: right;
+		line-height: 72upx;
+	}
+	.tipp{
+		font-family: PingFangSC-Regular;
+		font-size: 28upx;
+		color: #707598;
+		letter-spacing: 0;
+		line-height: 28upx;
+	}
+	.loantext{
+		width: 166upx;
+		height: 24upx;
+		font-family: PingFangSC-Regular;
+		font-size: 26upx;
+		color: #535777;
+		letter-spacing: 0;
+		line-height: 24upx;
+	}
+	.rad{
+		font-family: PingFangSC-Regular;
+		font-size: 20upx;
+		letter-spacing: -0.4upx;
+		line-height: 28upx;
+	}
+	.bottom-ss{
+		background: #FFFFFF;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+	}
+	.header-img{
+		width: 100%;
+	}
+	.header-img image{
+		width: 100%;
+		height: 590upx;
+	}
 	/* 验证码按钮默认 */
 	.yanzhengbtn {
 		background: #FDE8D4;
@@ -269,7 +266,17 @@
 	/* 验证码按钮激活 */
 	.yanzhengbtns {
 		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
-		box-shadow: 0 6px 12px -3px rgba(255, 180, 92, 0.70);
+		box-shadow: 0 12upx 24upx -6upx rgba(255, 180, 92, 0.70);
 	}
-	
+	.gomo{
+		position: absolute;
+		top: 590upx;
+		left: 30upx;
+		background: #FFFFFF;
+		box-shadow: 0 6upx 6upx 0 rgba(85,100,122,0.03);
+		border-radius: 16upx;
+		width: 689upx;
+		height: 311upx;
+		margin: 0 auto;
+	}
 </style>
