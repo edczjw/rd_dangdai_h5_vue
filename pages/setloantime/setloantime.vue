@@ -40,7 +40,7 @@
 				<van-collapse-item
 				    title="借款期数"
 				    name="2"
-					value="12期"
+					:value="form.qishu+'期'"
 				  >
 				  <van-row style="text-align: center;" gutter="20">
 				    <van-col span="8"><van-button round size="small" :class="statusclick == 0? 'activeloanbut':'loanbut'" 
@@ -93,7 +93,7 @@
 				index: 0,
 				statusclick:0,	//按钮初始状态
 				form:{
-					qishu:''
+					qishu:6
 				}
 			}
 		},
@@ -101,8 +101,21 @@
 			this.keyupEnter();
 		},
 		methods:{
+			//借款期数切换
 			changestatus(index){
 				this.statusclick = index;
+				//期数切换
+				switch(index){
+				case 0:
+				    this.form.qishu = 6;
+				    break;
+				case 1:
+				    this.form.qishu = 9;
+				    break;
+				case 2:
+				    this.form.qishu = 12;
+				    break;
+				}
 			},
 			watchdetail(){
 				this.openPopup1();
