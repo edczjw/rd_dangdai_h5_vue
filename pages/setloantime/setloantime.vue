@@ -31,12 +31,27 @@
 				name="input"></input>
 			</view>
 			
-			<view class="tipp margin-left-xl margin-top-xl">
+			<view class="tipp margin-left-xl">
 				当前最高可用额度15000元，日利率0.067%
 			</view>
 		
 			<view class="cengj" v-if="sho">
-			hello
+				<van-collapse v-model="activeNames">
+				<van-collapse-item
+				    title="借款期数"
+				    name="2"
+					value="12期"
+				  >
+				  <van-row style="text-align: center;" gutter="20">
+				    <van-col span="8"><van-button round size="small" :class="statusclick == 0? 'activeloanbut':'loanbut'" 
+					@click="changestatus(0)">6个月</van-button></van-col>
+				    <van-col span="8"><van-button round size="small"  :class="statusclick == 1? 'activeloanbut':'loanbut'" 
+					@click="changestatus(1)">9个月</van-button></van-col>
+				    <van-col span="8"><van-button round size="small"  :class="statusclick == 2? 'activeloanbut':'loanbut'" 
+					@click="changestatus(2)">12个月</van-button></van-col>
+				  </van-row>
+				  </van-collapse-item>
+				</van-collapse>
 			</view>
 			
 			<view class="userloan" v-if="sho">
@@ -76,7 +91,7 @@
 				yzbtn: true, //验证码按钮状态
 				tips:'',//提示
 				index: 0,
-			
+				statusclick:0,	//按钮初始状态
 				form:{
 					qishu:''
 				}
@@ -86,6 +101,9 @@
 			this.keyupEnter();
 		},
 		methods:{
+			changestatus(index){
+				this.statusclick = index;
+			},
 			watchdetail(){
 				this.openPopup1();
 			},
@@ -143,6 +161,13 @@
 </script>
 
 <style>
+	.loanbut{
+		background: #F9F9F9;
+	}
+	.activeloanbut{
+		background-image: linear-gradient(90deg, #FFB759 3%, #FF7D00 100%);
+		color: #ffffff;
+	}
 	.userloan{
 		background: #FFFFFF;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
@@ -228,7 +253,9 @@
 		font-size: 28upx;
 		color: #707598;
 		letter-spacing: 0;
+		width: 580upx;
 		line-height: 28upx;
+		margin-top: 40upx;
 	}
 	.loantext{
 		width: 166upx;
