@@ -36,10 +36,11 @@
 			</view>
 		
 			<view class="cengj" v-if="sho">
-				<van-collapse v-model="activeNames">
+				<van-collapse style="border-bottom: 1px solid #E6E6E6;" v-model="activeNames">
 				<van-collapse-item
 				    title="借款期数"
 				    name="2"
+					round
 					:value="form.qishu+'期'"
 				  >
 				  <van-row style="text-align: center;" gutter="20">
@@ -52,6 +53,16 @@
 				  </van-row>
 				  </van-collapse-item>
 				</van-collapse>
+				
+				<!-- 还款计划 -->
+				<van-cell class="sw" is-link title="还款计划" @click="showPopup">首期10月10日，<text class="text-orange rpm">应还398.34</text></van-cell>
+				
+				<van-popup  
+				v-model="show"
+			    round
+				closeable
+				position="bottom"
+				:style="{ height: '20%' }">内容</van-popup>
 			</view>
 			
 			<view class="userloan" v-if="sho">
@@ -81,6 +92,7 @@
 	export default{
 		data(){
 			return{
+				show: false,
 				sho:true,
 				current:false,
 				activeNames: ['1'],
@@ -101,6 +113,9 @@
 			this.keyupEnter();
 		},
 		methods:{
+			showPopup() {
+			      this.show = true;
+			    },
 			//借款期数切换
 			changestatus(index){
 				this.statusclick = index;
@@ -174,6 +189,25 @@
 </script>
 
 <style>
+	.rpm{
+		font-family: PingFangSC-Medium;
+		color: #FF7D00;
+		font-weight: bold;
+		letter-spacing: -0.78upx;
+		text-align: right;
+		line-height: 44upx;
+	}
+	.van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after {
+	     border-width: 0 0; 
+	}
+	
+	.van-cell:not(:last-child)::after {
+	    border-bottom: none;
+	}
+	/* 还款计划 */
+	.van-cell__value{
+		flex: 2;
+	}
 	.loanbut{
 		background: #F9F9F9;
 	}
@@ -185,19 +219,19 @@
 		background: #FFFFFF;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
 		border-radius: 8px;
-		border-radius: 8px;
 		height: 114upx;
 		margin-top: 25upx;
 	}
+	/* 二框 */
 	.cengj{
 		background: #FFFFFF;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
-		border-radius: 8px 8px 0 0;
-		border-radius: 8px 8px 0px 0px;
+		border-radius: 8px;
 		width:690upx;
-		height: 244upx;
+		/* height: 244upx; */
 		margin: 0 auto;
-		margin-top: 50upx;
+		margin-top: 60upx;
+		padding: 20upx 10upx;
 	}
 	.slod{
 		/* color: #FFEA42; */
