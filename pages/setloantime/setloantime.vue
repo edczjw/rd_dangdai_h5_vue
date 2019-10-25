@@ -62,11 +62,58 @@
 			    round
 				closeable
 				position="bottom"
-				:style="{ height: '20%' }">内容</van-popup>
+				:style="{ height: '40%' }">
+				<view class="padding-xl text-center potit">
+					还款计划
+				</view>
+				<view class="prompt-box">	
+					<span>2019</span>
+					<view class="prompt-box-text">
+						<span class="prompt-box-text-number"></span>
+						<span class="prompt-box-text-content">10月5日</span>
+						<span class="prompt-box-text-content2">应还398.34</span>
+						<span class="prompt-box-text-border"></span>
+					</view>
+					<view class="prompt-box-text">
+						<span class="prompt-box-text-number"></span>
+						<span class="prompt-box-text-content">10月5日</span>
+						<span class="prompt-box-text-content2">应还398.34</span>
+						<!-- <span class="prompt-box-text-border"></span> -->
+					</view>
+				</view>
+				<view class="prompt-box">
+					<span>2020</span>
+					<view class="prompt-box-text">
+						<span class="prompt-box-text-number"></span>
+						<span class="prompt-box-text-content">10月5日</span>
+						<span class="prompt-box-text-content2">应还398.34</span>
+						<span class="prompt-box-text-border"></span>
+					</view>
+					<view class="prompt-box-text">
+						<span class="prompt-box-text-number"></span>
+						<span class="prompt-box-text-content">10月5日</span>
+						<span class="prompt-box-text-content2">应还398.34</span>
+						<!-- <span class="prompt-box-text-border"></span> -->
+					</view>
+				</view>
+				</van-popup>
 			</view>
 			
 			<view class="userloan" v-if="sho">
-			借款用途
+				<!-- 贷款用途 -->
+				<van-cell class="sw" is-link title="借款用途" @click="showPopup2">{{loanway}}</van-cell>
+				
+				<van-popup  
+				v-model="show2"
+				position="bottom">
+				<van-picker
+				  show-toolbar
+				  title="请选择借款用途"
+				  :columns="columns"
+				  @cancel="onCancel"
+				  @confirm="onConfirm"
+				/>
+				</van-popup>
 			</view>
 		</view>
 		
@@ -93,8 +140,11 @@
 		data(){
 			return{
 				show: false,
+				show2: false,
 				sho:true,
 				current:false,
+				loanway:'',		//借款用途
+				columns: ['教育', '旅游', '装修', '医疗', '个人日常消费'],
 				activeNames: ['1'],
 				animation:'',
 				edu:'32000.00',	//可用额度
@@ -113,9 +163,27 @@
 			this.keyupEnter();
 		},
 		methods:{
+			//单选
+			changeradio(){
+				this.current = !this.current
+			},
+			// 还款计划
 			showPopup() {
 			      this.show = true;
-			    },
+			},
+			// 借款用途
+			showPopup2(){
+			      this.show2 = true;
+			},
+			// 确认
+			onConfirm(value, index) {
+			    this.loanway = value
+				this.show2 = false;
+			},
+			// 取消
+			onCancel() {
+			  this.show2 = false;
+			},
 			//借款期数切换
 			changestatus(index){
 				this.statusclick = index;
@@ -189,6 +257,89 @@
 </script>
 
 <style>
+	/* 还款计划圆点排列 */
+	.potit{
+		font-family: PingFangSC-Medium;
+		font-size: 18px;
+		color: #535777;
+		line-height: 18px;
+	}
+	/* 外框 */
+	.prompt-box {
+	  padding: 20upx;
+	  border: 1px solid #000000;
+	}
+	
+	/* 内框 */
+	.prompt-box-text {
+	  margin: 0 auto 20upx;
+	  height: 1.434rem;
+	  line-height: 1.434rem;
+	  padding-left: 20upx;
+	  border: 1px solid black;
+	  width: 500upx;
+	  padding: 0 40upx;
+	}
+	
+	.prompt-box-text:last-child {
+	  margin-bottom: 0;
+	}
+	
+	.prompt-box-text-number {
+	  -webkit-border-radius: 100upx;
+	  -moz-border-radius: 100upx;
+	  border-radius: 100upx;
+	  border: 2px solid #FF712C;
+	  text-align: center;
+	  color: #FF712C;
+	  display: inline-block;
+	  width: 20upx;
+	  height: 20upx;
+	  line-height: 20upx;
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	  font-size: 12px;
+	  margin-right: .883rem;
+	  letter-spacing: 0;
+	  vertical-align: center;
+	}
+	
+	/* 文字框 */
+	.prompt-box-text-content {
+	  white-space: nowrap;
+	  display: inline-block;
+	  
+	  font-family: PingFangSC-Medium;
+	  font-size: 14px;
+	  color: #707598;
+	  letter-spacing: 0;
+	  font-size: 14px;
+	}
+	
+	.prompt-box-text-content2 {
+	  white-space: nowrap;
+	  display: inline-block;
+	  
+	  font-family: PingFangSC-Medium;
+	  font-size: 14px;
+	  color: #707598;
+	  letter-spacing: 0;
+	  font-size: 14px;
+	  width: 60%;
+	  text-align: right;
+	}
+	
+	/* 虚线 */
+	.prompt-box-text-border {
+	  height: 40upx;
+	  margin: -10upx 0 0 10upx;
+	  width: 0;
+	  border-left: 1px dotted #FF712C;
+	  display: block;
+	}
+	
+	/* 应还 */
 	.rpm{
 		font-family: PingFangSC-Medium;
 		color: #FF7D00;
@@ -196,6 +347,8 @@
 		letter-spacing: -0.78upx;
 		text-align: right;
 		line-height: 44upx;
+		font-size: 28upx;
+		
 	}
 	.van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after {
 	     border-width: 0 0; 
@@ -219,8 +372,10 @@
 		background: #FFFFFF;
 		box-shadow: 0 3px 3px 0 rgba(85,100,122,0.03);
 		border-radius: 8px;
-		height: 114upx;
-		margin-top: 25upx;
+		margin: 0 auto;
+		margin-top: 26upx;
+		padding: 20upx 10upx;
+		margin-bottom: 300upx;
 	}
 	/* 二框 */
 	.cengj{
@@ -323,6 +478,7 @@
 		background: #FFFFFF;
 		width: 100%;
 		position: fixed;
+		margin-top: 1400upx;
 		bottom: 0;
 	}
 	.header-img{
