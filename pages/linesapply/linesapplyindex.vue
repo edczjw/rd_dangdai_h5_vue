@@ -3,19 +3,18 @@
 	<view>
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
 		<cu-custom bgColor="bg-white" class="navtit">
-			<block slot="content">易贷</block>
+			<block slot="content">民易贷</block>
 		</cu-custom>
 		
-		<view class="padding">
-			<image style="width: 100%; background-color: #eeeeee;" src="../../static/timg.jpg"
-				@error="imageError"></image>
+		<view class="">
+			<image src="../../static/header_banner.png" mode=""></image>
 		</view>
 		
-		<view class="tabbar bg-white" style="position: fixed;bottom: 0;width: 100%; z-index: 500;">
-			<view class="padding flex flex-direction">
-				<button class="cu-btn bg-black margin-tb-sm round lg" @click="apply">抢先申请</button>
-			</view>
+		<view class="">
+			<image src="../../static/px_bg.png" mode=""></image>
 		</view>
+		
+		<button class="cu-btn bg-black margin-tb-sm round lg" @click="apply">抢先申请</button>
 	</view>
 </template>
 
