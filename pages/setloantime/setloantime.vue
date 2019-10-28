@@ -474,13 +474,7 @@
 		letter-spacing: -0.4upx;
 		line-height: 28upx;
 	}
-	.bottom-ss{
-		background: #FFFFFF;
-		width: 100%;
-		position: fixed;
-		margin-top: 1400upx;
-		bottom: 0;
-	}
+	
 	.header-img{
 		width: 100%;
 	}

@@ -45,6 +45,7 @@
 	@import "colorui/icon.css";
 	/* 引入vant样式 */
 	@import 'vant/lib/index.css';
+	@import 'mand-mobile/lib/mand-mobile.css'
 	.body{
 	    /*距离顶部范围应该在88-95范围内*/
 	    padding-top: 90upx;
@@ -63,6 +64,16 @@
 		text-decoration: none;
 		color: #FF7D00;
 	}
+	
+	.bottom-ss{
+		background: #FFFFFF;
+		width: 100%;
+		position: fixed;
+		height: 266upx;
+		z-index: 999;
+		bottom: 0;
+		left: 0;
+	}
 	.txt-sty{
 		font-family: PingFangSC-Semibold;
 		font-size: 18px;
@@ -80,7 +91,6 @@
 		text-align: center;
 		line-height: 14px;
 	}
-	
 	.page{
 		background: #FFFFFF;
 		position: relative;
