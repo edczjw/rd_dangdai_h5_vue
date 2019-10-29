@@ -45,11 +45,14 @@
 	@import "colorui/icon.css";
 	/* 引入vant样式 */
 	@import 'vant/lib/index.css';
-	@import 'mand-mobile/lib/mand-mobile.css'
-	.body{
-	    /*距离顶部范围应该在88-95范围内*/
+	@import 'mand-mobile/lib/mand-mobile.css';
+	body{
 	    padding-top: 90upx;
+		height: 1720upx;
 	    top: var(--status-bar-height);
+	}
+	html{
+		height: 100%;
 	}
 	/* 标题字颜色 */
 	.navtit{
@@ -73,6 +76,7 @@
 		z-index: 999;
 		bottom: 0;
 		left: 0;
+		border-top: 2upx solid #eeeeee;
 	}
 	.txt-sty{
 		font-family: PingFangSC-Semibold;

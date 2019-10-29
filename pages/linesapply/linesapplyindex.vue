@@ -7,15 +7,14 @@
 		</cu-custom>
 		
 		<view class="bg-do">
-		<view class="top-img">
-			<image src="../../static/header_banner.png" mode=""></image>
-		</view>
-		
-		<view class="po-img">
-			<image src="../../static/px_bg.png" mode=""></image>
-			<button class="ho-button" @click="apply">立即借款</button>
-		</view>
-		
+			<view class="top-img">
+				<image src="../../static/header_banner.png" mode=""></image>
+			</view>
+			
+			<view class="po-img">
+				<image src="../../static/px_bg.png" mode=""></image>
+				<button class="ho-button" @click="apply">立即借款</button>
+			</view>
 		</view>
 		
 		
@@ -50,7 +49,7 @@
 <style>
 	.bg-do{
 		background: #FF3A22;
-		padding-bottom: 100%;
+		height: 1800upx;
 		width: 100%;
 	}
 	.po-img{

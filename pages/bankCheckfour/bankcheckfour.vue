@@ -4,36 +4,33 @@
 			<block slot="content">银行卡验证</block>
 		</cu-custom>
 		
+		<view class="flex padding-xs">
+			<view class="flex-sub text-grey">
+				<text class='cuIcon-ticket margin-xs'></text>关联银行卡
+			</view>
+			<view class="flex-sub text-right text-grey">尾号：
+			<text class="text-yellow">8888（中国银行）</text></view>
+		</view>
+	
+		<view class="cu-form-group">
+			<text class='cuIcon-mobile margin-xs'></text>
+			<input placeholder="请输入银行预留手机号"  class="text-left" name="input"></input>
+		</view>
 		
-		<view class="padding">
-			<view class="flex padding-xs">
-				<view class="flex-sub text-grey">
-					<text class='cuIcon-ticket margin-xs'></text>关联银行卡
-				</view>
-				<view class="flex-sub text-right text-grey">尾号：
-				<text class="text-yellow">8888（中国银行）</text></view>
-			</view>
+		<view class="cu-form-group">
+			<text class='cuIcon-lock margin-xs'></text>
+			<input placeholder="请输入验证码"  class="text-left" name="input"></input>
+			<button type="warn" @click="sendck()"  class='cu-btn round' 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
+				<span v-show="showCount">验证码</span>
+				<span v-show="!showCount" class="count">{{count}} s</span>
+			</button>
+		</view>
 		
-			<view class="cu-form-group">
-				<text class='cuIcon-mobile margin-xs'></text>
-				<input placeholder="请输入银行预留手机号"  class="text-left" name="input"></input>
-			</view>
-			
-			<view class="cu-form-group">
-				<text class='cuIcon-lock margin-xs'></text>
-				<input placeholder="请输入验证码"  class="text-left" name="input"></input>
-				<button type="warn" @click="sendck()"  class='cu-btn round' 
-				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
-					<span v-show="showCount">验证码</span>
-					<span v-show="!showCount" class="count">{{count}} s</span>
-				</button>
-			</view>
-			
-			<view class="padding-xl solid-top flex flex-direction ">
-				<button class="cu-btn bg-gradual-orange round lg" 
-				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
-				 @keyup.enter="next">确定</button>
-			</view>
+		<view class="padding-xl solid-top flex flex-direction ">
+			<button class="cu-btn bg-gradual-orange round lg" 
+			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
+			 @keyup.enter="next">确定</button>
 		</view>
 		
 	</view>

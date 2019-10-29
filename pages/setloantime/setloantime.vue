@@ -116,6 +116,9 @@
 				</van-popup>
 			</view>
 		</view>
+		<view class="w2">
+			
+		</view>
 		
 		<view class="bottom-ss">
 		<view class="rad padding-left-xl padding-top padding-bottom text-black">
@@ -375,7 +378,10 @@
 		margin: 0 auto;
 		margin-top: 26upx;
 		padding: 20upx 10upx;
-		margin-bottom: 300upx;
+	}
+	.w2{
+		padding-bottom: 100%;
+	    margin-bottom: 240px !important;
 	}
 	/* 二框 */
 	.cengj{
