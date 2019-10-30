@@ -38,12 +38,22 @@
 		</view>
 		
 		<view class="rad margin-top-xl text-black">
-			<label class="radio">
+			<md-agree
+			  v-model="agreeConf.checked"
+			  :disabled="agreeConf.disabled"
+			  :size="agreeConf.size"
+			  @change="onChange(agreeConf.name, agreeConf.checked, $event)"
+			>我已阅读、知悉并同意</text>《<a href="#" class="Index-a">用户协议</a>》、
+			  《<a href="#" class="Index-a">个人信息采集授权书</a>》、
+			  《<a href="#" class="Index-a">用户注册协议</a>》
+			</md-agree>
+			
+			<!-- <label class="radio">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
 				<text style="color: #707598;">我已阅读、知悉并同意</text><a href="#" class="Index-a">《用户协议》</a>、
 				<a href="#" class="Index-a">《个人信息采集授权书》</a>、
 				<a href="#" class="Index-a">《用户注册协议》</a>
-			</label>
+			</label> -->
 		</view>
 		</view>
 	</view>
@@ -57,7 +67,14 @@
 			console.log('App1 Hide')
 		},
 		data() {
-			return {	  
+			return {	
+				agreeConf: {
+					checked: false,
+					name: 'agree1',
+					size: '',
+					disabled: false,
+					introduction: '未选中状态',
+				},
 				current: false,
 				showCount: true, //验证码计数
 				yzbtn: true, //验证码按钮状态
@@ -82,6 +99,10 @@
 			this.keyupEnter()
 		},
 		methods: {
+			// 勾选协议
+			onChange(name, checked) {
+			  console.log(`agree name = ${name} is ${checked ? 'checked' : 'unchecked'}`)
+			},
 			getgps(){
 				//获取地理位置
 				var loc;

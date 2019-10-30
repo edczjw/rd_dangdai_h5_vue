@@ -17,12 +17,12 @@
 			</view>
 		</view>
 			<view class="cu-form-group" >
-			<text class='cuIcon-card margin-xs text-orange margin-right'></text>
+			<text class='cuIcon-card margin-xs margin-right'></text>
 				<input class="text-left" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group"  >
-				<text class='cuIcon-mobile text-orange margin-xs margin-right'></text>
+				<text class='cuIcon-mobile margin-xs margin-right'></text>
 				<input class="text-left" type="number" maxlength="11" placeholder="请输入银行预留手机号" v-model="form.mobile" name="input"></input>
 			</view>
 			
@@ -38,10 +38,13 @@
 		</view>
 		<scroll-view scroll-y class="DrawerWindow" :class="modalName=='viewModal'?'show':''">
 			<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+				<view class="bg-white text-center padding solid-bottom text-xl">
+					银行列表
+				</view>
 				<view class="cu-item text-center" v-for="(item,index) in banklist" :key="index">
 					<view class="content">
-							<image :src="item.img" mode="aspectFit"></image>
-						<text class="text-black">{{item.bankname}}</text>
+						<image :src="item.img" mode="aspectFit"></image>
+						<text class="text-black text-xl">{{item.bankname}}</text>
 					</view>
 				</view>
 			</view>
@@ -81,7 +84,7 @@
 						bankname:'邮储银行'
 					},
 					{
-						img:'../../static/bankimg/gongshang.png',
+						img:'../../static/bankimg/xingye.png',
 						bankname:'兴业银行'
 					},
 					{
@@ -89,7 +92,7 @@
 						bankname:'上海银行'
 					},
 					{
-						img:'../../static/bankimg/gongshang.png',
+						img:'../../static/bankimg/pufa.png',
 						bankname:'浦发银行'
 					},
 					{

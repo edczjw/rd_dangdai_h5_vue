@@ -122,10 +122,18 @@
 		
 		<view class="bottom-ss">
 		<view class="rad padding-left-xl padding-top padding-bottom text-black">
-			<label class="radio">
+			<md-agree
+			  v-model="agreeConf.checked"
+			  :disabled="agreeConf.disabled"
+			  :size="agreeConf.size"
+			  @change="onChange(agreeConf.name, agreeConf.checked, $event)"
+			>我已阅读、知悉并同意</text>《<a href="#" class="Index-a">借款协议</a>》
+			</md-agree>
+			
+			<!-- <label class="radio">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
 				<text style="color: #707598;">我已阅读、知悉并同意</text><a href="#" class="Index-a">《借款协议》</a>
-			</label>
+			</label> -->
 		</view>
 		<view class="padding-left-xl padding-right-xl padding-bottom-xl flex flex-direction ">
 			<button class="cu-btn bg-gradual-orange round lg"
@@ -142,6 +150,13 @@
 	export default{
 		data(){
 			return{
+				agreeConf: {
+					checked: false,
+					name: 'agree1',
+					size: '',
+					disabled: false,
+					introduction: '未选中状态',
+				},
 				show: false,
 				show2: false,
 				sho:true,
@@ -166,6 +181,10 @@
 			this.keyupEnter();
 		},
 		methods:{
+			// 勾选协议
+			onChange(name, checked) {
+			  console.log(`agree name = ${name} is ${checked ? 'checked' : 'unchecked'}`)
+			},
 			//单选
 			changeradio(){
 				this.current = !this.current
@@ -312,7 +331,6 @@
 	.prompt-box-text-content {
 	  white-space: nowrap;
 	  display: inline-block;
-	  
 	  font-family: PingFangSC-Medium;
 	  font-size: 14px;
 	  color: #707598;

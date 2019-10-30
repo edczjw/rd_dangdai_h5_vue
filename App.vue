@@ -51,9 +51,6 @@
 		height: 1720upx;
 	    top: var(--status-bar-height);
 	}
-	html{
-		height: 100%;
-	}
 	/* 标题字颜色 */
 	.navtit{
 		font-family: PingFangSC-Medium;
@@ -73,7 +70,7 @@
 		width: 100%;
 		position: fixed;
 		height: 266upx;
-		z-index: 999;
+		/* z-index: 990; */
 		bottom: 0;
 		left: 0;
 		border-top: 2upx solid #eeeeee;

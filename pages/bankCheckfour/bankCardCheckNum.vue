@@ -4,7 +4,6 @@
 			<block slot="content">银行卡确认</block>
 		</cu-custom>
 		
-		<view class="padding">
 		<view class="padding-xs">
 			<view class="text-left text-sm text-grey">
 				<text>请输入银行发送的短信验证码，完成银行卡确认</text>
@@ -23,20 +22,24 @@
 				</button>
 			</view>
 			
-			<view class="padding-sm text-sm text-center">
-				<label class="radio">
-					<radio @click="changeradio" value="r2" :checked="current" 
-				style="transform:scale(0.6)"/>
-				我已阅读、知悉并同意《<a href="#" class="Index-a">还款协议</a>》</label>
+			<view class="bottom-ss">
+			<view class="rad padding-left-xl padding-top padding-bottom text-black">
+				<md-agree
+				  v-model="agreeConf.checked"
+				  :disabled="agreeConf.disabled"
+				  :size="agreeConf.size"
+				  @change="onChange(agreeConf.name, agreeConf.checked, $event)"
+				>我已阅读、知悉并同意</text>《<a href="#" class="Index-a">还款协议</a>》
+				</md-agree>
+				
 			</view>
-			
-			<view class="padding-xl flex flex-direction ">
-				<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 
-				'yanzhengbtn':'yanzhengbtns'" @click="apply"
+			<view class="padding-left-xl padding-right-xl padding-bottom-xl flex flex-direction ">
+				<button class="cu-btn bg-gradual-orange round lg"
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="apply"
 				 @keyup.enter="apply">确定申请</button>
 			</view>
+			</view>
 			
-	</view>
 	</view>
 </template>
 
@@ -44,6 +47,13 @@
 	export default{
 		data(){
 			return{
+				agreeConf: {
+					checked: false,
+					name: 'agree1',
+					size: '',
+					disabled: false,
+					introduction: '未选中状态',
+				},
 				current:false,
 				showCount:true,	//验证码计数
 				yzbtn: true, //验证码按钮状态
@@ -57,6 +67,10 @@
 			}
 		},
 		methods:{
+			// 勾选协议
+			onChange(name, checked) {
+			  console.log(`agree name = ${name} is ${checked ? 'checked' : 'unchecked'}`)
+			},
 			//确定申请
 			apply(){
 				//校验

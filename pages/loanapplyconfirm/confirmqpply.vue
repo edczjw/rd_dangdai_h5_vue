@@ -43,16 +43,22 @@
 				<span class="his">短信验证码</span><br>
 				<span class="hi">为了您的账号安全 请输入138 0138 0000 验证码</span>
 			</view>
-
-			<view class="code-input-main margin-left margin-right">
-				<view class="code-input-main-item">{{code[0]}}</view>
-				<view class="code-input-main-item">{{code[1]}}</view>
-				<view class="code-input-main-item">{{code[2]}}</view>
-				<view class="code-input-main-item">{{code[3]}}</view>
-				<view class="code-input-main-item">{{code[4]}}</view>
-				<view class="code-input-main-item">{{code[5]}}</view>
-				<input class="code-input-input" v-model="code" maxlength="6" type="number" />
-			</view>
+			
+			<van-password-input
+			  :value="value"
+			  :mask="false"
+			  :focused="showKeyboard"
+			  @focus="showKeyboard = true"
+			/>
+			
+			<!-- 虚拟键盘 -->
+			<van-number-keyboard
+			style="z-index: 9999;"
+			  :show="showKeyboard"
+			  @input="onInput"
+			  @delete="onDelete"
+			  @blur="showKeyboard = false"
+			/>
 
 			<view class="text-center padding">
 				<button @click="sendck()" class='cu-btn bg-gradual-orange round' :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
@@ -65,10 +71,13 @@
 
 		<view class="bottom-ss">
 			<view class="rad padding-left-xl padding-top padding-bottom text-black">
-				<label class="radio">
-					<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
-					<text style="color: #707598;">我已阅读、知悉并同意</text>《<a href="#" class="Index-a">借款协议</a>》、《<a href="#" class="Index-a">担保协议</a>》
-				</label>
+				<md-agree
+				  v-model="agreeConf.checked"
+				  :disabled="agreeConf.disabled"
+				  :size="agreeConf.size"
+				  @change="onChange(agreeConf.name, agreeConf.checked, $event)"
+				>我已阅读、知悉并同意</text>《<a href="#" class="Index-a">借款协议</a>》、《<a href="#" class="Index-a">担保协议</a>》
+				</md-agree>
 			</view>
 			<view class="padding-left-xl padding-right-xl padding-bottom-xl flex flex-direction ">
 				<button class="cu-btn bg-gradual-orange round lg" :class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
@@ -82,6 +91,15 @@
 	export default {
 		data() {
 			return {
+				value: '',
+				showKeyboard: false,
+				agreeConf: {
+					checked: false,
+					name: 'agree1',
+					size: '',
+					disabled: false,
+					introduction: '未选中状态',
+				},
 				code: '',
 				current: false,
 				showCount: true,
@@ -96,6 +114,16 @@
 			}
 		},
 		methods: {
+			onInput(key) {
+			  this.value = (this.value + key).slice(0, 6);
+			},
+			onDelete() {
+			  this.value = this.value.slice(0, this.value.length - 1);
+			},
+			// 勾选协议
+			onChange(name, checked) {
+			  console.log(`agree name = ${name} is ${checked ? 'checked' : 'unchecked'}`)
+			},
 			getCode() {
 				return this.code;
 			},
