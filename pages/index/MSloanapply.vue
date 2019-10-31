@@ -16,7 +16,7 @@
 				</view>
 				<slider :value="num" @change="sliderChange" :min="minMoney" :max="maxMoney" show-value />
 			</view>
-		</view>
+		</view>;
 		<!-- 期数 -->
 		<view>
 			<wuc-tab :tab-list="tabList5" :tabCur.sync="TabCur5" tab-class="text-center text-black bg-white" select-class="text-blue" />

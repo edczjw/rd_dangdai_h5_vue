@@ -22,14 +22,24 @@
 			
 			<view class="cu-form-group  fm margin-top">
 				<text class='margin-left-xs dolar'>￥</text>
-				<input 
+				<van-field 
 				:placeholder="maxedu" 
 				maxlength='11'
 				type="number" 
+			        is-virtual-keyboard
 				class="toinput padding-left-xs text-left" 
 				v-model="form.money"
-				name="input"></input>
+				@touchstart.native.stop="showkeyboard = true"></van-field>
 			</view>
+				  
+			<!-- 键盘 -->
+			<van-number-keyboard
+			  close-button-text="完成"
+			  v-model="form.money"
+			  :show="showkeyboard"
+			  :maxlength="6"
+			  @blur="showkeyboard = false"
+			/>
 			
 			<view class="tipp margin-left-xl">
 				当前最高可用额度15000元，日利率0.067%
@@ -157,6 +167,7 @@
 					disabled: false,
 					introduction: '未选中状态',
 				},
+				showkeyboard: false,
 				show: false,
 				show2: false,
 				sho:true,
