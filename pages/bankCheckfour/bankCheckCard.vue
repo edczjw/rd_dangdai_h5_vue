@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<cu-custom bgColor="bg-white" class="navtit">
-			<block slot="content">填写银行卡</block>
+			<block slot="content">银行卡</block>
 		</cu-custom>
 		
 		<scroll-view scroll-y class="DrawerPage" :class="modalName=='viewModal'?'show':''">
@@ -19,18 +19,49 @@
 		</view>
 			<view class="cu-form-group" >
 			<text class='margin-xs margin-right'>持卡人</text>
-				<input class="text-left" type="number" maxlength="19" placeholder="请输入银行卡号" v-model="form.banknum" name="input"></input>
+				<input class="text-right" type="number" maxlength="19" placeholder="" v-model="form.banknum" 
+				name="input"></input>
+			</view>
+			
+			<view class="cu-form-group" >
+			<text class='margin-xs margin-right'>身份证</text>
+				<input class="text-right" type="number" maxlength="19" placeholder="请输入银行卡号" 
+				v-model="form.banknum" name="input"></input>
+			</view>
+			
+			<view class="cu-form-group" >
+			<text class='margin-xs margin-right'>卡号</text>
+				<input class="text-right" type="number" maxlength="19" placeholder="请输入银行卡号" 
+				v-model="form.banknum" name="input"></input>
+			</view>
+			
+			<view class="cu-form-group margin-top-xl">
+				<text class='margin-xs margin-right'>手机号</text>
+				<input class="text-right" type="number" maxlength="11" placeholder="请输入银行卡预留手机号" 
+				v-model="form.mobile" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group"  >
-				<text class='margin-xs margin-right'>手机号</text>
-				<input class="text-left" type="number" maxlength="11" placeholder="请输入银行卡预留手机号" v-model="form.mobile" name="input"></input>
+				<text class='margin-xs margin-right'>验证码</text>
+				<input placeholder="请输入短信验证码" maxlength='6' class="text-right" v-model="form.verification" type="number" name="input"></input>
+				<button type="warn" @click="sendck" size="mini" class='cu-btn ' 
+				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
+					<span v-show="showCount">获取验证码</span>
+					<span v-show="!showCount" class="count">{{count}} s</span>
+				</button>
 			</view>
 			
 			<view class="padding-xl solid-top flex flex-direction ">
 				<button class="cu-btn bg-gradual-orange round lg" 
 				:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'" @click="next"
-				 @keyup.enter="next">下一步</button>
+				 @keyup.enter="next">提交</button>
+			</view>
+			
+			<view class="rad text-black text-center">
+				<label class="radio">
+					<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
+					<text style="color: #707598;">同意授权账户为《<a href="#" class="Index-a">委托收款协议</a>》项下的代收银行账户</text>
+				</label>
 			</view>
 		</scroll-view>
 		
@@ -58,6 +89,7 @@
 	export default{
 		data(){
 			return{
+				current:false,
 				modalName:null,
 				yzbtn: true, //验证码按钮状态
 				img:'../../static/bankimg/gongshang.png',
@@ -66,6 +98,7 @@
 					mobile:/^[1][3,4,5,7,8][0-9]{9}$/,
 				},
 				
+				showCount: true, //验证码计数
 				//银行列表
 				banklist:[
 					{
@@ -144,6 +177,11 @@
 			}
 		},
 		methods:{
+			
+			// 用户协议选择
+			changeradio() {
+				this.current = !this.current;
+			},
 			//下一步
 			next(){
 				//校验
@@ -180,6 +218,12 @@
 		background-image: var(--gradualBlue);
 		width: 100vw;
 		overflow: hidden;
+	}
+	.rad{
+		font-family: PingFangSC-Regular;
+		font-size: 24upx;
+		letter-spacing: -0.2px;
+		line-height: 28upx;
 	}
 	.DrawerPage {
 		position: fixed;
