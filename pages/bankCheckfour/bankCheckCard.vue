@@ -7,23 +7,24 @@
 		<scroll-view scroll-y class="DrawerPage" :class="modalName=='viewModal'?'show':''">
 		<view class="padding-xs flex align-center">
 			<view class="flex-sub">
-				<view>
-					<text class="text-sm text-left text-grey">请注意：该银行卡将作为贷款发放和还款扣收使用，为保证放款成功请添加列表中的银行卡。     </text>
-					[	 <text class='text-sm text-blue' 
-					@tap="showModal" data-target="viewModal">
-					     查看银行列表	
-					</text>	]
-				</view>
+				<van-row>
+				  <van-col span="14"><text class="text-sm text-left text-grey">*该银行卡用于贷款发放及收款 </text></van-col>
+				  <van-col span="10" class="text-right">
+					  <text class='text-sm text-blue' @tap="showModal" data-target="viewModal">
+							 查看银行列表<van-icon name="info-o" />
+					  </text>	
+				  </van-col>
+				</van-row>
 			</view>
 		</view>
 			<view class="cu-form-group" >
-			<text class='cuIcon-card margin-xs margin-right'></text>
-				<input class="text-left" type="number" maxlength="19" placeholder="请添加您本人的储蓄卡" v-model="form.banknum" name="input"></input>
+			<text class='margin-xs margin-right'>持卡人</text>
+				<input class="text-left" type="number" maxlength="19" placeholder="请输入银行卡号" v-model="form.banknum" name="input"></input>
 			</view>
 			
 			<view class="cu-form-group"  >
-				<text class='cuIcon-mobile margin-xs margin-right'></text>
-				<input class="text-left" type="number" maxlength="11" placeholder="请输入银行预留手机号" v-model="form.mobile" name="input"></input>
+				<text class='margin-xs margin-right'>手机号</text>
+				<input class="text-left" type="number" maxlength="11" placeholder="请输入银行卡预留手机号" v-model="form.mobile" name="input"></input>
 			</view>
 			
 			<view class="padding-xl solid-top flex flex-direction ">

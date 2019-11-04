@@ -16,7 +16,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "易贷"
+				"navigationBarTitleText": "易贷登录"
 			}
 		},
 		{
@@ -83,12 +83,6 @@
 			"path": "pages/bankCheckfour/bankCheckCard",
 			"style": {
 				"navigationBarTitleText": "填写银行卡"
-			}
-		},
-		{
-			"path": "pages/bankCheckfour/bankCardCheckNum",
-			"style": {
-				"navigationBarTitleText": "确认银行卡"
 			}
 		},
 		{

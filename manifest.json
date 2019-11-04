@@ -85,11 +85,10 @@
             "mode" : "hash"
         },
         // 解决热更新
-        // "devServer" : {
-        //     "port" : "",
-        //     "disableHostCheck" : true,
-        //     "https" : true
-        // },
+        "devServer" : {
+            "port" : "8080",
+            "disableHostCheck" : true //解决127.0.0.1指向其他域名时出现"Invalid Host header"问题
+        },
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {

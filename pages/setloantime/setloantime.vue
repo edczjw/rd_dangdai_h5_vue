@@ -26,7 +26,7 @@
 				:placeholder="maxedu" 
 				maxlength='11'
 				type="number" 
-			        is-virtual-keyboard
+				is-virtual-keyboard
 				class="toinput padding-left-xs text-left" 
 				v-model="form.money"
 				@touchstart.native.stop="showkeyboard = true"></van-field>

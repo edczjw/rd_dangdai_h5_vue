@@ -18,13 +18,13 @@
 			<text class='cuIcon-mobile  margin-xs margin-right'></text>
 			<input placeholder="请输入手机号码" maxlength='11' 
 			type="number" @blur="yzinput" class="text-left" 
-			v-model="form.mobile"
+			v-model="form.phone"
 			 name="input"></input>
 		</view>
 
 		<view class="cu-form-group">
 			<text class='cuIcon-lock  margin-xs margin-right'></text>
-			<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.timcou" type="number" name="input"></input>
+			<input placeholder="请输入验证码" maxlength='6' class="text-left" v-model="form.verification" type="number" name="input"></input>
 			<button type="warn" @click="sendck" size="mini" class='cu-btn round ' 
 			:class="yzbtn==true? 'yanzhengbtn':'yanzhengbtns'">
 				<span v-show="showCount">获取验证码</span>
@@ -38,22 +38,12 @@
 		</view>
 		
 		<view class="rad margin-top-xl text-black">
-			<md-agree
-			  v-model="agreeConf.checked"
-			  :disabled="agreeConf.disabled"
-			  :size="agreeConf.size"
-			  @change="onChange(agreeConf.name, agreeConf.checked, $event)"
-			>我已阅读、知悉并同意</text>《<a href="#" class="Index-a">用户协议</a>》、
-			  《<a href="#" class="Index-a">个人信息采集授权书</a>》、
-			  《<a href="#" class="Index-a">用户注册协议</a>》
-			</md-agree>
-			
-			<!-- <label class="radio">
+			<label class="radio">
 				<radio @click="changeradio" value="r2" :checked="current" style="transform:scale(0.5)" />
-				<text style="color: #707598;">我已阅读、知悉并同意</text><a href="#" class="Index-a">《用户协议》</a>、
-				<a href="#" class="Index-a">《个人信息采集授权书》</a>、
-				<a href="#" class="Index-a">《用户注册协议》</a>
-			</label> -->
+				<text style="color: #707598;">我已阅读、知悉并同意</text>《<a href="#" class="Index-a">用户协议</a>》、
+				《<a href="#" class="Index-a">个人信息采集授权书</a>》、
+				《<a href="#" class="Index-a">用户注册协议</a>》
+			</label>
 		</view>
 		</view>
 	</view>
@@ -75,7 +65,7 @@
 					disabled: false,
 					introduction: '未选中状态',
 				},
-				current: false,
+				current:false,
 				showCount: true, //验证码计数
 				yzbtn: true, //验证码按钮状态
 				count: '',
@@ -88,9 +78,10 @@
 					mobile: /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,
 				},
 				form: {
-					mobile: '', //手机号
-					timcou: '', //验证码
-					gps:"",		//地理位置
+					phone: '', //手机号
+					verification: '', //验证码
+					chkApprove: 0,		//勾选
+					geographyLocation:"",		//地理位置
 				}
 			}
 		},
@@ -99,10 +90,6 @@
 			this.keyupEnter()
 		},
 		methods: {
-			// 勾选协议
-			onChange(name, checked) {
-			  console.log(`agree name = ${name} is ${checked ? 'checked' : 'unchecked'}`)
-			},
 			getgps(){
 				//获取地理位置
 				var loc;
@@ -114,17 +101,17 @@
 							//定位成功,防止其他应用也会向该页面post信息，需判断module是否为'geolocation'
 							//将地理位置赋给表单
 							if(loc.district){
-								_that.form.gps = loc.district
+								_that.form.geographyLocation = loc.district
 							}else{
-								_that.form.gps = loc.province
+								_that.form.geographyLocation = loc.province
 							}
 						}else { 
 							//定位组件在定位失败后，也会触发message, event.data为null
 							// console.log('定位失败');
-							_that.form.gps = null;
+							_that.form.geographyLocation = null;
 						}
 					
-					console.log(_that.form.gps)
+					console.log(_that.form.geographyLocation)
 					// "nation": "中国",
 					// "province": "广东省",
 					// "city":"深圳市",
@@ -155,7 +142,6 @@
 
 			//手机号码输入框实时输入
 			yzinput(e) {
-				console.log(e.detail.value )
 				if (!this.reg.mobile.test(e.detail.value)) {
 					this.yzbtn = true;
 					this.showCount = true;
@@ -178,12 +164,12 @@
 			},
 			//登录
 			login() {
-				if (!this.reg.mobile.test(this.form.mobile)) {
+				if (!this.reg.mobile.test(this.form.phone)) {
 					uni.showToast({
 						icon: 'none',
 						title: '请输入正确的手机号码'
 					})
-				} else if (this.form.timcou == '' || this.form.timcou.length != 6) {
+				} else if (this.form.verification == '' || this.form.verification.length != 6) {
 					uni.showToast({
 						icon: 'none',
 						title: '请输入正确的验证码'
@@ -194,27 +180,74 @@
 						title: '请阅读并同意相关协议'
 					})
 				} else {
-					uni.redirectTo({
-						url: '../linesapply/OcrCheck'
-					});
+					// 调接口
+					if(this.current == false){
+						this.form.chkApprove = 0
+					}else{
+						this.form.chkApprove = 1
+					}
+					this.$http
+					.post(this.$store.state.domain+'/myds/user/login',this.form)
+					.then(res => {
+						if(res.data.code == 0){
+							uni.showToast({
+								icon: 'passed',
+								title: '登录成功'
+							})
+						}else{
+							uni.showToast({
+								icon: 'none',
+								title: res.data.msg
+							})
+						}
+					})
+					.catch(err => {
+					})
+					
+					// uni.redirectTo({
+					// 	url: '../linesapply/OcrCheck'
+					// });
 				}
 			},
 
 			//发送验证码
 			sendck() {
 				//校验手机格式
-				if (!this.reg.mobile.test(this.form.mobile)) {
+				if (!this.reg.mobile.test(this.form.phone)) {
 					uni.showToast({
 						icon: 'none',
 						title: '请输入正确的手机号码'
 					})
 				} else {
 					//60s
+					let data ={
+						phone: this.form.phone
+					};
 					if (this.times == 1) {
 						const TIME_COUNT = 60; //更改倒计时时间
 						if (!this.timer) {
 							this.count = TIME_COUNT;
 							this.showCount = false;
+							
+							this.$http
+							.post(this.$store.state.domain+'/myds/user/getVerificationCode',data)
+							.then(res => {
+								
+								//失败返回
+								if(res.data.result != '0'){
+									// 提示
+									uni.showToast({
+										icon: 'warning-o',
+										title: '获取短信验证码失败，请重新获取！'
+									})
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							})
+							.catch(err => {
+								
+							})
+							
 							this.times = 2;
 							this.timer = setInterval(() => {
 								if (this.count > 0 && this.count <= TIME_COUNT) {
@@ -233,6 +266,26 @@
 						if (!this.timer) {
 							this.count = TIME_COUNT;
 							this.showCount = false;
+							
+							
+							this.$http
+							.post(this.$store.state.domain+'/myds/user/getVerificationCode',data)
+							.then(res => {
+								
+								//失败返回
+								if(res.data.result != '0'){
+									// 提示
+									uni.showToast({
+										icon: 'warning-o',
+										title: '获取短信验证码失败，请重新获取！'
+									})
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							})
+							.catch(err => {
+								
+							})
 							this.times = 3;
 							this.timer = setInterval(() => {
 								if (this.count > 0 && this.count <= TIME_COUNT) {
@@ -251,6 +304,27 @@
 						if (!this.timer) {
 							this.count = TIME_COUNT;
 							this.showCount = false;
+							
+							
+							this.$http
+							.post(this.$store.state.domain+'/myds/user/getVerificationCode',data)
+							.then(res => {
+								
+								//失败返回
+								if(res.data.result != '0'){
+									// 提示
+									uni.showToast({
+										icon: 'warning-o',
+										title: '获取短信验证码失败，请重新获取！'
+									})
+									clearInterval(this.timer); // 清除定时器
+									this.timer = null;
+								}
+							})
+							.catch(err => {
+								
+							})
+							
 							this.timer = setInterval(() => {
 								if (this.count > 0 && this.count <= TIME_COUNT) {
 									this.count--;

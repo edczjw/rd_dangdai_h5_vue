@@ -6,6 +6,9 @@ import cuCustom from './colorui/components/cu-custom.vue'
 //引入vuex
 import store from './store'
 import mandMobile from 'mand-mobile'
+import { http } from '@/utils/luch-request/index.js' // 全局挂载引入，配置相关在该index.js文件里修改
+
+Vue.prototype.$http = http
 //顶部标题
 Vue.component('cu-custom',cuCustom)
 Vue.use(Vant);

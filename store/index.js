@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
-		domain: 'https://dev.myds.msxiaodai.com',
+		domain: 'http://dev.myds.msxiaodai.com',
 		},
     mutations: {},
     actions: {}
